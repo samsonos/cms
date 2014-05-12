@@ -1,7 +1,7 @@
 {
 	"name":"samsonos/samsoncms",
 	"description":"SamsonCMS modular content management system based on SamsonPHP"
-	"author":{
+	"authors":[
 		{
 			"name":"Vitaly Iegorov",
 			"email":"egorov@samsonos.com>",
@@ -12,7 +12,7 @@
 			"email":"kotenko@samsonos.com>",
 			"website":"http://samsonos.com"
 		}
-	},
+	],
 	"version":"1.2.1",
 	"require":{"samsonos/php_core":"*"},
     "require-dev": {
