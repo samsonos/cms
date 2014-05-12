@@ -1,6 +1,6 @@
 {
 	"name":"samsonos/samsoncms",
-	"description":"SamsonCMS modular content management system based on SamsonPHP"
+	"description":"SamsonCMS modular content management system based on SamsonPHP",
 	"authors":[
 		{
 			"name":"Vitaly Iegorov",
