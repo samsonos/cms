@@ -1,0 +1,9 @@
+/* Иконка "Поле" */
+.icon-field { background-image: url('../img/field.png'); }
+
+/* Иконка "Добавить поле" */
+.icon-add-field { background-image: url('../img/field_add.png'); }
+.icon-add-field.hover,
+.icon-add-field:hover { background-image: url('../img/field_add_hover.png'); }
+.icon-add-field.active,
+.icon-add-field:active { background-image: url('../img/field_add_active.png'); }

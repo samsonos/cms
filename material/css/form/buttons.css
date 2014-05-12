@@ -1,0 +1,16 @@
+/* Кнопка внизу формы  */
+.material-form .btn	{ cursor:pointer;float:left;background:#EEE;border:1px solid #CCC;padding:8px 10px;margin:0px 3px 0px 0px; }
+.material-form .btn	{ margin-bottom:-3px; text-decoration: none; font-weight:bold; }
+/* Наведение - Кнопка внизу формы */
+.material-form .btn:hover		{ background-color:#fbfbfb }
+/* Нажатие - Кнопка внизу формы */
+.material-form .btn:active		{ box-shadow:inset 0px 0px 5px #CCC; }
+/* Первая слева - Кнопка внизу формы */
+.material-form .btn.first-left	{ margin-left:0px }
+/* Псоледняя справа - Кнопка внизу формы */
+.material-form .btn.last-right	{ margin-right:0px }
+/* Прижатая к правому краю - Кнопка внизу формы */
+.material-form .btn.float-right	{ float:right }
+
+/* Кнопка смены локали */
+.material-form #btnCloneToLocale { float:left; padding:4px 10px; }

@@ -1,0 +1,8 @@
+<div class="row">
+	<div class="time">&nbsp;<?php vdate('nav_Created', 'd.m.y')?>
+	</div><div class="item">&nbsp;
+		<a href="<?php url_base('structure','nav_id')?>"><?php iv('nav_Name') ?></a>
+	</div><div class="user"><?php isv('user_SName','от')?>
+		&nbsp;<span class="creator"><?php iv('user_SName') ?> <?php iv('user_FName') ?></span>
+	</div>
+</div>

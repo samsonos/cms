@@ -1,0 +1,5 @@
+User-agent: *
+Dissalow: /app/
+Dissalow: /css/
+Dissalow: /js/
+Dissalow: /cache/

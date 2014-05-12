@@ -1,0 +1,18 @@
+<!-- Top section -->
+<section class="top clearfix">
+
+	<!-- Header block -->
+	<h1 class="icon2 icon_16x16 left icon-structure">Структура материалов</h1>
+	<?php if(isv('parent_id')):?>					
+		<h1 class="with-arrow" title="Элемент структуры сайта"><?php v('parent_Name');?></h1>				
+	<?php endif?>	
+	<!-- End of Header block -->	
+		
+</section>	
+<!-- End of Top section -->
+
+<!-- Content section -->
+<section id="content" class="tree-container">
+        <?php iv('tree'); ?>
+</section>
+<!-- End of Content section -->		

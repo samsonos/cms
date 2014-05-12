@@ -1,0 +1,12 @@
+/** Additional field table */
+.__samsoncms_table.field_table
+{
+	.value { max-width:30%; }
+	
+	th{ font-size:1.3em; text-align:left; }
+	td{ 
+		font-size:1.3em; text-align:left; 
+		
+		&.value span { font-size:1.45em; }		
+	}
+}

@@ -1,0 +1,9 @@
+<table class="__samsoncms_table field_table"> 
+	<thead>
+		<tr>				
+			<th class="name">Параметр</th>					
+			<th class="value">Значение</th>					
+		</tr>
+	</thead>
+	<tbody><?php v('rows'); ?></tbody>		
+</table>

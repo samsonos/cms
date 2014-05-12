@@ -1,0 +1,7 @@
+<div class="bars_on_m structure">
+	<div class="t t_with_i i_structure">
+		Что нового в структуре сайта:
+		<a class="on_b_page" href="structure" title="Перейти к структуре cайта">Перейти к структуре сайта</a>
+	</div>	
+	<div class="content"><?php v('rows')?></div>	
+</div>

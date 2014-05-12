@@ -1,0 +1,4 @@
+<li>		
+	<?php vimg('image_Src')?>
+	<a href="<?php url_base('gallery','delete','image_id','update','material_id')?>" class="btn-delete" title="<?php t('Удалить')?>"><?php t('Удалить')?></a>		
+</li>	

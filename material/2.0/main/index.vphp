@@ -1,0 +1,7 @@
+<div class="bars_on_m material">
+	<div class="t t_with_i i_materils">
+		Последние добавленные материалы:
+		<a class="on_b_page" href="material" title="Перейти к материалам cайта">Перейти к материалам</a>
+	</div>	
+	<div class="content"><?php v('rows')?></div>	
+</div>

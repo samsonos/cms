@@ -1,0 +1,6 @@
+# -FrontPage-
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteRule !\.(doc|mp3|swf|txt|gif|jpg|xml|code|png|js|css|php|html|htm|pdf|xls|rtf|pdf|mov|rar|zip|exe|avi|tiff|psd|cdr)$ /cms/index.php
+

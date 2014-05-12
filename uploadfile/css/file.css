@@ -1,0 +1,53 @@
+/* File uplaoder field */
+.__file_upload
+{	
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	/* Input file upload */
+	.__input { display:none; }
+	
+	/* Uploaded file name */
+	.__file_name { float:left; font-size: 12px !important; text-decoration:underline; }
+	
+	/* Delete button */
+	.__delete { float:left; margin-right:5px;}
+	
+	/* Progressbar */
+	.__progress_bar
+	{
+		display: none; 
+		width: 240px;
+		height:12px;
+		padding: 3px 3px;		
+		border: 1px inset #446;	
+	}
+	
+	/* Progress line*/
+	.__progress_bar p { display:block; height:4px; background-color:green; width:30%; }		
+	
+	/* Style for empty value */
+	&.empty 
+	{ 
+		/* Hide file value */
+		.__file_name, .__delete { display:none; }	
+		
+		/* Show input file upload */
+		.__input { display:block; }	
+	}
+	
+	&.loading 
+	{
+		/* Hide file value */
+		.__file_name, .__delete { display:none; }	
+		
+		/* Show input file upload */
+		.__input { display:none; }
+		
+		/* Progressbar */
+		.__progress_bar { display:block; }
+	}
+}

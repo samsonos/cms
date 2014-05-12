@@ -1,0 +1,4 @@
+<tr>	
+	<td class="name"><?php v('fieldname') ?></td>	
+	<td class="value"><?php v('cmsfield_html');?></td>			
+</tr>

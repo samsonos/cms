@@ -1,0 +1,1 @@
+<li><div class="<?php echo '#'.$tab_id; ?>"><?php vi('tab_name')?></div></li>

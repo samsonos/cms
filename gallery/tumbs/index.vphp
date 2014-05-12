@@ -1,0 +1,9 @@
+<ul class="scms-gallery">
+	<?php v('images')?>
+	<li class="btn-upload">
+		<input class="__image-upload" type="file">
+		<input type="hidden" class="__action" value="<?php url_base('gallery/upload', 'material_id','update','material_id');?>">
+		<div class="__progress_bar"><p></p></div>
+		<label class="__progress_text"><?php t('Загрузить фотографию')?></label>
+	</li>
+</ul>
