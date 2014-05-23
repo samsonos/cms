@@ -1,0 +1,64 @@
+{
+	"name":"samsonos/cms_www",
+	"description":"SamsonCMS starter",
+	"authors":[
+		{
+			"name":"Vitaly Iegorov",
+			"email":"egorov@samsonos.com",
+			"website":"http://samsonos.com"
+		},
+		{
+			"name":"Kotenko Nikita",
+			"email":"kotenko@samsonos.com",
+			"website":"http://samsonos.com"
+		}
+	],
+	"version":"2.0.0",
+	"require":
+    {
+        "samsonos/php_core":"*",
+        "samsonos/php_activerecord":"*",
+        "samsonos/php_resourcer":"*",
+        "samsonos/php_less":"*",
+        "samsonos/js_core":"*",
+        "samsonos/js_tabs":"*",
+        "samsonos/js_md5":"*",
+        "samsonos/js_translit":"*",
+        "samsonos/js_treeview":"*",
+        "samsonos/js_fixedheader":"*",
+        "samsonos/js_lightbox":"*",
+        "samsonos/js_tinybox":"*",
+        "samsonos/js_select":"*",
+        "samsonos/js_gallery":"*",
+        "samsonos/php_optimage":"*",
+        "samsonos/php_compressor":"*",
+        "samsonos/php_i18n":"*",
+        "samsonos/php_pager":"*",
+        "samsonos/php_deploy":"*",
+        "samsonos/php_scale":"*",
+        "samsonos/php_email":"*",
+        "samsonos/php_parse":"*",
+        "samsonos/php_auth":"*",
+        "samsonos/cms_api":"*",
+        "samsonos/cms_app":"*",
+        "samsonos/cms_api":"*",
+        "samsonos/cms_inputfield":"*",
+        "samsonos/cms_select":"*",
+        "samsonos/cms_uploadfile":"*",
+        "samsonos/cms_date":"*",
+        "samsonos/cms_wysiwyg":"*",
+        "samsonos/cms_ajaxloader":"*",
+        "samsonos/cms_table":"*",
+        "samsonos/cms_navigation":"*",
+        "samsonos/cms_field":"*",
+        "samsonos/cms_material":"*",
+        "samsonos/cms_gallery":"*",
+        "samsonos/cms_user":"*",
+        "samsonos/cms_help":"*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+	"license":"Open Software License (OSL) v 3.0",
+	"homepage":"http://samsoncms.com/"
+}
