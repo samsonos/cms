@@ -32,7 +32,10 @@ function StructureTree()
 	/**
 	 * Обработчик сокрытия формы управления
 	 */
-	var ControlFormHideHandler = function(){ ControlFormOpened = false; s( '.control-buttons', ControlElement ).hide(); };
+	var ControlFormHideHandler = function(){
+        ControlFormOpened = false;
+        s( '.control-buttons', ControlElement ).hide();
+    };
 	
 	/**
 	 * Инициализировать дерево ЭСС
