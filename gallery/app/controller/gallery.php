@@ -8,6 +8,7 @@ function gallery_ajax_upload_img( $material_id )
 {
 	// Ассинхронный вывод
 	s()->async(TRUE);
+
 	// Безопасно получим текущий материал
 	if ( dbSimplify::parse('material', $material_id, $db_material) )
 	{			

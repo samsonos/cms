@@ -122,7 +122,7 @@ class App extends \samson\cms\App
 	{
 		// Get all material images
 		$items_html = '';
-		if( dbQuery('gallery')->MaterialID( $material_id )->exec( $images ))foreach ( $images as $image )
+		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('PhotoID')->exec( $images ))foreach ( $images as $image )
 		{
 			$items_html .= $this->view( 'tumbs/item')
 			->image( $image )
