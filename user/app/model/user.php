@@ -33,8 +33,8 @@ function mdl_user_save( array $_data, & $status = NULL )
 	
 	// Установим "особые" поля
 	$_data['Created'] 		= ( $_data['Created'] == 0 ) ? date('Y-m-d H:i:s') : $_data['Created'];
-	$_data['md5_Password'] 	= md5($_data['Password']);
-	$_data['md5_Email'] 	= md5($_data['Email']);
+	$_data['md5_password'] 	= md5($_data['Password']);
+	$_data['md5_email'] 	= md5($_data['Email']);
 	$_data['Active']		= 1;
 	
 	if (!dbQuery('user')->UserID($_data['UserID'])->Active(1)->first($db_user)) $db_user = new \samson\activerecord\user(false);
