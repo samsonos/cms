@@ -43,7 +43,6 @@
         "samsonos/php_upload":"*",
         "samsonos/cms_api":"*",
         "samsonos/cms_app":"*",
-        "samsonos/cms_api":"*",
         "samsonos/cms_inputfield":"*",
         "samsonos/cms_select":"*",
         "samsonos/cms_uploadfile":"*",
