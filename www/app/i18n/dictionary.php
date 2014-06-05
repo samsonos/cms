@@ -56,12 +56,14 @@ return array(
 		"Перейти к материалам cайта"	=>	"",		
 		"Перейти к материалам"	=>	"",		
 ),	
-		"en"	=>array(		
+		"en"	=>array(
+        "Материалы" => "Materials",
+        "Пользователи" => "Users",
 		"Введите значение"	=>	"Enter the value",		
 		"Таблица материалов"	=>	"Materials table",		
 		"Материалы"	=>	"Materials",		
 		"Укажите поисковый запрос"	=>	"Enter your search query",		
-		"Отображать"	=>	"Set visible",		
+		"Отображать"	=>	"Show",
 		"Все"	=>	"All",		
 		"Новый материал"	=>	"New material",		
 		"В данный момент дополнительных полей не найдено"	=>	"Additional fields are not found",		
