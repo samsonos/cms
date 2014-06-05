@@ -9,19 +9,19 @@
 			&rArr;
 		</h1>		
 	<?php endif?>
-	<h1 class="icon2 icon_16x16 left icon-material" title="Таблица материалов">Материалы:</h1>
+	<h1 class="icon2 icon_16x16 left icon-material" title="<?php t('Таблица материалов')?>"><?php t('Материалы')?>:</h1>
 	<!-- End of Header block -->	
 	
 	<!-- Table search block -->
 	<form class="search" method="POST">
-		<input name="search" id="search" placeholder="Укажите поисковый запрос..." value="<?php iv('search')?>">
+		<input name="search" id="search" placeholder="<?php t('Укажите поисковый запрос')?>..." value="<?php iv('search')?>">
 	</form>	
 	<!-- End of Table search block -->	
 	
 	<!-- Pager block -->
 <?php if(isv('pager_html')):?>	
 	<ul class="table-pager">
-		<li>Отображать:</li>
+		<li><?php t('Отображать')?>:</li>
 		<?php v('pager_html')?>		
 	</ul>
 <?php endif?>	

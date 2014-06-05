@@ -2,13 +2,13 @@
 	<thead>
 		<tr>
 			<th class="id">#</th>
-			<th class="name">Название / Черновик</th>
-			<th class="url" title="Идентификатор материала">URL</th>
-			<th class="structure">Раздел</th>				
-			<th class="author" title="Последний пользователь вносивший изменения в материал">Автор</th>
-			<th class="modyfied">Создан / Изменен</th>
-			<th class="published" title="Опубликован ли материал">Опб</th>
-			<th class="control" title="Упраление материалом"></th>
+			<th class="name"><?php t('Название')?> / <?php t('Черновик')?></th>
+			<th class="url" title="<?php t('Идентификатор материала')?>">URL</th>
+			<th class="structure"><?php t('Раздел')?></th>
+			<th class="author" title="<?php t('Последний пользователь вносивший изменения в материал')?>"><?php t('Автор')?></th>
+			<th class="modyfied"><?php t('Создан')?> / <?php t('Изменен')?></th>
+			<th class="published" title="<?php t('Опубликован ли материал')?>"><?php t('Опб')?></th>
+			<th class="control" title="<?php t('Упраление материалом')?>"></th>
 		</tr>
 	</thead>
 	<tbody><?php v('rows'); ?></tbody>		
