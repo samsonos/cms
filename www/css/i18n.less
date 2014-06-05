@@ -19,10 +19,11 @@
       /* Locale inner text block */
       &:before { display:inline-block;  }
       &:after { display: inline-block; content: "|"; margin:0 5px;}
+      &:hover { .opacity(0.75); }
     }
 
     /** Current active locale class */
-    &.i18n-active a { cursor: default; .opacity(1);  }
+    &.i18n-active a { cursor: default; .opacity(1);  &:hover { .opacity(1); } }
 
     &:last-child a:after{display: none;}
 

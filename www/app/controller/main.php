@@ -9,8 +9,13 @@ function main()
 	// Представление для главной
 	$result = '';
 	
-	// Переберем загруженные классы и вызовем обработчик главной страницы если он описан
-	foreach ( App::loaded() as $app ) $result .= $app->main();
+	// Render application main page block
+	foreach (App::loaded() as $app) {
+        // Show only visible apps
+        if ($app->hide == false) {
+            $result .= $app->main();
+        }
+    }
 		
 	// Установим представление
 	m()	->view('main')
