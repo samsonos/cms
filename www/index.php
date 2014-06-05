@@ -20,7 +20,7 @@ class AuthCMSConfig extends samson\core\Config
 }
 
 // Set supported locales
-setlocales('en', 'ua');
+setlocales('en', 'ru');
 
 // Запуска ядра SamsonPHP
 s()->composer()->start('main');

@@ -2,7 +2,7 @@
 	<div class="time">&nbsp;<?php vdate('material_Created', 'd.m.y')?>
 	</div><div class="item">&nbsp;
 		<a href="<?php url_base('material/form','material_id')?>"><?php iv('material_Name') ?></a>
-	</div><div class="user"><?php isv('user_SName','от')?>
+	</div><div class="user"><?php isv('user_SName', t('от', true))?>
 		&nbsp;<span class="creator"><?php iv('user_SName') ?> <?php iv('user_FName') ?></span>
 	</div>
 </div>

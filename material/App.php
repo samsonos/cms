@@ -41,7 +41,7 @@ class App extends \samson\cms\App
 		// Set view data
 		$this
 			->view('index')
-			->title( $this->name)
+			->title( t($this->name, true))
 			->cmsnav( $cmsnav )
 			->cmsnav_id( isset($cmsnav) ? $cmsnav->id : '0' )
 			->search($search)
