@@ -1,19 +1,22 @@
 <nav>
 	<ul class="main_menu">
 		<li class="icons">
-			<a class="to_main<?if(isv('active')) echo ' active'?>" href="<?php url_base()?>" title="На главную">.</a>
+			<a class="to_main<?if(isv('active')) echo ' active'?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
 		</li><li class="icons">
-			<a class="to_site" href="<?php url_base('control/site');?>" title="Открыть сайт">.</a>
+			<a class="to_site" href="<?php url_base('control/site');?>" title="<?php t('Открыть сайт')?>">.</a>
 		</li><li class="icons">
-			<a class="edit_site" href="<?php url_base('control/editor')?>" title="Редактировать сайт">.</a>
+			<a class="edit_site" href="<?php url_base('control/editor')?>" title="<?php t('Редактировать сайт')?>">.</a>
 		</li>
 		
 		<?php v('items')?>		
 	</ul>
 	
 	<aside class="r_b">
-		<div class="logo"></div>
-		<a href="<?php url_base('auth2','logout')?>" class="logout" title="Выход">.</a>		
+        <?php if(defined('__SAMSONCMS_LOGO')):?>
+		    <div class="logo"></div>
+        <?php endif?>
+        <?php m('i18n')->render('list')?>
+		<a href="<?php url_base('auth2','logout')?>" class="logout" title="<?php t('Выход')?>">.</a>
 	</aside>
 </nav>
 

@@ -1,0 +1,26 @@
+.i18n-list {/* Locale block parent */
+
+  li {/* Locale block container */
+
+    a { /* Locale link for clicking */
+      display: inline-block;
+      width:25px;
+      height:20px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      font-size:13px;
+
+      /* Locale inner text block */
+      &:before { display:inline-block;  }
+    }
+
+    /** Current active locale class */
+    &.i18n-active {  }
+
+    /** Default locale inner text block class */
+    &.i18n-locale-def a:before { content:"RU"; }
+    /** Supported locale inner text block classes */
+    &.i18n-locale-en a:before { content:"EN"; }
+    &.i18n-locale-ua a:before {  content:"UA"; }
+  }
+}
