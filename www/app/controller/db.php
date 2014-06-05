@@ -147,7 +147,7 @@ function db_clean_gallery()
 	$files = File::dir( $gal_folder_path );
 	
 	// Получим все данные из галлереи
-	if(dbSimplify::query(_gallery()->all(), $db_images, true))
+	if(dbQuery('gallery')->exec($db_images))
 	{
 		$html .= '<br> 1. В БД найдено: "'.sizeof($db_images).'" записей, Файлов: "'.sizeof($files).'"';
 		$html .= '<br> 2. Очистка записей в БД';
@@ -170,7 +170,7 @@ function db_clean_gallery()
 	}
 	
 	// Получим все данные из галлереи
-	if(dbSimplify::query(_gallery()->all(), $db_images, true))
+    if(dbQuery('gallery')->exec($db_images))
 	{			
 		$html .= '<br> 3. Очистка файлов галлереи';
 		
@@ -220,7 +220,7 @@ function db_clean_upload()
 	$html = '<br> Очистка "Загрузок" - "upload"';
 	
 	// Получим все материалы
-	if(dbSimplify::query(_cmsmaterial()->all(), $db_materials, true))
+    if(dbQuery('material')->exec($db_materials))
 	{
 		// Переберем все материалы
 		foreach ( $db_materials as $db_material ) 
@@ -242,7 +242,7 @@ function db_clean_upload()
 	}
 	
 	// Получим дополнительные поля материалов
-	if(dbSimplify::query(_cmsmaterialfield()->all(), $db_materialfields, true))
+    if(dbQuery('materialfield')->exec($db_materialfields))
 	{
 		foreach( $db_materialfields as $db_materialfield ) 
 		{

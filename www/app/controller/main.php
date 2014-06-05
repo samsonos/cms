@@ -14,6 +14,6 @@ function main()
 		
 	// Установим представление
 	m()	->view('main')
-		->title('Главная')
+		->title(t('Главная', true))
 		->result( $result );
 }

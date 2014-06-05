@@ -1,7 +1,7 @@
 <!-- Шаблон формы редактирования материала -->
 <section class="material-create">
 	<h1 class="section_t">
-		Редактирование материала #<?php v('cmsmaterial_id')?> - 
+		<?php t('Редактирование материала')?>#<?php v('cmsmaterial_id')?> -
 		<span class="parent-name"><?php v('cmsmaterial_Name'); ?></span>
 	</h1>
 	
@@ -21,9 +21,11 @@
 		
 		<!-- Controls -->
 		<div class="btn-panel">			
-			<input class="btn float-right last-right" type="submit" id="btnSave" value="Сохранить" title="Сохранить материал в базе данных и закрыть форму">				
-			<input class="btn float-right" type="button" id="btnApply" value="Применить" title="Сохранить материал в базе данных">			
-			<a class="btn float-right first-left" id="btnExit" href="<?php module_url()?>" title="Закрыть форму не сохраняя материал и вернуться к списку материалов">Закрыть</a>			
+			<input class="btn float-right last-right" type="submit" id="btnSave" value="<?php t('Сохранить')?>" title="<?php t('Сохранить материал в базе данных и закрыть форму')?>">
+			<input class="btn float-right" type="button" id="btnApply" value="<?php t('Применить')?>" title="<?php t('Сохранить материал в базе данных')?>">
+			<a class="btn float-right first-left" id="btnExit" href="<?php module_url()?>" title="<?php t('Закрыть форму не сохраняя материал и вернуться к списку материалов')?>">
+                <?php t('Закрыть')?>
+            </a>
 		</div>	
 		<!-- End Controls -->
 </form>

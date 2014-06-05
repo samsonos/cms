@@ -1,6 +1,6 @@
 <ul class="table-like-list">
 	<li>
-		<label>Название материала:</label>
+		<label><?php t('Название материала')?>:</label>
 		<div class="input-text"><input required id="Name" name="Name" value="<?php vi('material_Name'); ?>"></div>
 	</li>				
 	<li>
@@ -8,18 +8,18 @@
 		<div class="input-text"><input required id="Url" name="Url" value="<?php v('material_Url'); ?>"></div>
 	</li>
 	<li>
-		<label>Структура:</label>
+		<label><?php t('Структура')?>:</label>
 		<select multiple name="StructureID[]" id="StructureID" class="selectify"><?php v('parent_select') ?></select>
 	</li>	
 	<li>
-		<label>Отображать на сайте:</label>
+		<label><?php t('Отображать на сайте')?>:</label>
 		<select name="Published" id="Published">
-			<option value="0" <?php isval('material_Published',0,'selected')?>>Нет</option>
-			<option value="1" <?php isval('material_Published',1,'selected')?>>Да</option>
+			<option value="0" <?php isval('material_Published',0,'selected')?>><?php t('Нет')?></option>
+			<option value="1" <?php isval('material_Published',1,'selected')?>><?php t('Да')?></option>
 		</select>
 	</li>	
 	<li>
-		<label>Автор:</label>
+		<label><?php t('Автор')?>:</label>
 		<div class="input-text disabled"><input id="user_name" name="user_name" value="<?php v('user_SName')?> <?php v('user_FName')?>" disabled></div></li>
 	<li>
 </ul>
