@@ -31,7 +31,6 @@
         "samsonos/js_formcontainer":"*",
         "samsonos/js_select":"*",
         "samsonos/js_gallery":"*",
-        "samsonos/php_optimage":"*",
         "samsonos/php_compressor":"*",
         "samsonos/php_i18n":"*",
         "samsonos/php_pager":"*",
