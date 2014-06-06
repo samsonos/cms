@@ -43,9 +43,9 @@ class FormFieldTable extends \samson\cms\table\Table
 	 * @param CMSMaterial 	$db_material 	CMSMaterial pointer
 	 * @param string 		$locale			Field table locale	 
 	 */
-	public function __construct( \samson\cms\CMSMaterial & $db_material, Form & $form, $locale = SamsonLocale::DEF  )
+	public function __construct( \samson\cms\CMSMaterial & $db_material, Form & $form, $locale = ''  )
 	{		
-		$this->locale = $locale;
+		$this->locale = $locale == \samson\core\SamsonLocale::RU ? '' : $locale;
 		
 		// Save pointer to Form
 		$this->form = & $form;
@@ -74,7 +74,7 @@ class FormFieldTable extends \samson\cms\table\Table
 			->Active(1);
 		
 		// Add localization condition if necessary
-		if ($locale != 'ru') {
+		if ($locale != '') {
 			$this->query->cond(dbMySQLConnector::$prefix.'field_local', 1);		
 		}
 		
