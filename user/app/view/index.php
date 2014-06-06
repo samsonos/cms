@@ -2,7 +2,7 @@
 <section class="top clearfix">
 
 	<!-- Header block -->	
-	<h1 class="icon2 icon_16x16 left icon-user" title="Пользователи системы">Пользователи:</h1>
+	<h1 class="icon2 icon_16x16 left icon-user" title="<?php t('Пользователи системы')?>"><?php t('Пользователи')?>:</h1>
 	<!-- End of Header block -->	
 
 	

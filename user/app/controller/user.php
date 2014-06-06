@@ -7,7 +7,7 @@ function user()
 	$query = dbQuery('user')->Active(1);
 	$table = new samson\cms\user\Table($query);
 	// Установим представление
-	m()->view('index')->title('Пользователи системы')	
+	m()->view('index')->title(t('Пользователи системы', true))
 	// Установим шаблон таблицы пользователей
 	->set( 'user_table',$table->render() );	
 }
@@ -25,10 +25,10 @@ function user_form( $user_id = 0, $group_id = NULL )
 	if( dbQuery('user')->UserID($user_id)->first($db_user ) )
 	{
 		// Установим пользователя
-		m()->title('Редактирование: ' . mdl_user_short_name($db_user) )->set( 'db_user', $db_user );		
+		m()->title(t('Редактирование', true).': ' . mdl_user_short_name($db_user) )->set( 'db_user', $db_user );
 	}
 	// Выведем форму для нового пользователя
-	else m()->title('Создание пользователя');		
+	else m()->title(t('Создание пользователя', true));
 
 	
 	// Создадим пустышку пользователя

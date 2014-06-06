@@ -1,1 +1,1 @@
-<tr class="empty"><td colspan="7">В системе нет ни одного пользователя</td></tr>
+<tr class="empty"><td colspan="7"><?php t('В системе нет ни одного пользователя')?></td></tr>
