@@ -68,6 +68,6 @@ class FieldTab extends FormTab
      */
     public function filled()
     {
-        return strlen($this->content_view);
+        return strlen($this->content_view) > 0;
     }
 }
