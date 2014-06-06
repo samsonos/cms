@@ -73,7 +73,7 @@ class FormFieldTable extends \samson\cms\table\Table
 			->MaterialID($db_material->id)
 			->Active(1);
 		
-		// Add localization condition if necessary
+		// Add localization condition if this is not empty locale
 		if ($locale != '') {
 			$this->query->cond(dbMySQLConnector::$prefix.'field_local', 1);		
 		}

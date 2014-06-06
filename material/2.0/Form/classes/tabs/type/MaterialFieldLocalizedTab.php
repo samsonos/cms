@@ -39,7 +39,7 @@ class MaterialFieldLocalizedTab extends FormTab
 		parent::__construct( $form );
 		
 		// Prepare locales array with one default locale by default
-		$locales = array( \samson\core\SamsonLocale::DEF );
+		$locales = array( '' );
 		// If field supports localization - set full locales array 
 		if( $db_field->local == 1 ) $locales = SamsonLocale::$locales;
 		
