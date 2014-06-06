@@ -37,7 +37,7 @@ class FieldTab extends FormTab
 		$this->name = $locale == '' ? 'ru' : $locale;
 		
 		// Add locale to identifier
-		$this->id = $parent->id.($locale == \samson\core\SamsonLocale::DEF ? '' : '-'.$locale);
+		$this->id = $parent->id.'-'.$locale;
 
 		// Set pointer to CMSMaterial 
 		$material = & $form->material;		
