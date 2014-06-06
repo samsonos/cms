@@ -74,7 +74,7 @@ class FormFieldTable extends \samson\cms\table\Table
 			->Active(1);
 		
 		// Add localization condition if necessary
-		if ($locale != SamsonLocale::DEF) {
+		if ($locale != 'ru') {
 			$this->query->cond(dbMySQLConnector::$prefix.'field_local', 1);		
 		}
 		

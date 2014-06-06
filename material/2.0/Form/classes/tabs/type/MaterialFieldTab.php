@@ -48,7 +48,7 @@ class MaterialFieldTab extends FormTab
 		$this->cmsfield = Field::fromObject( $db_mf, 'Value', $field_type );
 		
 		// Save tab header name as locale name
-		$this->name = ($locale == SamsonLocale::DEF ? 'ru' : $locale);
+		$this->name = $locale;
 
         // Generate unique html identifier
         $this->id = utf8_translit( $parent->name ).'_'.$this->name.'_tab';
