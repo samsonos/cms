@@ -42,6 +42,7 @@ class FieldLocalizedTab extends FormTab
             // If it is not empty
             if($tab->filled()) {
                 $this->tabs[] = $tab;
+                trace('Adding tab '.$locale);
             }
 		}		
 	}	
