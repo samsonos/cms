@@ -34,10 +34,10 @@ class FieldTab extends FormTab
 		parent::__construct( $form, $parent );	
 		
 		// Save tab header name as locale name
-		$this->name = $locale;
+		$this->name = $locale == '' ? 'ru' : $locale;
 		
 		// Add locale to identifier
-		$this->id = $parent->id.'-'.$locale;
+		$this->id = $parent->id.($locale == '' ? '' : '-'.$locale);
 
 		// Set pointer to CMSMaterial 
 		$material = & $form->material;		
