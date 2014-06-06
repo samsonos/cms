@@ -88,6 +88,7 @@ class FormFieldTable extends \samson\cms\table\Table
  				$this->materialfields[ $db_materialfield->FieldID ] = $db_materialfield;
 			}			
 		}
+
 		//db()->debug(false);
 		
 		//trace('Locale:'.$locale);

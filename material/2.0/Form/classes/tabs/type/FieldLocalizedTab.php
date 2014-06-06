@@ -36,8 +36,13 @@ class FieldLocalizedTab extends FormTab
                 $locale = '';
             }
 
-			// Add child tab
-			 $this->tabs[] = new FieldTab( $form, $this, $locale );					
+			// Create child tab
+			$tab = new FieldTab( $form, $this, $locale );
+
+            // If it is not empty
+            if($tab->filled()) {
+                $this->tabs[] = $tab;
+            }
 		}		
 	}	
 }
