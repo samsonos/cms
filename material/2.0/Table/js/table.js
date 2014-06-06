@@ -27,18 +27,17 @@ function SamsonCMSTable ( table )
 	function publish( obj )
 	{		
 		// Спросим подтверждение 
-		if( confirm( ( obj.a('checked') ) ? i18n.publish : i18n.unpublish  ))
-		{			
+		if (confirm(obj.a('title'))) {
 			// Perform ajax request and update JS on success
 			s.ajax( s( 'a.publish_href', obj.parent()).a('href'), init );			
 		}
 	};
 	
 	/** Event: Remove material */
-	function remove( obj ){	if( confirm( i18n.remove ) ) s.ajax( obj.a('href'), init );	};
+	function remove( obj ){	if( confirm( obj.a('title') ) ) s.ajax( obj.a('href'), init );	};
 	
 	/** Event: Copy material */
-	function copy( obj ){ if( confirm( i18n.copy ) ) s.ajax( obj.a('href'), init ); };
+	function copy( obj ){ if( confirm( obj.a('title') ) ) s.ajax( obj.a('href'), init ); };
 	
 	/**
 	 * Обновить таблицу материалов

@@ -27,7 +27,7 @@
 	</td>
 	<td class="published" title="<?php t('Опубликовать/Скрыть материал')?>">
 		<a class="publish_href" href="<?php module_url( 'publish', 'cmsmaterial_id', 'table', 'nav_id', 'search', 'pager_current_page' ) ?>"></a>
-		<input type="checkbox" value="<?php v('cmsmaterial_id'); ?>" name="published" id="published" <?php isval('cmsmaterial_Published','1','checked')?>>	
+		<input type="checkbox" title="<?php t('Изменить статус публикации материала')?>" value="<?php v('cmsmaterial_id'); ?>" name="published" id="published" <?php isval('cmsmaterial_Published','1','checked')?>>
 	</td>
 	<td class="control">					
 		<a class="icon2 icon_16x16 icon-edit" href="<?php module_url('form','cmsmaterial_id')?>" title="<?php t('Редактировать текущий материал')?>"></a>
