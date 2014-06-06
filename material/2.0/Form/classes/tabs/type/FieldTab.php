@@ -34,7 +34,7 @@ class FieldTab extends FormTab
 		parent::__construct( $form, $parent );	
 		
 		// Save tab header name as locale name
-		$this->name = $locale == \samson\core\SamsonLocale::DEF ? 'ru' : $locale;
+		$this->name = $locale == '' ? 'ru' : $locale;
 		
 		// Add locale to identifier
 		$this->id = $parent->id.($locale == \samson\core\SamsonLocale::DEF ? '' : '-'.$locale);
