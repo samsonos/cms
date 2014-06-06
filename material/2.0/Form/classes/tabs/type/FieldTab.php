@@ -55,9 +55,10 @@ class FieldTab extends FormTab
 			// If field table is empty - clear output, we don't need empty tables
 			if($this->field_table->last_render_count == 0) {
                 $this->content_html = '';
+                trace('clearing');
             }
 
-            trace('Rendering tab: '.$locale.' rendered '.$this->field_table->last_render_count.'('.strlen($this->content_view).')');
+            trace('Rendering tab: '.$locale.' rendered '.$this->field_table->last_render_count.'('.strlen($this->content_html).')');
             trace($this->content_html, true);
 		}		
 	}
@@ -68,6 +69,6 @@ class FieldTab extends FormTab
      */
     public function filled()
     {
-        return strlen($this->content_view) > 0;
+        return strlen($this->content_html) > 0;
     }
 }
