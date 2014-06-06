@@ -4,9 +4,9 @@
 		<tr>
 			<th class="control"></th>
 			<th class="id">#</th>
-			<th class="fio">ФИО</th>	
-			<th class="email">Email</th>
-			<th class="created">Создан / Изменен</th>							
+			<th class="fio"><?php t('ФИО')?></th>
+			<th class="email"><?php t('Email')?></th>
+			<th class="created"><?php t('Создан')?> / <?php t('Изменен')?></th>
 		</tr>
 	</thead>
 	<tbody><?php v('rows'); ?></tbody>
