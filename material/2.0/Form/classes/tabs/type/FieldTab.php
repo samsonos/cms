@@ -52,6 +52,9 @@ class FieldTab extends FormTab
 			// Render tab content
 			$this->content_html = $this->field_table->render();
 
+            trace('Rendering tab: '.$locale);
+            trace($this->content_html, true);
+
 			// If field table is empty - clear output, we don't need empty tables
 			if( !$this->field_table->last_render_count ) $this->content_html = '';
 		}		
