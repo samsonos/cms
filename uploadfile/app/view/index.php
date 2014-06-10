@@ -5,4 +5,5 @@
 	<div class="__progress_bar"><p></p></div>
 	<a  href="<?php v('delete_controller')?>" class="__delete icon2 icon_16x16 icon-delete delete" title="Удалить файл" <?php if (!isv('field_value')):?>style="display:none"<?php endif;?>></a>
 	<span class="__file_name"><?php v('field_value')?></span>
+    <input type="hidden" class="__file_size" value="5000000">
 </div>
