@@ -31,11 +31,6 @@ class FieldLocalizedTab extends FormTab
 		// Iterate available locales if fields exists
 		if( sizeof($form->fields) && sizeof(SamsonLocale::$locales)) foreach (SamsonLocale::$locales as $locale)
 		{
-            // Change ru locale to empty locale
-            if ($locale == \samson\core\SamsonLocale::RU) {
-                $locale = '';
-            }
-
 			// Create child tab
 			$tab = new FieldTab( $form, $this, $locale );
 
