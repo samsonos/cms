@@ -76,7 +76,9 @@ class FormFieldTable extends \samson\cms\table\Table
 		// Add localization condition if nessesar
 		if ($locale != '') {
 			$this->query->cond(dbMySQLConnector::$prefix.'field_local', 1);		
-		}
+		} else {
+            $this->query->cond(dbMySQLConnector::$prefix.'field_local', 0);
+        }
 		
 		// Perform DB request to find existing materialfields
 		//db()->debug(true);
