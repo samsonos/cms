@@ -26,7 +26,10 @@ class FieldLocalizedTab extends FormTab
 	public function __construct( Form & $form, FormTab & $parent = null, $locale = null )
 	{
 		// Call parent constructor
-		parent::__construct( $form, $parent );	
+		parent::__construct( $form, $parent );
+
+        // Add generic tab
+        $this->tabs[] = new FieldTab( $form, $this, '' );
 		
 		// Iterate available locales if fields exists
 		if( sizeof($form->fields) && sizeof(SamsonLocale::$locales)) foreach (SamsonLocale::$locales as $locale)
