@@ -45,7 +45,7 @@ class FormFieldTable extends \samson\cms\table\Table
 	 */
 	public function __construct( \samson\cms\CMSMaterial & $db_material, Form & $form, $locale = SamsonLocale::DEF  )
 	{		
-		$this->locale = $locale == \samson\core\SamsonLocale::RU ? '' : $locale;
+		$this->locale = $locale;
 		
 		// Save pointer to Form
 		$this->form = & $form;

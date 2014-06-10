@@ -34,7 +34,7 @@ class FieldTab extends FormTab
 		parent::__construct( $form, $parent );	
 		
 		// Save tab header name as locale name
-		$this->name = $locale == '' ? 'ru' : $locale;
+		$this->name = $locale == '' ? 'all' : $locale;
 		
 		// Add locale to identifier
 		$this->id = $parent->id.($locale == '' ? '' : '-'.$locale);
