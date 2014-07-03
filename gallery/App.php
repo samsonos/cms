@@ -124,19 +124,26 @@ class App extends \samson\cms\App
 		$items_html = '';
 		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('PhotoID')->exec( $images ))foreach ( $images as $image )
 		{
-            trace($image->Src);
-            trace($image->Path);
+            // Get old-way image path
+            $path = $image->Src;
+            // Check it
+            if (!file_exists($path)) {
+                // Use new way
+                $path = $image->Path;
+            }
 
+            // Render gallery image tumb
 			$items_html .= $this->view( 'tumbs/item')
 			    ->image($image)
+                ->path($path)
 			    ->material_id($material_id)
 			->output();
 		}
 	
 		// Render content into inner content html
 		return $this->view( 'tumbs/index' )
-		->images( $items_html )
-		->material_id($material_id)
+		    ->images( $items_html )
+		    ->material_id($material_id)
 		->output();
 	}
 }
