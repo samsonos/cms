@@ -119,7 +119,7 @@ function SamsonCMSTable ( table )
 
             // Call external handler
             if(handler) {
-                handler(request);
+                handler();
             }
         });
     }
