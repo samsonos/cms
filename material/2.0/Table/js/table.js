@@ -123,14 +123,17 @@ function SamsonCMSTable ( table )
             }
         });
     }
-	
+
+    // Cache search field
+    var searchField = s('input#search');
+
 	// Init table live search
-	material_search( 'input#search' );
+	material_search(searchField);
 
     // Disable search form submit
     s('form.search').submit(function(){
         // Get search input
-        var keywords = obj.val();
+        var keywords = searchField.val();
 
         // Perform async request to server for rendering table
         asyncSearch(0, keywords, 1, function(response){
