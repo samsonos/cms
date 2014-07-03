@@ -112,7 +112,7 @@ function SamsonCMSTable ( table )
      */
     var asyncSearch = function(cmsnav, keywords, page, handler) {
         // Create generic loader
-        var loader = Loader(s('#content'));
+        var loader = new Loader(s('#content'));
         loader.show();
 
         // Perform async request to server for rendering table
