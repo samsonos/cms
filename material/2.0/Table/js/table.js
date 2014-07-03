@@ -89,7 +89,7 @@ function SamsonCMSTable ( table )
 					search.DOMElement.enabled = false;
 
                     // Perform async request to server for rendering table
-                    request = asyncSearch(cmsnav, keywords, page, function(){
+                    request = asyncSearch(cmsnav, keywords, page, function(response){
                         // re-render table
                         init(response);
 
@@ -103,12 +103,12 @@ function SamsonCMSTable ( table )
 	}
 
     /**
-     *
-     * @param cmsnav
-     * @param keywords
-     * @param page
-     * @param handler
-     * @returns {*}
+     * Asynchronous request for table search
+     * @param cmsnav    Current selected SamsonCMS navigation identifier
+     * @param keywords  Material search keywords
+     * @param page      Current search page results
+     * @param handler   External handler on ajax success request
+     * @returns Asynchronous request handle
      */
     var asyncSearch = function(cmsnav, keywords, page, handler) {
         // Perform async request to server for rendering table
