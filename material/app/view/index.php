@@ -15,6 +15,7 @@
 	<!-- Table search block -->
 	<form class="search" method="POST">
 		<input name="search" id="search" placeholder="<?php t('Укажите поисковый запрос')?>..." value="<?php iv('search')?>">
+        <input type="submit" class="hidden">
 	</form>	
 	<!-- End of Table search block -->	
 	

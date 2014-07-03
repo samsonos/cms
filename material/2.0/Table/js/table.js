@@ -3,26 +3,7 @@
  * @param table DOM table element
  */
 function SamsonCMSTable ( table )
-{		
-	/* Russian messages */
-	var ru = {
-		publish:'Опубликовать?',
-		unpublish:'Снять с публикации?',
-		remove:'Удалить материал?',
-		copy:'Скопировать материал?'
-	};
-	
-	/* English messages */
-	var en = {
-		publish:'Опубликовать?',
-		unpublish:'Снять с публикации?',
-		remove:'Удалить материал?',
-		copy:'Скопировать материал?'
-	};
-	
-	// Pointer to current locale
-	var i18n = ru;
-	
+{
 	/** Event: Publish/unpublish material */
 	function publish( obj )
 	{		
@@ -70,9 +51,13 @@ function SamsonCMSTable ( table )
 			// Bind remove event
 			s( 'a.delete' ).click( remove, true, true );				
 		}
-	};	
-	
-	function material_search( search )
+	};
+
+    /**
+     * Asynchronous material search
+     * @param search Search query
+     */
+	function material_search(search)
 	{
 		// Safely get object
 		search = s(search);
@@ -102,24 +87,50 @@ function SamsonCMSTable ( table )
 					
 					// Disable input
 					search.DOMElement.enabled = false;
-					
-					// Perform async request to server for rendering table
-					request = s.ajax( SamsonPHP.url_base('material/update/table',cmsnav,keywords,page), function(response)
-					{
-						// re-render table
-						init(response);
-						
-						// Clear request variable
-						request = undefined;
-					});
+
+                    // Perform async request to server for rendering table
+                    request = asyncSearch(cmsnav, keywords, page, function(){
+                        // re-render table
+                        init(response);
+
+                        // Clear request variable
+                        request = undefined;
+                    });
 					
 				}, 1000);
 			} 
 		});
 	}
+
+    /**
+     *
+     * @param cmsnav
+     * @param keywords
+     * @param page
+     * @param handler
+     * @returns {*}
+     */
+    var asyncSearch = function(cmsnav, keywords, page, handler) {
+        // Perform async request to server for rendering table
+        return s.ajax( 'material/update/table/'+cmsnav+'/'+keywords+'/'+page, function(response)
+        {
+            // re-render table
+            init(response);
+
+            // Call external handler
+            if(handler) {
+                handler(request);
+            }
+        });
+    }
 	
 	// Init table live search
-	material_search( 'input#search' );	
+	material_search( 'input#search' );
+
+    // Disable search form submit
+    s('form.search').submit(function(){
+        return false;
+    });
 	
 	// Init table
 	init();
