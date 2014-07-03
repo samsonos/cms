@@ -111,29 +111,41 @@ function SamsonCMSTable ( table )
      * @returns Asynchronous request handle
      */
     var asyncSearch = function(cmsnav, keywords, page, handler) {
-        // Create generic loader
-        var loader = new Loader(s('#content'));
+        // Avoid multiple search requests
+        if(!searchInitiated) {
+            // Set flag
+            searchInitiated = true;
 
-        // Show loader with i18n text and black bg
-        loader.show(s('.loader-text').val(), true);
+            // Create generic loader
+            var loader = new Loader(s('#content'));
 
-        // Perform async request to server for rendering table
-        return s.ajax( 'material/update/table/'+cmsnav+'/'+keywords+'/'+page, function(response)
-        {
-            // re-render table
-            init(response);
+            // Show loader with i18n text and black bg
+            loader.show(s('.loader-text').val(), true);
 
-            // Call external handler
-            if(handler) {
-                handler();
-            }
+            // Perform async request to server for rendering table
+            return s.ajax( 'material/update/table/'+cmsnav+'/'+keywords+'/'+page, function(response)
+            {
+                // re-render table
+                init(response);
 
-            loader.hide();
-        });
+                // Call external handler
+                if(handler) {
+                    handler();
+                }
+
+                loader.hide();
+
+                // Release flag
+                searchInitiated = false;
+            });
+        }
     }
 
     // Cache search field
     var searchField = s('input#search');
+
+    // Flag to preserve multiple search requests
+    var searchInitiated = false;
 
 	// Init table live search
 	material_search(searchField);
