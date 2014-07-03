@@ -39,11 +39,13 @@ function SamsonCMSTable ( table )
 		}		
 		catch(e){ s.trace('Ошибка обработки ответа полученного от сервера, повторите попытку отправки данных'); };		
 		
-		// If we have succesful event responce or no responce at all(first init)
+		// If we have successful event response or no response at all(first init)
 		if( !serverResponse || (serverResponse && serverResponse.status) )
 		{					
 			// Add fixed header to materials table
 			s('.material-table').fixedHeader();
+
+            s.trace('fixed');
 			
 			// Bind publish event
 			s( 'input#published' ).click( publish, true, true );
