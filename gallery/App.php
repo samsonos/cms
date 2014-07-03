@@ -135,7 +135,7 @@ class App extends \samson\cms\App
             // Render gallery image tumb
 			$items_html .= $this->view( 'tumbs/item')
 			    ->image($image)
-                ->path($path)
+                ->imgpath($path)
 			    ->material_id($material_id)
 			->output();
 		}
