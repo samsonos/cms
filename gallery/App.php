@@ -130,6 +130,8 @@ class App extends \samson\cms\App
             if (!file_exists($path)) {
                 // Use new way
                 $path = $image->Path;
+            } else { // Use SRC for image
+                $path = $image->Src;
             }
 
             // Render gallery image tumb
