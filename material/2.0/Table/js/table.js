@@ -111,6 +111,10 @@ function SamsonCMSTable ( table )
      * @returns Asynchronous request handle
      */
     var asyncSearch = function(cmsnav, keywords, page, handler) {
+        // Create generic loader
+        var loader = Loader(s('#content'));
+        loader.show();
+
         // Perform async request to server for rendering table
         return s.ajax( 'material/update/table/'+cmsnav+'/'+keywords+'/'+page, function(response)
         {
@@ -121,6 +125,8 @@ function SamsonCMSTable ( table )
             if(handler) {
                 handler();
             }
+
+            loader.hide();
         });
     }
 
