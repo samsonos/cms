@@ -45,8 +45,6 @@ function SamsonCMSTable ( table )
 			// Add fixed header to materials table
 			s('.material-table').fixedHeader();
 
-            s.trace('fixed');
-			
 			// Bind publish event
 			s( 'input#published' ).click( publish, true, true );
 			
@@ -178,8 +176,3 @@ s('#material').pageInit( function( _parent )
 	// Повесим обобщенный обработчик таблицы
 	SamsonCMSTable( s('.material-table') );
 });
-
-s('.material-table').pageInit(function(table)
-{
-	table.fixedHeader();
-}); 
