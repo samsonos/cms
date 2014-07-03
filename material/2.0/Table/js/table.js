@@ -129,6 +129,15 @@ function SamsonCMSTable ( table )
 
     // Disable search form submit
     s('form.search').submit(function(){
+        // Get search input
+        var keywords = obj.val();
+
+        // Perform async request to server for rendering table
+        asyncSearch(0, keywords, 1, function(response){
+            // re-render table
+            init(response);
+        });
+
         return false;
     });
 	
