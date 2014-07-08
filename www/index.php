@@ -9,7 +9,7 @@
  * 
  * @author Vitaly Iegorov <vitalyiegorov@gmail.com>  
  */
-
+//asdasdasd
 
 /** Конфигурация для Auth */
 class AuthCMSConfig extends samson\core\Config
