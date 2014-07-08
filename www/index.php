@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * SamsonCMS v 4.0.0
  * 
