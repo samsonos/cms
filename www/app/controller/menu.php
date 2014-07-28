@@ -5,7 +5,6 @@ use samson\cms\App;
 function menu__HANDLER()
 {	
 	$result = '';
-	
 	// Iterate loaded samson\cms\application
 	foreach (App::loaded() as $app/*@var $app App*/) {
 	    // If application is not hidden

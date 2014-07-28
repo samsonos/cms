@@ -13,26 +13,45 @@ use samson\activerecord\dbRelation;
 class CMSNav extends \samson\cms\CMSNav
 {
     /**
-     * создание новой структуры
+     * Filling the fields and creating relation of structure
      */
-    public static function add($post)
+    public function fillFields()
     {
-        $newNav = new CMSNav();
-        foreach ($post as $key => $val) {
-            $newNav[$key]=$val;
+        // Fill the fields from $_POST array
+        foreach ($_POST as $key => $val) {
+            $this[$key]=$val;
         }
-        $newNav->save();
+
+        // Save object
+        $this->save();
+
+        // Create new relation
+        $strRelation = new \samson\activerecord\structure_relation(false);
+        $strRelation->parent_id = $_POST['ParentID'];
+        $strRelation->child_id = $this->id;
+
+        // Save relation
+        $strRelation->save();
     }
 
     /**
-     * @param $post - $_POST массив с новыми значениями для структуры
+     * Updating structure
      */
-    public function update($post)
+    public function update()
     {
-        foreach ($post as $key => $val) {
-            $this[$key]=$val;
+        /** @var array $relations array of structure_relation objects */
+        $relations = null;
+
+        // If CMSNav has old relations then delete it
+        if (dbQuery('\samson\activerecord\structure_relation')->child_id($this->id)->exec($relations)) {
+            /** @var \samson\activerecord\structure_relation $relation */
+            foreach ($relations as $relation) {
+                $relation->delete();
+            }
         }
-        $this->save();
+
+        // Update new fields
+        $this->fillFields();
     }
 
     public static function fullTree(CMSNav & $parent = null)
@@ -84,7 +103,7 @@ class CMSNav extends \samson\cms\CMSNav
             foreach ($children as $id => $child) {
                 if (isset($view)) {
                     $html .= '<li>'
-                        .m()->view($view)->db_structure($child)->output().'';
+                        .m()->view($view)->parentid($parent->id)->db_structure($child)->output().'';
                 } else {
                     $html .= '<li>'.$child->Name.'</li>';
                 }
