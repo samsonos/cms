@@ -218,9 +218,12 @@ class StructureApplication extends \samson\cms\App
             ->tree(CMSNav::fullTree($db_structure))
             ->output();
 
+        $sub_menu = m()->view('2.0/main/sub_menu')->parentnav_id($structure_id)->output();
+
         return array(
             'status'=>1,
-            'tree'=>$html
+            'tree'=>$html,
+            'sub_menu' => $sub_menu
         );
     }
 }
