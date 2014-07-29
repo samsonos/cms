@@ -35,13 +35,25 @@ var fieldForm = function( fieldForm )
 	});
 	
 	// Обработчик загрузки картинки в галерею		
-	s('a.edit-field-button', fieldForm ).FormContainer({		
+	/*s('a.edit-field-button', fieldForm ).FormContainer({
 		placeMode 		: 'creatorOver',
 		submitHandler 	: ActionResponceHandler
-	});	
+	});*/
+    s('a.edit-field-button', fieldForm).tinyboxAjax({
+        html : 'html',
+        renderedHandler: function(response, tb){
+            s('.field_edit_form').ajaxSubmit(function(response){
+                tb._close();
+            });
+        }
+    });
+
+    s('a.delete-field-button', fieldForm).ajaxClick(function(response) {
+
+    });
 	
 	// Обработчик удаления дополнительного поля
-	UDBC.bindAction( s( 'a.delete-field-button', fieldForm ), init );	
+	//UDBC.bindAction( s( 'a.delete-field-button', fieldForm ), init );
 	// Обработчик удаления дополнительного поля
 	UDBC.bindAction( s( 'a.clone-field-button', fieldForm ), init );
 };

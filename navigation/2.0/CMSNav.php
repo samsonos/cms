@@ -60,14 +60,19 @@ class CMSNav extends \samson\cms\CMSNav
         $newNavs = array();
 
         if (!isset($parent)) {
-            $parent = new CMSNav( false );
+            $parent = new CMSNav(false);
             $parent->Name = 'Корень навигации';
             $parent->Url = 'NAVIGATION_BASE';
             $parent->StructureID = 0;
             $parent->base = 1;
             $db_navs = null;
-            if(dbQuery('samson\cms\web\cmsnav')->Active(1)->join('parents_relations')->cond('parents_relations.parent_id', '', dbRelation::ISNULL)->exec($db_navs) ){
-                foreach($db_navs as $db_nav){
+            if (dbQuery('samson\cms\web\cmsnav')
+                ->Active(1)
+                ->join('parents_relations')
+                ->cond('parents_relations.parent_id', '', dbRelation::ISNULL)
+                ->order_by('PriorityNumber', 'ASC')
+                ->exec($db_navs)) {
+                foreach ($db_navs as $db_nav) {
                     $parent->children['id_'.$db_nav->id] = $db_nav;
                 }
             }
