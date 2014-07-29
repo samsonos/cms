@@ -78,11 +78,11 @@ function StructureTree()
 		}).click( ControlClickHandler );			
 		
 		// Обработчик редактирования дополнительных полей для ЭСС
-		s( 'a.control.fields' ).FormContainer({	
+		/*s( 'a.control.fields' ).FormContainer({
 			showHandler 	: fieldForm,
 			placeMode 		: 'creatorOver',
 			hideHandler		: ControlFormHideHandler
-		}).click( ControlClickHandler );			
+		}).click( ControlClickHandler );	*/
 	
 		/*// Обработчик изменения порядкового номера ЭСС
 		UDBC.bindAction( s( 'a.control.move-up' ), this );

@@ -125,7 +125,7 @@ class App extends \samson\cms\App
 		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('PhotoID')->exec( $images ))foreach ( $images as $image )
 		{
             // Get old-way image path
-            $path = str_replace(__SAMSON_BASE__, '', $image->Src);
+            $path = $image->Src;
             // Check it
             if (!file_exists($path)) {
                 // Use new way

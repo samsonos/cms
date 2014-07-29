@@ -29,31 +29,31 @@ function field__HANDLER( $nav = '0', $page = 1, $async = 0 )
  * 
  * @param string $structure_id Идентификатор элемента структуры в БД
  */
-function field_ajax_list( $structure_id, $echo = TRUE )
+function field_async_ajax_list($structure_id)
 {
-	// Ассинхронный ответ
-	s()->async(TRUE);	
+    $return = array('status' => 0);
+    // Попытаемся найти ЭНС
+    if (ifcmsnav($structure_id, $db_structure, 'id')) {
+        // Сформируем параметры для представления
+        $view_data = array( 'db_structure' => $db_structure );
 
-	// Попытаемся найти ЭНС
-	if( ifcmsnav( $structure_id, $db_structure, 'id' ) )
-	{
-		// Сформируем параметры для представления
-		$view_data = array( 'db_structure' => $db_structure );
-		
-		// Получим все поля связанные с данным ЭСС
-		$items = _cmsnavfield()->find_all_by_StructureID_and_Active( $db_structure->id, 1 );
-		
-		// Получим записи полей из БД
-		if (sizeof($items) > 0)	$view_data['items'] = _field()->find_all_by_FieldID( dbSimplify::implode( $items, 'FieldID'));
-		
-		m()->set($view_data);
-		
-		$result = m()->output('app/view/list.php');
-		
-		// Подгрузим шаблон с формой
-		if ($echo) echo $result;
-		else return $result;
-	}
+        // Получим все поля связанные с данным ЭСС
+        $items = _cmsnavfield()->find_all_by_StructureID_and_Active($db_structure->id, 1);
+
+        // Получим записи полей из БД
+        if (sizeof($items) > 0) {
+            $view_data['items'] = _field()->find_all_by_FieldID(dbSimplify::implode($items, 'FieldID'));
+        }
+
+        m()->set($view_data);
+
+        $html = m()->output('app/view/list.php');
+
+        $return['status'] = 1;
+        $return['html'] = $html;
+    }
+
+    return $return;
 }
 
 /**
@@ -62,23 +62,27 @@ function field_ajax_list( $structure_id, $echo = TRUE )
  * @param string $structure_id Идентификатор элемента структуры в БД
  * @param string $field_id	Идентификатор поля в БД
  */
-function field_ajax_form( $structure_id, $field_id = NULL  )
+function field_async_form( $structure_id, $field_id = NULL  )
 {
-	// Ассинхронный ответ
-	s()->async(TRUE);
-	
-	// Попытаемся найти ЭНС
-	if( ifcmsnav( $structure_id, $db_cmsnav, 'id' ) )
-	{
-		// Установим контекст вывода для текущего модуля
-		m()->set( $db_cmsnav )->set( 'type_select', mdl_field_html_select( $field_id ) );
-		
-		// Если передан идентификатор поля ЭСС - передадим его для редактирования
-		if( dbSimplify::parse( 'field', $field_id, $db_field)) m()->set( new Field( $field_id ) );
-		
-		// Подгрузим шаблон с формой
-		echo m()->output('app/view/form.php');
-	}
+    $return = array('status' => 0, 'html' => '');
+    // Попытаемся найти ЭНС
+    if (ifcmsnav($structure_id, $db_cmsnav, 'id')) {
+        $return['status'] = 1;
+        // Установим контекст вывода для текущего модуля
+        m()->set($db_cmsnav)->set('type_select', mdl_field_html_select($field_id));
+
+		//if( dbSimplify::parse( 'field', $field_id, $db_field)) m()->set( new Field( $field_id ) );
+
+        if (dbQuery('field')->id($field_id)->first($db_field)) {
+            m()->set($db_field);
+        }
+        // Подгрузим шаблон с формой
+        $html = m()->output('app/view/form.php');
+
+        $return['html'] = $html;
+    }
+
+    return $return;
 }
 
 function field_ajax_clone($structure_id)
@@ -97,36 +101,45 @@ function field_ajax_clone($structure_id)
  * @param string $structure_id Идентификатор элемента структуры в БД
  * @param string $field_id	Идентификатор поля в БД
  */
-function field_ajax_save( $structure_id, $field_id = NULL )
+function field_async_save( $structure_id, $field_id = NULL )
 {
-	// Ассинхронный ответ
-	s()->async(TRUE);
-
 	// Выполним синхронный кнотроллер
-	field_save( $structure_id, $field_id );
+	//field_save( $structure_id, $field_id );
 	
 	// Выведем новый(Обновленный) список элементов
-	$result['data'] = field_ajax_list( $structure_id, FALSE );
-	echo  json_encode($result);
+	/*$result['data'] = field_ajax_list( $structure_id, FALSE );
+	echo  json_encode($result);*/
+
+    if (!dbQuery('\samson\cms\web\CMSField')->id($field_id)->first($field)) {
+        $field = new \samson\cms\web\CMSField(false);
+    }
+
+    // Update field data
+    $field->update($structure_id);
+
+    return array('status' => 1);
 }
 
 /**
- * Контроллер для ассинхронного удаления поля ЭСС в БД 
+ * Controller for deleting structurefield relation
+ * @param int $structure_id CMSNav identifier
+ * @param int $field_id CMSField identifier
  *
- * @param string $structure_id Идентификатор элемента структуры в БД
- * @param string $field_id	Идентификатор поля в БД
+ * @return array Ajax response
  */
-function field_ajax_delete( $structure_id, $field_id  )
+function field_async_delete($structure_id, $field_id)
 {
-	// Ассинхронный ответ
-	s()->async(TRUE);
-	
+    /** @var \samson\cms\CMSNavField $relation */
+    if (dbQuery('structurefield')->FieldID($field_id)->StructureID($structure_id)->first($relation)) {
+        $relation->delete();
+    }
 	// Удалим данные связи и сам элемент
-	mdl_field_delete( $structure_id, $field_id  );
+	//mdl_field_delete( $structure_id, $field_id  );
 	
 	// Выведем новый(Обновленный) список элементов
-	$result['data'] = field_ajax_list( $structure_id, FALSE );
-	echo  json_encode($result);
+	//$result['data'] = field_ajax_list( $structure_id, FALSE );
+	//echo  json_encode($result);
+    return array('status' => 1);
 }
 
 
@@ -136,7 +149,7 @@ function field_ajax_delete( $structure_id, $field_id  )
  * @param string $structure_id Идентификатор элемента структуры в БД
  * @param string $field_id	Идентификатор поля в БД
  */
-function field_save( $structure_id, $field_id = NULL )
+/*function field_save( $structure_id, $field_id = NULL )
 {
 	// Выполним попытку сохранения поля ЭСС в БД
 	if( ! mdl_field_save( $structure_id, $field_id ) )
@@ -144,4 +157,4 @@ function field_save( $structure_id, $field_id = NULL )
 		// Обработчик ошибки создания нового поля ЭСС
 		trace('Ошибка создания нового поля для: "' . $db_structure->Name . '"');	
 	}		
-}
+}*/

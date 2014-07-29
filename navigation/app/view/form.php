@@ -2,7 +2,7 @@
 <form method="post" class="form2" action="<?php url_base('structure/save','cmsnav_id')?>" >
 	<div class="close-button" title="Закрыть форму"><input type="button" value="Х" class=""></div>	
 	<?php if( isval( 'cmsnav_id')):?>		  
-		<div class="header">Создание <span title="Элемент структуры сайта">ЭСС </span></div>		
+		<div class="header">Создание <span title="Элемент структуры сайта">ЭСС </span></div>
 	<?php else:?>
 		<div class="header">Редактирование <span title="Элемент структуры сайта">ЭСС:</span> <span class="bold"><?php v('cmsnav_Name') ?></span></div>
 	<?php endif?>	

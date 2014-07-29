@@ -81,6 +81,14 @@ function CMSNavigationFormInit() {
             return false;
         }
     });
+
+    s('.control.fields').tinyboxAjax({
+        html : 'html',
+        renderedHandler: function(response, tb){
+            fieldForm(tb);
+        }
+    });
+
     /**
      * обработка изменения позиции элемента в дереве
      */
@@ -131,11 +139,12 @@ function CMSNavigationFormInit() {
     });
     s(".open").ajaxClick(function(response) {
         s("#data").html(response.tree).treeview();
-        s(".all").toggleClass('active','none');
-        s( '.structure-element' )
+        s('.sub_menu').html(response.sub_menu);
+        s(".all").removeClass('active');
+        s('.structure-element')
             .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
             .mouseout( 	function(el){ if(!ControlFormOpened) s( '.control-buttons', el ).hide(); });
-        //CMSNavigationFormInit();
+        CMSNavigationFormInit();
     });
     s(".all").ajaxClick(function(response) {
         s("#data").html(response.tree).treeview();

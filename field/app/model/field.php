@@ -53,7 +53,7 @@ function mdl_field_save( $structure_id, $field_id = 0 )
 			if( ! dbSimplify::query( $existing_connections, $db_connection ) )
 			{
 				// Создадим новую запись о связи материала с ЭСС
-				$db_connection = new StructureField();
+				$db_connection = new \samson\activerecord\structurefield(false);
 			}
 			
 			// Запишем параметры связи в БД
@@ -104,7 +104,7 @@ function mdl_field_html_select( $field_id )
 	$db_field_type = 0;
 	
 	// Безопасно попытаемся определить переданный указатель поля ЭСС в БД
-	if( dbSimplify::parse( 'field', $field_id, $db_field ) ) $db_field_type = $db_field->Type;	
+	if( dbQuery('field')->id($field_id)->first($db_field) ) $db_field_type = $db_field->Type;
 	
 	// Соберем представление элемента формы
 	$html = '';

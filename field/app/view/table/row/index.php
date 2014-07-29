@@ -8,6 +8,6 @@
 	<td class="control">				
 		<a class="control icon2 icon_16x16 icon-edit" href="<?php url_base('field/form','field_id')?>" title="Редактировать текущее доп. поле"></a>	
 		<a class="control icon2 icon_16x16 icon-copy-material copy" href="<?php url_base('field/copy','cmsmaterial_id')?>" title="Создать копию доп. поля"></a>
-		<a class="control icon2 icon_16x16 icon-delete delete" href="<?php url_base('field/ajax_delete', 'parent_cmsnav' ,'cmsmaterial_id', 'samsonpager_current_page')?>" title="Удалить текущее доп. поле"></a>					
+		<a class="control icon2 icon_16x16 icon-delete delete" href="<?php url_base('field/delete', 'parent_cmsnav' ,'cmsmaterial_id', 'samsonpager_current_page')?>" title="Удалить текущее доп. поле"></a>
 	</td>			
 </tr>
