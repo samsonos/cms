@@ -34,20 +34,17 @@ function field_async_ajax_list($structure_id)
     $return = array('status' => 0);
     // Попытаемся найти ЭНС
     if (ifcmsnav($structure_id, $db_structure, 'id')) {
-        // Сформируем параметры для представления
-        $view_data = array( 'db_structure' => $db_structure );
-
-        // Получим все поля связанные с данным ЭСС
-        $items = _cmsnavfield()->find_all_by_StructureID_and_Active($db_structure->id, 1);
-
-        // Получим записи полей из БД
-        if (sizeof($items) > 0) {
-            $view_data['items'] = _field()->find_all_by_FieldID(dbSimplify::implode($items, 'FieldID'));
+        $fields = dbQuery('\samson\cms\CMSField')->join('\samson\cms\CMSNavField')->cond('StructureID', $structure_id)->exec();
+        $items = '';
+        if (sizeof($fields)) {
+            foreach ($fields as $field) {
+                $items .= m()->view('form/field_item')->field($field)->structure($db_structure)->output();
+            }
+        } else {
+            $items = m()->view('form/empty_field')->output();
         }
 
-        m()->set($view_data);
-
-        $html = m()->output('app/view/list.php');
+        $html = m()->view('form/field_list')->structure($db_structure)->items($items)->output();
 
         $return['status'] = 1;
         $return['html'] = $html;

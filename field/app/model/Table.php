@@ -38,17 +38,10 @@ class Table extends \samson\cms\table\Table
 			8=>'Текстовый редактор'
 		);
 		
-		m()
-		->set( Field::fromObject( $db_row, 'Name' ))
-		->set( Field::fromObject( $db_row, 'Value' ))
-		->set( Field::fromObject( $db_row, 'Description' ))
-		->set( Field::fromObject( $db_row, 'Type', 'samson\cms\input\Select' )->options( $type_array ));
-		
 		// Render field row
 		return m()
-			->set( $db_row->onetoone['_structure'] ) 
+			->set( $db_row->onetoone['_structure'] )
 			->set( $db_row, 'field' )
-			->set( 'type', $type_array[ $db_row->Type ] )
 			->set( $pager )
 		->output('table/row/index');
 	}

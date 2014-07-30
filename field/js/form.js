@@ -21,11 +21,11 @@ var fieldForm = function( fieldForm )
 	};
 	
 	// Обработчик загрузки картинки в галерею		
-	s('#btnAddField', fieldForm ).FormContainer({
+	/*s('#btnAddField', fieldForm ).FormContainer({
 		filler 			: 'field/ajax_form/' + structure_id,
 		placeMode 		: 'creatorOver',
 		submitHandler 	: ActionResponceHandler
-	});
+	});*/
 	
 	// Обработчик загрузки картинки в галерею		
 	s('#btnCloneField', fieldForm ).FormContainer({
@@ -51,11 +51,15 @@ var fieldForm = function( fieldForm )
     s('a.delete-field-button', fieldForm).ajaxClick(function(response) {
 
     });
-	
-	// Обработчик удаления дополнительного поля
-	//UDBC.bindAction( s( 'a.delete-field-button', fieldForm ), init );
-	// Обработчик удаления дополнительного поля
-	UDBC.bindAction( s( 'a.clone-field-button', fieldForm ), init );
+
+    s('#btnAddField', fieldForm).tinyboxAjax({
+        html : 'html',
+        renderedHandler: function(response, tb){
+            s('.field_edit_form').ajaxSubmit(function(response){
+                tb._close();
+            });
+        }
+    })
 };
 
 // Инициализация формы управления правами сущности

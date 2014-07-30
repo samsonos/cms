@@ -1,9 +1,9 @@
 <tr>
 	<td class="id"><?php v('field_id');?></td>				
-	<td class="name"><?php v('Name_field') ?></td>
-	<td class="type"><?php v('Type_field');?></td>
-	<td class="value"><?php v('Value_field');?></td>
-	<td class="description"><?php v('Description_field');?></td>
+	<td class="name"><?php v('field_Name') ?></td>
+	<td class="type"><?php v('field_Type');?></td>
+	<td class="value"><?php v('field_Value');?></td>
+	<td class="description"><?php v('field_Description');?></td>
 	<td class="nav"><?php v('cmsnav_Name');?></td>	
 	<td class="control">				
 		<a class="control icon2 icon_16x16 icon-edit" href="<?php url_base('field/form','field_id')?>" title="Редактировать текущее доп. поле"></a>	
