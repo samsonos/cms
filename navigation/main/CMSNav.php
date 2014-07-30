@@ -114,7 +114,7 @@ class CMSNav extends \samson\cms\CMSNav
             }
         }
 
-        $htmlTree = $parent->htmlTree($parent, $html, 'tree.element.tmpl.php', 0, $parent->currentNavID);
+        $htmlTree = $parent->htmlTree($parent, $html, 'tree/tree-template', 0, $parent->currentNavID);
 
         return $htmlTree;
     }

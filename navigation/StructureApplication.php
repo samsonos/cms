@@ -54,7 +54,7 @@ class StructureApplication extends \samson\cms\App
     public function __HANDLER()
     {
         // Установим дерево ЭСС
-        m()->view('2.0/index')
+        m()->view('index')
             ->title('Элементы структуры содержания сайта')
             ->tree(CMSNav::fullTree());
     }
@@ -65,7 +65,7 @@ class StructureApplication extends \samson\cms\App
      */
     public function __async_showall() {
 
-        $html = m()->view('2.0/index')
+        $html = m()->view('index')
             ->title('Элементы структуры содержания сайта')
             ->tree(CMSNav::fullTree())
             ->output();
@@ -92,7 +92,7 @@ class StructureApplication extends \samson\cms\App
         }
 
         // Render form
-        $html = m()->view('2.0/form/form')
+        $html = m()->view('form/form')
             ->parent_select(CMSNav::createSelect($parentID))
             ->cmsnav($data)
             ->parent_id($currentMainNavID)
@@ -201,7 +201,7 @@ class StructureApplication extends \samson\cms\App
         if (dbQuery('\samson\cms\web\CMSNav')->StructureID($structure_id)->first($db_structure)) {
             $db_structure->currentNavID = $structure_id;
         }
-        $html = m()->view('2.0/index')
+        $html = m()->view('index')
             ->title('Элементы структуры содержания сайта')
             ->parent($db_structure)
             ->tree(CMSNav::fullTree($db_structure))
@@ -215,7 +215,7 @@ class StructureApplication extends \samson\cms\App
 
     public function __async_rendermenu($structure_id = 0)
     {
-        $sub_menu = m()->view('2.0/main/sub_menu')->parentnav_id($structure_id)->nav_id($structure_id)->output();
+        $sub_menu = m()->view('main/sub_menu')->parentnav_id($structure_id)->nav_id($structure_id)->output();
 
         return array(
             'status'=>1,
