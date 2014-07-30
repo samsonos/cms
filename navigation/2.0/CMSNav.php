@@ -25,13 +25,15 @@ class CMSNav extends \samson\cms\CMSNav
         // Save object
         $this->save();
 
-        // Create new relation
-        $strRelation = new \samson\activerecord\structure_relation(false);
-        $strRelation->parent_id = $_POST['ParentID'];
-        $strRelation->child_id = $this->id;
+        if (isset($_POST['ParentID']) && $_POST['ParentID'] != 0) {
+            // Create new relation
+            $strRelation = new \samson\activerecord\structure_relation(false);
+            $strRelation->parent_id = $_POST['ParentID'];
+            $strRelation->child_id = $this->id;
 
-        // Save relation
-        $strRelation->save();
+            // Save relation
+            $strRelation->save();
+        }
     }
 
     /**
@@ -70,7 +72,6 @@ class CMSNav extends \samson\cms\CMSNav
                 ->Active(1)
                 ->join('parents_relations')
                 ->cond('parents_relations.parent_id', '', dbRelation::ISNULL)
-                ->order_by('PriorityNumber', 'ASC')
                 ->exec($db_navs)) {
                 foreach ($db_navs as $db_nav) {
                     $parent->children['id_'.$db_nav->id] = $db_nav;
@@ -100,6 +101,7 @@ class CMSNav extends \samson\cms\CMSNav
         } else {
             $children = $parent->baseChildren();
         }
+        usort($children, array('\samson\cms\web\CMSNav', 'strSorting'));
         //trace($parent->Name);
         //$children = $parent->children();
         //trace(sizeof($children).' - '.$level);
@@ -120,5 +122,10 @@ class CMSNav extends \samson\cms\CMSNav
         }
 
         return $html;
+    }
+
+    public static  function strSorting($str1, $str2)
+    {
+        return $str1['PriorityNumber']>$str2['PriorityNumber'];
     }
 }
