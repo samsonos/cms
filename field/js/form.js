@@ -45,9 +45,6 @@ var fieldForm = function( fieldForm )
             s('.field_edit_form').ajaxSubmit(function(response){
                 tb._close();
             });
-        },
-        beforeHandler: function(){
-            fieldForm.hide();
         }
     });
 

@@ -1,5 +1,6 @@
 <?php 
 namespace samson\cms\web;
+
 use samson\cms\CMS;
 
 /**
@@ -10,48 +11,58 @@ use samson\cms\CMS;
 
 class StructureApplication extends \samson\cms\App
 {
-	/** Application name */	
-	public $name = 'Структура';
-	
-	/** Identifier */
-	protected $id = 'structure';	
-	
-	/** Dependencies */
-	protected $requirements = array( 'activerecord', 'cmsapi');	
-	
-	/** @see \samson\cms\App::main() */
-	public function main()
-	{
-		// Get new structures
-		if (dbQuery('samson\cms\cmsnav')->join('user')->Active(1)->order_by('Created','DESC')->limit(5)->exec($db_navs))
-		{
-			// Render material rows
-			$rows_html = '';
-			foreach ( $db_navs as $db_nav ) $rows_html .= $this->view('main/row')
-			->nav($db_nav)
-			->user($db_nav->onetoone['_user'])			
-			->output();		
+    /** Application name */
+    public $name = 'Структура';
 
-			for ($i = sizeof($db_navs); $i < 5; $i++) 
-			{
-				$rows_html .= $this->view('main/row')->output();
-			}
-			// Render main template
-			return $this->rows($rows_html)->output('main/index');
-		}		
-	}
+    /** Identifier */
+    protected $id = 'structure';
+
+    /** Dependencies */
+    protected $requirements = array('activerecord', 'cmsapi');
+
+    /** @see \samson\cms\App::main() */
+    public function main()
+    {
+        // Get new 5 structures
+        $query = dbQuery('samson\cms\cmsnav')
+                ->join('user')
+                ->Active(1)
+                ->order_by('Created', 'DESC')
+                ->limit(5);
+        if ($query->exec($db_navs)) {
+            // Render material rows
+            $rows_html = '';
+            foreach ($db_navs as $db_nav) {
+                $rows_html .= $this->view('main/row')
+                    ->nav($db_nav)
+                    ->user($db_nav->onetoone['_user'])
+                ->output();
+            }
+
+            // Add empty rows if needs
+            for ($i = sizeof($db_navs); $i < 5; $i++) {
+                $rows_html .= $this->view('main/row')->output();
+            }
+            // Render main template
+            return $this->rows($rows_html)->output('main/index');
+        }
+    }
 
     /**
-     * контроллер по умолчанию
-     * @param null $structure_id
+     * Default controller
      */
     public function __HANDLER()
     {
         // Установим дерево ЭСС
         m()->view('2.0/index')
-            ->title('Элементы структуры содержания сайта!')
+            ->title('Элементы структуры содержания сайта')
             ->tree(CMSNav::fullTree());
     }
+
+    /**
+     * Controller for showing tree
+     * @return array Ajax response
+     */
     public function __async_showall() {
 
         $html = m()->view('2.0/index')
@@ -63,42 +74,28 @@ class StructureApplication extends \samson\cms\App
             'tree'=>$html
         );
     }
-    public function create_select($parentID = 0)
-    {
-        $select = '';
-        $data = null;
-        $mewdata = null;
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($parentID)->first($data)) {
-            // New cmsnav
-            $select .= '<option title="'.$data->Name.'" selected value="'.$data->id.'">'.$data->Name.'</option>';
-        } else {
-            $select .= '<option title="Не выбрано" value="Не выбрано">Не выбрано</option>';
-        }
-        if (dbQuery('\samson\cms\web\CMSNav')->exec($newdata)) {
-            foreach ($newdata as $key=>$val) {
-                $select .= '<option title="'.$val->Name.'" value="'.$val->id.'">'.$val->Name.'</option>';
-            }
-        }
-        return $select;
-    }
+
     /**
-     * асинхронное создание формы для создания/редактирования структуры
-     * @param null $parentID
-     * @param int $navID
-     * @return array
+     * Opening form for editing or creating new structure
+     * @param int $parentID Identifier of parent structure for tag select
+     * @param int $navID Current structure identifier for editing
+     * @param int $currentMainNavID Identifier of structure which tree is opened
+     *
+     * @return array Ajax response
      */
-    public function __async_form($parentID = NULL, $navID = 0)
+    public function __async_form($parentID = 0, $navID = 0, $currentMainNavID = 0)
     {
+        /** @var CMSNav $data */
         $data = null;
 
         if (!dbQuery('\samson\cms\web\CMSNav')->StructureID($navID)->first($data)) {
-            // New cmsnav
         }
 
         // Render form
         $html = m()->view('2.0/form/form')
-            ->parent_select($this->create_select($parentID))
+            ->parent_select(CMSNav::createSelect($parentID))
             ->cmsnav($data)
+            ->parent_id($currentMainNavID)
             ->output();
 
         return array(
@@ -113,32 +110,22 @@ class StructureApplication extends \samson\cms\App
      *
      * @return array
      */
-    public function __async_tree($parentCMSNav = null)
+    public function __async_tree($currentMainNavID = null)
     {
-        $tree = '';
-        $nav = null;
-        $html = '';
-        $data = null;
-        //$parentCMSNav = & CMSNav::$top;
-        /*if (!ifcmsnav($parentCMSNav, $parentCMSNav)) {
-            $parentCMSNav = & CMSNav::$top;
-        }*/
-        //CMSNav::fullTree();
-        //$tree = $parentCMSNav->htmlTree($html, m()->path().__SAMSON_VIEW_PATH.'tree.element.tmpl.php');
-        /*if (dbQuery('\samson\cms\web\CMSNav')->StructureID(131)->first($data)) {
-            //$parentCMSNav = $data->
-            CMSNav::fullTree($data);
-            $tree = $data->htmlTree($html, m()->path().__SAMSON_VIEW_PATH.'tree.element.tmpl.php');
-        }*/
-        //CMSNav::fullTree();
-        //m('cmsapi')->buildNavigation();
-        //$tree = $parentCMSNav->toHTML($nav,$html, m()->path().__SAMSON_VIEW_PATH.'tree.element.tmpl.php');
-        $tree = CMSNav::fullTree();
+        /** @var CMSNav $currentMainNav */
+        $currentMainNav = null;
+        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($currentMainNavID)->first($currentMainNav)) {
+            $currentMainNav->currentNavID = $currentMainNavID;
+        }
+
+        // Build tree
+        $tree = CMSNav::fullTree($currentMainNav);
+
+        // return Ajax response
         return array(
             'status' => 1,
             'tree' => $tree
         );
-
     }
 
     /**
@@ -200,12 +187,9 @@ class StructureApplication extends \samson\cms\App
         $response = array ('status'=>0);
 
         if (ifcmsnav($navID, $data, 'id')) {
-            /*$data->PriorityNumber += $direction;
-            $data->save();*/
             $data->priority($direction);
             $response['status'] = 1;
         }
-        //m('cmsapi')->buildNavigation();
 
         return $response;
     }
@@ -214,18 +198,27 @@ class StructureApplication extends \samson\cms\App
     {
         $db_structure = null;
         // Проверим есть ли элемент структуры с таким ИД
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($structure_id)->first($db_structure)) {}
+        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($structure_id)->first($db_structure)) {
+            $db_structure->currentNavID = $structure_id;
+        }
         $html = m()->view('2.0/index')
             ->title('Элементы структуры содержания сайта')
             ->parent($db_structure)
             ->tree(CMSNav::fullTree($db_structure))
             ->output();
 
-        $sub_menu = m()->view('2.0/main/sub_menu')->parentnav_id($structure_id)->output();
+        return array(
+            'status'=>1,
+            'tree'=>$html
+        );
+    }
+
+    public function __async_rendermenu($structure_id = 0)
+    {
+        $sub_menu = m()->view('2.0/main/sub_menu')->parentnav_id($structure_id)->nav_id($structure_id)->output();
 
         return array(
             'status'=>1,
-            'tree'=>$html,
             'sub_menu' => $sub_menu
         );
     }
