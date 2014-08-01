@@ -55,7 +55,7 @@ class StructureApplication extends \samson\cms\App
     {
         // Установим дерево ЭСС
         m()->view('index')
-            ->title('Элементы структуры содержания сайта')
+            ->title('Элементы структуры содержания сайта!')
             ->tree(CMSNav::fullTree());
     }
 

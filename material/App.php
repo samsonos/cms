@@ -54,9 +54,9 @@ class App extends \samson\cms\App
 	
 	/** Generic material form controller */
 	public function __form( $material_id = null, $cmsnav = null )
-	{			
+	{
 		// Create form object
-		$form = new \samson\cms\web\material\Form( $material_id );
+		$form = new \samson\cms\web\material\Form( $material_id, $cmsnav );
 	
 		// Render form
 		m()->html( $form->render() );

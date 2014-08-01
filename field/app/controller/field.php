@@ -29,7 +29,7 @@ function field__HANDLER( $nav = '0', $page = 1, $async = 0 )
  * 
  * @param string $structure_id Идентификатор элемента структуры в БД
  */
-function field_async_ajax_list($structure_id)
+/*function field_async_ajax_list($structure_id)
 {
     $return = array('status' => 0);
     // Попытаемся найти ЭНС
@@ -51,7 +51,7 @@ function field_async_ajax_list($structure_id)
     }
 
     return $return;
-}
+}*/
 
 /**
  * Контроллер для получения формы редактирования/создания поля для ЭСС
@@ -59,7 +59,7 @@ function field_async_ajax_list($structure_id)
  * @param string $structure_id Идентификатор элемента структуры в БД
  * @param string $field_id	Идентификатор поля в БД
  */
-function field_async_form( $structure_id, $field_id = NULL  )
+/*function field_async_form( $structure_id, $field_id = NULL  )
 {
     $return = array('status' => 0, 'html' => '');
     // Попытаемся найти ЭНС
@@ -80,7 +80,7 @@ function field_async_form( $structure_id, $field_id = NULL  )
     }
 
     return $return;
-}
+}*/
 
 function field_ajax_clone($structure_id)
 {
@@ -98,14 +98,14 @@ function field_ajax_clone($structure_id)
  * @param string $structure_id Идентификатор элемента структуры в БД
  * @param string $field_id	Идентификатор поля в БД
  */
-function field_async_save( $structure_id, $field_id = NULL )
+/*function field_async_save( $structure_id, $field_id = NULL )
 {
 	// Выполним синхронный кнотроллер
 	//field_save( $structure_id, $field_id );
 	
 	// Выведем новый(Обновленный) список элементов
-	/*$result['data'] = field_ajax_list( $structure_id, FALSE );
-	echo  json_encode($result);*/
+	//$result['data'] = field_ajax_list( $structure_id, FALSE );
+	//echo  json_encode($result);
 
     if (!dbQuery('\samson\cms\web\CMSField')->id($field_id)->first($field)) {
         $field = new \samson\cms\web\CMSField(false);
@@ -115,7 +115,7 @@ function field_async_save( $structure_id, $field_id = NULL )
     $field->update($structure_id);
 
     return array('status' => 1);
-}
+}*/
 
 /**
  * Controller for deleting structurefield relation
@@ -124,20 +124,20 @@ function field_async_save( $structure_id, $field_id = NULL )
  *
  * @return array Ajax response
  */
-function field_async_delete($structure_id, $field_id)
-{
+//function field_async_delete($structure_id, $field_id)
+//{
     /** @var \samson\cms\CMSNavField $relation */
-    if (dbQuery('structurefield')->FieldID($field_id)->StructureID($structure_id)->first($relation)) {
+    /*if (dbQuery('structurefield')->FieldID($field_id)->StructureID($structure_id)->first($relation)) {
         $relation->delete();
-    }
+    }*/
 	// Удалим данные связи и сам элемент
 	//mdl_field_delete( $structure_id, $field_id  );
 	
 	// Выведем новый(Обновленный) список элементов
 	//$result['data'] = field_ajax_list( $structure_id, FALSE );
 	//echo  json_encode($result);
-    return array('status' => 1);
-}
+    //return array('status' => 1);
+//}
 
 
 /**

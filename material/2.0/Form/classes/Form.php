@@ -54,8 +54,8 @@ class Form
 	 * Constructor
 	 * @param string $material_id CMSMaterial identifier
 	 */
-	public function __construct( $material_id = null )
-	{			
+	public function __construct($material_id = null, $parentStructure = null)
+	{
 		// Add structure material condition
 		$scg = new dbConditionGroup('or');
 		$scg->arguments[] = new dbConditionArgument( dbMySQLConnector::$prefix.'structurematerial_Active', 1);
@@ -76,7 +76,7 @@ class Form
 			// If material has relations with cmsnav
 			$cmsnavs = & $this->material->onetomany['_structure'];
 			if (isset($cmsnavs))
-			{					
+			{
 				// WYSIWYG query
 				$fields_query = dbQuery( 'samson\cms\cmsnavfield')			
 					->join('samson\cms\cmsfield')				
@@ -101,7 +101,7 @@ class Form
 					// Add WYSIWYG form tab
 					if( $db_field->Type == '8') $this->tabs[] = new MaterialFieldLocalizedTab( $this, $db_field, 'WYSIWYG' );				
 				}		
-			}	
+			}
 		}
 		// Material does not found
 		else
@@ -113,7 +113,17 @@ class Form
 			$this->material->Created = date('h:m:i d.m.y');
 			$this->material->UserID = auth()->user->id;
 			$this->material->Active = 1;
-			$this->material->save();			
+			$this->material->save();
+            if (isset($parentStructure)) {
+                /** @var \samson\cms\web\CMSNav $str */
+                $str = null;
+                if (dbQuery('\samson\cms\web\CMSNav')->id($parentStructure)->first($str)) {
+                    while (isset($str)) {
+                        $this->navs[$str->id] = $str;
+                        $str = $str->parent();
+                    }
+                }
+            }
 		}	
 		
 		// Iterate declared classes to find other FormTab children to load to form

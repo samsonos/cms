@@ -1,6 +1,9 @@
 <div class="field_edit_tinybox">
     <!-- НАЧАЛО шаблона формы полей элемента структуры сайта -->
-    <form method="post" class="form2 field_edit_form" action="<?php url_base('field/save','cmsnav_id','field_id')?>" >
+    <form method="post"
+          class="form2 field_edit_form"
+          action="<?php url_base('field/save', 'cmsnav_id', 'field_id', 'field/renderfields', 'cmsnav_id')?>"
+    >
         <div class="close-button" title="Закрыть форму"><input type="button" value="Х" class=""></div>
         <input type="hidden" name="FieldID" id="FieldID" value="<?php iv('field_id'); ?>">
         <?php if( !isv('field_id')):?>

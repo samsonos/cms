@@ -45,7 +45,7 @@ if( isset( $db_structure) ) $db_structure = & $db_structure;
 
         <!-- SHOW FIELDS LINK !-->
         <a class="control fields icon2 icon_16x16 icon-add-field"
-           href="<?php url_base('field/ajax_list/',$db_structure->id)?>"
+           href="<?php url_base('field/list/',$db_structure->id)?>"
            title="Управление полями ЭСС">
         </a>
 

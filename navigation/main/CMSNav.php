@@ -13,6 +13,7 @@ use samson\activerecord\dbRelation;
 class CMSNav extends \samson\cms\CMSNav
 {
     public $currentNavID = 0;
+
     /**
      * Help method for sorting structures
      * @param $str1 \samson\cms\CMSNav
@@ -48,6 +49,7 @@ class CMSNav extends \samson\cms\CMSNav
         }
         return $select;
     }
+
     /**
      * Filling the fields and creating relation of structure
      */

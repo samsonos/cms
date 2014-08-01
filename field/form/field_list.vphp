@@ -1,4 +1,4 @@
-<div class="add_fieilds_tinybox">
+<div class="add_fields_tinybox">
     <!-- НАЧАЛО шаблона списка полей элемента структуры сайта -->
     <form method="post" class="form2 field-list" >
         <div class="close-button" title="Закрыть форму"><input type="button" value="Х" class=""></div>
