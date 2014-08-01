@@ -13,19 +13,19 @@
  */
 class CMSField extends \samson\cms\CMSField
 {
-    public static function renderTable($nav = 0, $page = 0)
+    public static function renderTable($nav = 0, $page = 0, & $pager = null)
     {
         // Set new pager
-        $pager = new \samson\pager\Pager($page, 5, 'field/'.$nav.'/');
+        $pager = new \samson\pager\Pager($page, 5, 'field/updatetable/'.$nav.'/');
 
         // Create SamsonCMS fields table
-        $table = new Table($pager);
+        $table = new Table($pager, $nav);
 
         // Render view
         return m()
             ->view('index')
             ->title('Дополнительные поля')
-            ->set('table', $table->render())
+            ->set('table', $table->render(null, $nav))
             ->set($pager)
             ->output();
     }
@@ -48,7 +48,8 @@ class CMSField extends \samson\cms\CMSField
             'Select' => 4,
             'Таблицы' => 5,
             'Материал' => 6,
-            'Число' => 7
+            'Число' => 7,
+            'WISYWIG' => 8
         );
 
         foreach ($typeData as $key => $value) {

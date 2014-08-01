@@ -16,7 +16,7 @@ use samson\cms\CMSNavMaterial;
 class App extends \samson\cms\App
 {
 	/** Application name */
-	public $name = 'Материалы';
+	public $app_name = 'Материалы';
 	
 	/** Identifier */
 	protected $id = 'material';

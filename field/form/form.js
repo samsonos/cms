@@ -37,8 +37,8 @@ function fieldButtonsInit() {
         renderedHandler: function(response, tb){
             s('.field_edit_form').ajaxSubmit(function(response) {
                 s('.item-list').html(response.fields);
-                tb._close();
                 fieldButtonsInit();
+                tb._close();
             });
         },
         beforeHandler: function() {
@@ -55,9 +55,35 @@ s(document).pageInit(function() {
 function initFieldIcons() {
     s('.control.delete').each(function(obj) {
         obj.ajaxClick(function(response) {
-
+            s('.material-content').html(response.table);
+            initFieldIcons()
         }, function() {
             return confirm("Вы уверены, что хотите безвозвратно удалить поле?");
+        });
+    });
+
+    s('.control.edit').each(function(obj) {
+        obj.tinyboxAjax({
+            html: 'html',
+            darkBackground: false,
+            renderedHandler: function(response, tb){
+                s('.field_edit_form').ajaxSubmit(function(response) {
+                    s('.material-content').html(response.table);
+                    initFieldIcons();
+                    tb._close();
+                });
+            },
+            beforeHandler: function() {
+                return true;
+            }
+        });
+    });
+
+    s('.field_pager a').each(function(obj) {
+        obj.ajaxClick(function(response) {
+            s('.material-content').html(response.table);
+            s('.field_pager').html('<li>Страница:</li>' + response.pager);
+            initFieldIcons();
         });
     });
 }

@@ -12,7 +12,7 @@ use samson\cms\CMS;
 class StructureApplication extends \samson\cms\App
 {
     /** Application name */
-    public $name = 'Структура';
+    public $app_name = 'Структура';
 
     /** Identifier */
     protected $id = 'structure';
@@ -106,7 +106,7 @@ class StructureApplication extends \samson\cms\App
 
     /**
      * Построение нового дерева. (Вызывается в цепи контроллеров)
-     * @param null $parentCMSNav - указатель на родителя
+     * @param null $currentMainNavID - указатель на родителя
      *
      * @return array
      */
@@ -194,6 +194,11 @@ class StructureApplication extends \samson\cms\App
         return $response;
     }
 
+    /**
+     * @param null $structure_id Current structure identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_showtree($structure_id = null)
     {
         $db_structure = null;
@@ -213,6 +218,12 @@ class StructureApplication extends \samson\cms\App
         );
     }
 
+    /**
+     * Render sub menu of this app
+     * @param int $structure_id Parent structure identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_rendermenu($structure_id = 0)
     {
         $sub_menu = m()->view('main/sub_menu')->parentnav_id($structure_id)->nav_id($structure_id)->output();

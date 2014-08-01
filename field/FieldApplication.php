@@ -8,7 +8,7 @@ class FieldApplication extends \samson\cms\App
     protected $id = 'field';
 
     /** Hide application access from main menu */
-    public $hide = true;
+    /*public $hide = true;*/
 
     protected $requirements = array
     (
@@ -158,5 +158,43 @@ class FieldApplication extends \samson\cms\App
 
         // Return Ajax response
         return array('status' => 1, 'fields' => $cmsNav->getFieldList());
+    }
+
+    public function __async_delete($field_id) {
+        // If exists current field then delete it
+        if (dbQuery('field')->id($field_id)->first($field)) {
+            $field->delete();
+
+            /** @var array $matRelations array of materialfield relations */
+            $matRelations = null;
+
+            // Delete all relations between current field and materials
+            if (dbQuery('materialfield')->FieldID($field_id)->exec($matRelations)) {
+                foreach ($matRelations as $matRelation) {
+                    $matRelation->delete();
+                }
+            }
+
+            /** @var array $strRelations array of structurefield relations */
+            $strRelations = null;
+
+            // Delete all relations between current field and structures
+            if (dbQuery('structurefield')->FieldID($field_id)->exec($strRelations)) {
+                foreach ($strRelations as $strRelation) {
+                    $strRelation->delete();
+                }
+            }
+        }
+
+        // Return positive Ajax status
+        return array('status' => 1);
+    }
+
+    public function __async_updatetable($nav_id = null, $page = 1)
+    {
+        /** @var \samson\pager\Pager $pager */
+        $pager = null;
+        // Return Ajax response
+        return array('status' => 1, 'table' => CMSField::renderTable($nav_id, $page, $pager), 'pager' => $pager->toHTML());
     }
 }
