@@ -15,92 +15,148 @@ class FieldApplication extends \samson\cms\App
         'ActiveRecord'
     );
 
+    /**
+     * Default module handler
+     * @param int $nav Current Structure identifier
+     * @param int $page Current page
+     */
+    public function __HANDLER($nav = 0, $page = 1)
+    {
+        // Render view
+        m()->view('index')
+            ->html(CMSField::renderTable($nav, $page))
+            ->title('Дополнительные поля');
+    }
+
+    /**
+     * Creating list of structures
+     * @param int $structure_id Current structure identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_list($structure_id)
     {
+        /** @var array $return Ajax response array */
         $return = array('status' => 0);
-        // Попытаемся найти ЭНС
-        if (ifcmsnav($structure_id, $db_structure, 'id')) {
-            $fields = dbQuery('\samson\cms\field\CMSField')
-                    ->join('\samson\cms\CMSNavField')
-                    ->cond('StructureID', $structure_id)
-                ->exec();
-            $items = '';
-            if (sizeof($fields)) {
-                foreach ($fields as $field) {
-                    $items .= m()->view('form/field_item')->field($field)->structure($db_structure)->output();
-                }
-            } else {
-                $items = m()->view('form/empty_field')->output();
-            }
 
-            $html = m()->view('form/field_list')->structure($db_structure)->items($items)->output();
+        /** @var \samson\cms\web\CMSNav $cmsNav */
+        $cmsNav = null;
 
+        // If exists current structure
+        if (dbQuery('\samson\cms\web\CMSNav')->id($structure_id)->first($cmsNav)) {
+
+            // Create view of list
+            $html = m()->view('form/field_list')->structure($cmsNav)->items($cmsNav->getFieldList())->output();
+
+            // Set positive Ajax status
             $return['status'] = 1;
+
+            // Set view
             $return['html'] = $html;
         }
 
+        // Return Ajax response
         return $return;
     }
 
+    /**
+     * Create form for adding or updating additional field
+     * @param int  $structure_id Current structure identifier
+     * @param null $field_id Current field identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_form($structure_id, $field_id = null)
     {
+        /** @var array $return Ajax response array */
         $return = array('status' => 0, 'html' => '');
 
-        if (ifcmsnav($structure_id, $db_cmsnav, 'id')) {
+        // If exists current structure
+        if (ifcmsnav($structure_id, $cmsNav, 'id')) {
+            // Set Ajax status 1
             $return['status'] = 1;
 
-            m()->set($db_cmsnav)->set('type_select', mdl_field_html_select($field_id));
+            // Set default field type
+            $type = 0;
 
-            if (dbQuery('field')->id($field_id)->first($db_field)) {
-                m()->set($db_field);
+            // Add structure to view
+            m()->set($cmsNav);
+
+            // If exists current field
+            if (dbQuery('field')->id($field_id)->first($cmsField)) {
+                // Get type of field
+                $type = $cmsField->Type;
+
+                // Add field to view
+                m()->set($cmsField);
             }
 
-            $html = m()->output('app/view/form.php');
+            // Add select form to view
+            m()->type_select(CMSField::createSelect($type));
+
+            // Create view
+            $html = m()->output('form/form');
 
             $return['html'] = $html;
         }
 
+        // Return Ajax response
         return $return;
     }
 
+    /**
+     * Save information about field or create new field
+     * @param int  $structure_id Current structure identifier
+     * @param null $field_id Current field identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_save($structure_id, $field_id = null)
     {
+        // If not exists current field
         if (!dbQuery('\samson\cms\field\CMSField')->id($field_id)->first($field)) {
+            // Create new field
             $field = new CMSField(false);
         }
 
         // Update field data
         $field->update($structure_id);
 
+        // Return positive Ajax status
         return array('status' => 1);
     }
 
-    public function __async_delete($structure_id, $field_id)
+    /**
+     * Delete relation between structure and field
+     * @param int  $structure_id Current structure identifier
+     * @param int $field_id Current field identifier
+     *
+     * @return array Ajax response
+     */
+    public function __async_deleterelation($structure_id, $field_id)
     {
         /** @var \samson\cms\CMSNavField $relation */
         if (dbQuery('\samson\cms\CMSNavField')->FieldID($field_id)->StructureID($structure_id)->first($relation)) {
+            // Delete relation
             $relation->delete();
         }
+
+        // Return positive Ajax status
         return array('status' => 1);
     }
 
+    /**
+     * Render additional field list of current structure
+     * @param int  $structure_id Current structure identifier
+     *
+     * @return array Ajax response
+     */
     public function __async_renderfields($structure_id)
     {
-        $db_structure = dbQuery('\samson\cms\web\CMSNav')->id($structure_id)->first();
-        $fields = dbQuery('\samson\cms\field\CMSField')
-            ->join('\samson\cms\CMSNavField')
-            ->cond('StructureID', $structure_id)
-            ->exec();
-        $items = '';
+        /** @var \samson\cms\web\CMSNav $cmsNav */
+        $cmsNav = dbQuery('\samson\cms\web\CMSNav')->id($structure_id)->first();
 
-        if (sizeof($fields)) {
-            foreach ($fields as $field) {
-                $items .= m()->view('form/field_item')->field($field)->structure($db_structure)->output();
-            }
-        } else {
-            $items = m()->view('form/empty_field')->output();
-        }
-
-        return array('status' => 1, 'fields' => $items);
+        // Return Ajax response
+        return array('status' => 1, 'fields' => $cmsNav->getFieldList());
     }
 }

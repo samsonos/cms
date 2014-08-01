@@ -53,7 +53,7 @@ function user_ajax_form( $user_id = 0, $group_id = NULL )
 	user_form( $user_id, $group_id );	
 	
 	// Выведем представление формы, и передадим в него все параметры из текущего модуля
-	echo m()->output( 'app/view/form/tmpl.php' );
+	echo m()->output( 'app/view/form/tmpl.vphp' );
 }
 
 /**

@@ -1,0 +1,5 @@
+<li>
+    <a class="sub_menu_a" href="<?php url_base('field/form', 0)?>">
+        <span class="icon icon_add">.</span>Новое доп. поле
+    </a>
+</li>

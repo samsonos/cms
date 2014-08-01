@@ -184,7 +184,7 @@ function mdl_material_form3( CMSMaterial & $db_material = NULL, CMSNav & $set_st
 			/*$html_fields .= mout()
 				->set( 'field_value', $html_field_value )
 				->set( $db_field )
-				->output('app/view/form/field/index.php');	*/
+				->output('app/view/form/field/index.vphp');	*/
 		}
 		
 		// Установим представление дополнительных полей

@@ -8,7 +8,7 @@
     </a>
 
     <a class="icon2 icon_16x16 icon-delete delete-field-button"
-       href="<?php url_base('field/delete', 'structure_id', 'field_id', 'renderfields', 'structure_id') ?>"
+       href="<?php url_base('field/deleterelation', 'structure_id', 'field_id', 'renderfields', 'structure_id') ?>"
        title="Удалить поле элемента структуры сайта">
     </a>
 </li>

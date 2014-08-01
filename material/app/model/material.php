@@ -190,7 +190,7 @@ function mdl_material_form2( CMSMaterial & $db_material = NULL, CMSNav & $set_st
 			$html_fields .= mout()
 				->set( 'field_value', $html_field_value )
 				->set( $db_field )
-				->output('app/view/form/field/index.php');	
+				->output('app/view/form/field/index.vphp');
 		}
 		
 		// Установим представление дополнительных полей
@@ -222,7 +222,7 @@ function mdl_material_form2( CMSMaterial & $db_material = NULL, CMSNav & $set_st
 			->set( $db_user ) 																	// Установим Пользователя
 			->set( $db_structure ) 																// Установим ЭНС
 			->set( $db_material )																// Установим Материал
-			->output('app/view/form/tmpl.php'); 												// Установим представление
+			->output('app/view/form/tmpl.vphp'); 												// Установим представление
 }
 
 function mdl_material_submaterial_list($submaterials)
@@ -528,7 +528,7 @@ function mdl_material_table2( CMSNav & $db_structure = NULL, Pager & $pager = NU
 		// Если нет материалов по ЭНС
 		if( isset($db_structure) ) return mout()->output('app/view/table/row/notfound.php');
 		// Просто нет ни одного материала
-		else return mout()->output('app/view/table/row/empty.php');
+		else return m()->output('app/view/table/row/empty.php');
 	}	
 
 	// Индекс материала
@@ -555,7 +555,7 @@ function mdl_material_table2( CMSNav & $db_structure = NULL, Pager & $pager = NU
 		$result .= mout()->set($pager)
 		->set( 'parent_cmsnav', isset($db_structure) ? $db_structure->id : '0' )
 		->set( 'idx', $mat_idx++ ) // Установим номер строки материала
-		->output('app/view/table/row/index.php'); // Cформируем представление
+		->output('app/view/table/row/index.vphp'); // Cформируем представление
 		//break;
 	}	
 
@@ -593,11 +593,11 @@ function mdl_material_table2( CMSNav & $db_structure = NULL, Pager & $pager = NU
 		$result .= mout()->set($pager)
 			->set( 'parent_cmsnav', isset($db_structure) ? $db_structure->id : '0' )
 			->set( 'idx', $mat_idx++ ) // Установим номер строки материала
-			->output('app/view/table/row/index.php'); // Cформируем представление
+			->output('app/view/table/row/index.vphp'); // Cформируем представление
 	}	
 		
 	// Сформируем полностью таблицу материалов
-	return mout()->set( 'material_rows', $result )->output('app/view/table/tmpl.php');	
+	return mout()->set( 'material_rows', $result )->output('app/view/table/tmpl.vphp');
 }
 
 /**

@@ -35,19 +35,50 @@ class CMSNav extends \samson\cms\CMSNav
     public static function createSelect($parentID = 0)
     {
         $select = '';
+
         $data = null;
-        $mewdata = null;
+
         if (dbQuery('\samson\cms\web\CMSNav')->StructureID($parentID)->first($data)) {
             $select .= '<option title="'.$data->Name.'" selected value="'.$data->id.'">'.$data->Name.'</option>';
         } else {
             $select .= '<option title="Не выбрано" value="Не выбрано">Не выбрано</option>';
         }
-        if (dbQuery('\samson\cms\web\CMSNav')->exec($newdata)) {
-            foreach ($newdata as $key=>$val) {
-                $select .= '<option title="'.$val->Name.'" value="'.$val->id.'">'.$val->Name.'</option>';
+
+        if (dbQuery('\samson\cms\web\CMSNav')->exec($allNavs)) {
+            foreach ($allNavs as $nav) {
+                $select .= '<option title="'.$nav->Name.'" value="'.$nav->id.'">'.$nav->Name.'</option>';
             }
         }
         return $select;
+    }
+
+    /**
+     * Fet list of additional fields of current structure
+     * @return string Html view of list
+     */
+    public function getFieldList()
+    {
+        // Get additional fields of current structure
+        $fields = dbQuery('\samson\cms\field\CMSField')
+            ->join('\samson\cms\CMSNavField')
+            ->cond('StructureID', $this->id)
+            ->exec();
+
+        // Create list view
+        $items = '';
+
+        // If structure has additional fields then add them to list
+        if (sizeof($fields)) {
+            foreach ($fields as $field) {
+                $items .= m('structure')->view('form/field/field_item')->field($field)->structure($this)->output();
+            }
+        } else {
+            // Add empty row
+            $items = m('structure')->view('form/field/empty_field')->output();
+        }
+
+        // Return items view
+        return $items;
     }
 
     /**
