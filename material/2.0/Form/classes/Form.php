@@ -78,8 +78,8 @@ class Form
 			if (isset($cmsnavs))
 			{
 				// WYSIWYG query
-				$fields_query = dbQuery( 'samson\cms\cmsnavfield')			
-					->join('samson\cms\cmsfield')				
+				$fields_query = dbQuery( '\samson\cms\cmsnavfield')
+					->join('\samson\cms\cmsfield')
 					->order_by('FieldID', 'ASC')
 					->Active(1);
 				
@@ -94,12 +94,13 @@ class Form
 				{				
 					// Pointer to field object
 					$db_field = & $data->onetoone['_field'];
-					
+
 					// Add field data to collection
 					$this->fields[] = $db_field;
-								
-					// Add WYSIWYG form tab
-					if( $db_field->Type == '8') $this->tabs[] = new MaterialFieldLocalizedTab( $this, $db_field, 'WYSIWYG' );				
+
+					if( isset($db_field->Type) && $db_field->Type == '8') {
+                        $this->tabs[] = new MaterialFieldLocalizedTab( $this, $db_field, 'WYSIWYG' );
+                    }
 				}		
 			}
 		}

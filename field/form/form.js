@@ -65,7 +65,6 @@ function initFieldIcons() {
     s('.control.edit').each(function(obj) {
         obj.tinyboxAjax({
             html: 'html',
-            darkBackground: false,
             renderedHandler: function(response, tb){
                 s('.field_edit_form').ajaxSubmit(function(response) {
                     s('.material-content').html(response.table);
