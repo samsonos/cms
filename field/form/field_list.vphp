@@ -1,0 +1,19 @@
+<div class="add_fields_tinybox">
+    <!-- НАЧАЛО шаблона списка полей элемента структуры сайта -->
+    <form method="post" class="form2 field-list" >
+        <div class="close-button" title="Закрыть форму"><input type="button" value="Х" class=""></div>
+        <h2 class="header">Список полей для:<br><span class="bold"><?php v('structure_Name') ?></span></h2>
+        <input type="hidden" name="StructureID" id="StructureID" value="<?php v('structure_id') ?>">
+        <ul class="item-list">
+            <?php v('items') ?>
+        </ul>
+
+        <a class="icon2 icon_16x16 icon-add add-field-button" id="btnAddField"
+           href="<?php url_base('field/form', 'structure_id') ?>"
+           title="Добавить новое поле элементу структуры сайта">
+            Добавить
+        </a>
+
+    </form>
+    <!-- КОНЕЦ шаблона списка полей элемента структуры сайта -->
+</div>

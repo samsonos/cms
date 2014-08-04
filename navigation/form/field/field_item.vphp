@@ -1,0 +1,14 @@
+<li title="<?php v('field_Description') ?>">
+    <span class="title"><?php v('field_Name') ?></span>
+    <a class="field_id" style="display:none;"><?php v('field_id') ?></a>
+
+    <a class="icon2 icon_16x16 icon-edit edit-field-button"
+       href="<?php url_base('field/form', 'structure_id', 'field_id') ?>"
+       title="Редактировать поле элемента структуры сайта">
+    </a>
+
+    <a class="icon2 icon_16x16 icon-delete delete-field-button"
+       href="<?php url_base('field/deleterelation', 'structure_id', 'field_id', 'renderfields', 'structure_id') ?>"
+       title="Удалить поле элемента структуры сайта">
+    </a>
+</li>

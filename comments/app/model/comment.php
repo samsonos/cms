@@ -5,13 +5,13 @@
  * @param array $db_users Коллекция пользователей из БД
  * @return string HTML таблицу пользователей
  */
-function mdl_comment_table($table_template = 'app/view/table/tmpl.php' )
+function mdl_comment_table($table_template = 'app/view/table/tmpl.vphp' )
 {	
 	$comments_query = dbQuery('comment')->cond('Active', 1)->join('material')->order_by('Created','DESC');
 	$html = '';
 	if ( dbSimplify::query($comments_query->exec(), $comments, true) )
 	{
-		foreach ( $comments as $comment ) $html .= mout()->set($comment)->output('app/view/table/row/tmpl.php');
+		foreach ( $comments as $comment ) $html .= mout()->set($comment)->output('app/view/table/row/tmpl.vphp');
 	}
 
 	// Вернем HTML представление таблицы

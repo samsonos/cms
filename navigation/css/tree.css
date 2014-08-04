@@ -1,6 +1,0 @@
-/* Элемент дерева */
-.tree-container .structure-element {  }
-
-/* Контейнер для форма элемента дерева */
-.tree-container .clear-form { clear:both; float:left; margin: 0px 0px 0px 0px; }
-.tree-container .clear-form.form-container2 {position:relative; top:-13px; left:221px;  }

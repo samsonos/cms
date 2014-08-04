@@ -56,7 +56,7 @@ function material_form2( $material_id = NULL, $structure_id = NULL )
 	
 	$db_material = new CMSMaterial( $material_id );
 	
-	$p = new samson\forms\Parser( m()->path().'app/view/form2/tmpl.php' );
+	$p = new samson\forms\Parser( m()->path().'app/view/form2/tmpl.vphp' );
 	
 	
 	

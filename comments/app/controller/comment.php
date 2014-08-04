@@ -41,14 +41,14 @@ function comment_ajax_form( $comment_id )
 	comment_form( $comment_id );
 
 	// Выведем представление формы, и передадим в него все параметры из текущего модуля
-	echo m()->output( 'app/view/form/tmpl.php' );
+	echo m()->output( 'app/view/form/tmpl.vphp' );
 }
 
 /**
 * Ассинхронный контроллер для сохранения данных комментария
 */
 function comment_ajax_save(){
-	echo ajax_handler( 'mdl_comment_save', array($_POST), 'mdl_comment_table', 'app/view/table/tmpl.php' );
+	echo ajax_handler( 'mdl_comment_save', array($_POST), 'mdl_comment_table', 'app/view/table/tmpl.vphp' );
 }
 
 /**
@@ -57,6 +57,6 @@ function comment_ajax_save(){
  * @param $comment_id Идентификатор комментария
  */
 function comment_ajax_delete( $user_id = NULL){
-	echo samson_ajax_handler( 'mdl_comment_delete', $comment_id, 'mdl_comment_table', 'app/view/table/tmpl.php' );
+	echo samson_ajax_handler( 'mdl_comment_delete', $comment_id, 'mdl_comment_table', 'app/view/table/tmpl.vphp' );
 }
 ?>
