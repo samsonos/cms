@@ -1,6 +1,7 @@
 <?php
 namespace samson\cms\web\material;
 
+use samson\activerecord\Condition;
 use samson\activerecord\dbRelation;
 use samson\activerecord\dbConditionGroup;
 use samson\activerecord\dbConditionArgument;
@@ -66,7 +67,7 @@ class Table extends \samson\cms\table\Table
 			}
 		
 			// Add query condition
-			$this->query->own_condition->arguments[] = $scg;		
+			$this->query->own_condition->arguments[] = $scg;
 		}
 	}
 	
@@ -108,7 +109,7 @@ class Table extends \samson\cms\table\Table
 		$this->search = $search;
 		
 		// Generate pager url prefix
-		$prefix = 'material/'.(isset($nav) ? $nav->id : '0').'/'.(isset($search{0}) ? $search : '').'/';
+		$prefix = 'material/table/'.(isset($nav) ? $nav->id : '0').'/'.(isset($search{0}) ? $search : 'no-search').'/';
 		
 		// Create pager
 		$this->pager = new \samson\pager\Pager( $page, self::ROWS_COUNT, $prefix );		
@@ -122,7 +123,15 @@ class Table extends \samson\cms\table\Table
 			->join( 'samson\cms\cmsnavmaterial')
 			->join('samson\cms\cmsnav')
 		;				
-		
+
+        /*if (isset($search)) {
+            $condition = new Condition('OR');
+            $condition->add('Name', '%'.$search.'%', dbRelation::LIKE);
+            $condition->add('Url', '%'.$search.'%', dbRelation::LIKE);
+            //$condition->add('MaterialID', intval($search));
+            $this->query = $this->query->cond($condition);
+        }*/
+
 		// Perform query by cmsnavmaterial and get material ids
 		if( isset($nav) && dbQuery('samson\cms\cmsnavmaterial')->StructureID( $nav->id )->Active( 1 )->fields('MaterialID',$ids))	
 		{		

@@ -46,10 +46,12 @@ function fieldButtonsInit() {
         }
     });
 }
-
 s(document).pageInit(function() {
     initFieldIcons();
     fieldForm();
+    s('.sub_menu_a').ajaxClick(function(response) {
+
+    });
 });
 
 function initFieldIcons() {
@@ -80,9 +82,9 @@ function initFieldIcons() {
 
     s('.field_pager a').each(function(obj) {
         obj.ajaxClick(function(response) {
-            s('.material-content').html(response.table);
-            s('.field_pager').html('<li>Страница:</li>' + response.pager);
-            initFieldIcons();
+        s('.material-content').html(response.table);
+        s('.field_pager').html('<li>Страница:</li>' + response.pager);
+        initFieldIcons();
         });
     });
 }
