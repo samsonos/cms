@@ -1,26 +1,24 @@
 <?php
 /**
- * SamsonCMS v 4.0.0
- * 
- * Универсальный пусковой скрипт для запуска SamsonCMS
- * Скрипт написан с испозованием поддержкой удалённого запуска
- * что даёт возможность использовать однк копию данного приложении
- * для нескольких веб-сайтов. 
- * 
- * @author Vitaly Iegorov <vitalyiegorov@gmail.com>  
+ * SamsonCMS Init script
+ * @author Vitaly Iegorov <egorov@samsonos.com>
  */
-//asdasdasd
 
-/** Конфигурация для Auth */
-class AuthCMSConfig extends samson\core\Config
-{
-	public $__module = 'auth2';
-	public $entity 	= 'user';
-	public $force = true;
+/**
+ * DEFINE CURRENT VENDOR PATH
+ *
+ * Every SamsonPHP web application is scalable and provides ability
+ * to choose vendor folder path. This gives ability to use single location
+ * for all vendor modules across projects. Also this constant is configured
+ * by configuration cascade, if it's declared earlier then it won't be
+ * declared here.
+ */
+if(!defined('__SAMSON_VENDOR_PATH')) {
+    define('__SAMSON_VENDOR_PATH', '/var/www.prod/vendor/');
 }
 
 // Set supported locales
 setlocales('en', 'ru');
 
-// Запуска ядра SamsonPHP
+// Start SamsonPHP application
 s()->composer()->start('main');
