@@ -23,7 +23,7 @@ function material__POST()
  * @return Ambigous <string, NULL>
  */
 function material_update_handler( $structure_id = NULL, $page = NULL )
-{ 
+{
 	// Попытаемся найти ЭНС
 	$db_nav = cmsnav( $structure_id, 'id' );
 	

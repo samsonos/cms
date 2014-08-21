@@ -73,32 +73,32 @@ class FieldApplication extends \samson\cms\App
 
         // If exists current structure
         if (ifcmsnav($structure_id, $cmsNav, 'id')) {
-            // Set Ajax status 1
-            $return['status'] = 1;
-
             // Set default field type
             $type = 0;
 
             // Add structure to view
             m()->set($cmsNav);
-
-            // If exists current field
-            if (dbQuery('field')->id($field_id)->first($cmsField)) {
-                // Get type of field
-                $type = $cmsField->Type;
-
-                // Add field to view
-                m()->set($cmsField);
-            }
-
-            // Add select form to view
-            m()->type_select(CMSField::createSelect($type));
-
-            // Create view
-            $html = m()->output('form/form');
-
-            $return['html'] = $html;
         }
+
+        // If exists current field
+        if (dbQuery('field')->id($field_id)->first($cmsField)) {
+            // Get type of field
+            $type = $cmsField->Type;
+
+            // Add field to view
+            m()->set($cmsField);
+        }
+
+        // Set Ajax status 1
+        $return['status'] = 1;
+
+        // Add select form to view
+        m()->type_select(CMSField::createSelect($type));
+
+        // Create view
+        $html = m()->output('form/form');
+
+        $return['html'] = $html;
 
         // Return Ajax response
         return $return;

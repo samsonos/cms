@@ -49,7 +49,7 @@ class CMSField extends \samson\cms\CMSField
             'Таблицы' => 5,
             'Материал' => 6,
             'Число' => 7,
-            'WISYWIG' => 8
+            'WYSIWYG' => 8
         );
 
         foreach ($typeData as $key => $value) {

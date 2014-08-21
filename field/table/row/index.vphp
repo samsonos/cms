@@ -8,7 +8,7 @@
 	<td class="control">				
 
         <a class="control icon2 icon_16x16 icon-edit edit"
-           href="<?php url_base('field/form', 'field_id')?>"
+           href="<?php url_base('field/form', 'cmsnav_id', 'field_id')?>"
            title="Редактировать текущее доп. поле">
         </a>
 

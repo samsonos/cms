@@ -62,7 +62,6 @@ class App extends \samson\cms\App
 		m()->html( $form->render() );
 	}
 
-	
 	/** Main logic */	
 	
 	/** Async form */
@@ -138,32 +137,40 @@ class App extends \samson\cms\App
 	 * @return array Collection of rendered table and pager data
 	 */
 	function __async_table( $cmsnav = null, $search = null, $page = null  )
-	{			
+	{
 		// Try to find cmsnav
 		$cmsnav = cmsnav( $cmsnav, 'id');		
 		
 		// Generate materials table		
 		$table = new Table( $cmsnav, $search, $page );
-				
-		// Add aditional material fields
-		$ocg = new dbConditionGroup('OR');
-		foreach ( cms()->material_fields as $f) 
-		{
-			// Create special condition for additional fields
-			$cg = new dbConditionGroup('AND');
-			$cg->arguments[] = new dbConditionArgument('_mf.FieldID', $f->FieldID);
-			$cg->arguments[] = new dbConditionArgument('_mf.Value', '%'.$search.'%', dbRelation::LIKE );
-			
-			$ocg->arguments[] = $cg;				
-		}
-		
-		// Add condition group
-		$table->search_fields[] = $ocg;
-		
+
+        // Add aditional material fields
+        $ocg = new dbConditionGroup('OR');
+        foreach ( cms()->material_fields as $f)
+        {
+            // Create special condition for additional fields
+            $cg = new dbConditionGroup('AND');
+            $cg->arguments[] = new dbConditionArgument('_mf.FieldID', $f->FieldID);
+
+            if (isset($search) && $search != 'no-search') {
+                $cg->arguments[] = new dbConditionArgument('_mf.Value', '%'.$search.'%', dbRelation::LIKE );
+            }
+
+            $ocg->arguments[] = $cg;
+        }
+
+        // Add condition group
+        $table->search_fields[] = $ocg;
+
+
+        $table_html = $table->render();
+
+        $pager_html = $table->pager->toHTML();
+
 		// Render table and pager
-		return array_merge( array( 'status' => TRUE ), $table->toView( 'table_' ), $table->pager->toView( 'pager_'));			
+		return array('status' => 1, 'table_html' => $table_html, 'pager_html' => $pager_html);
 	}
-	
+
 	/**
 	 * Publish/Unpublish material
 	 * @param mixed $_cmsmat Pointer to material object or material identifier 
