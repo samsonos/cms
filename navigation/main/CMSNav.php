@@ -5,7 +5,7 @@
  * Date: 03.03.14
  * Time: 13:46
  */
-namespace samson\cms\web;
+namespace samson\cms\web\navigation;
 
 
 use samson\activerecord\dbRelation;
@@ -136,7 +136,7 @@ class CMSNav extends \samson\cms\CMSNav
             $parent->StructureID = 0;
             $parent->base = 1;
             $db_navs = null;
-            if (dbQuery('samson\cms\web\cmsnav')
+            if (dbQuery(__CLASS__)
                 ->Active(1)
                 ->join('parents_relations')
                 ->cond('parents_relations.parent_id', '', dbRelation::ISNULL)
@@ -162,7 +162,7 @@ class CMSNav extends \samson\cms\CMSNav
         } else {
             $children = $parent->baseChildren();
         }
-        usort($children, array('\samson\cms\web\CMSNav', 'strSorting'));
+        usort($children, array(__CLASS__, 'strSorting'));
 
         if (sizeof($children)) {
             $html .= '<ul>';

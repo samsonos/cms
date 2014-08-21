@@ -1,5 +1,5 @@
 <?php 
-namespace samson\cms\web;
+namespace samson\cms\web\navigation;
 
 use samson\cms\CMS;
 

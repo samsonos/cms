@@ -1,5 +1,5 @@
 <?php 
-namespace samson\cms\field;
+namespace samson\cms\web\field;
 
 class FieldApplication extends \samson\cms\App
 {
