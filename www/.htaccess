@@ -1,6 +1,9 @@
 # -FrontPage-
 DirectoryIndex index.php
+AddDefaultCharset utf-8
 
 RewriteEngine On
-RewriteRule !\.(doc|mp3|swf|txt|gif|jpg|xml|code|png|js|css|php|html|htm|pdf|xls|rtf|pdf|mov|rar|zip|exe|avi|tiff|psd|cdr)$ /cms/index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ /index.php [L]
 
