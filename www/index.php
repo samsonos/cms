@@ -25,8 +25,9 @@ setlocales('en', 'ru');
     'samson\cms\table'         => __SAMSON_VENDOR_PATH.'samsonos/cms/table/',
     'samson\cms\web\material'  => __SAMSON_VENDOR_PATH.'samsonos/cms/material/',
     'samson\cms\web\navigation'=> __SAMSON_VENDOR_PATH.'samsonos/cms/navigation/',
-    'samson\cms\field'         => __SAMSON_VENDOR_PATH.'samsonos/cms/field/',
+    'samson\cms\web\field'     => __SAMSON_VENDOR_PATH.'samsonos/cms/field/',
     'samson\cms\web\gallery'   => __SAMSON_VENDOR_PATH.'samsonos/cms/gallery/',
+    'samson\cms\web\user'      => __SAMSON_VENDOR_PATH.'samsonos/cms/user/',
     'samson\cms'               => __SAMSON_VENDOR_PATH.'samsonos/cms/api/',
 );
 

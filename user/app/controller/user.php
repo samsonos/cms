@@ -5,7 +5,7 @@
 function user()
 {
 	$query = dbQuery('user')->Active(1);
-	$table = new samson\cms\user\Table($query);
+	$table = new samson\cms\web\user\Table($query);
 	// Установим представление
 	m()->view('index')->title(t('Пользователи системы', true))
 	// Установим шаблон таблицы пользователей
@@ -72,4 +72,3 @@ function user_ajax_save()
  * @param $user_id Идентификатор пользователя
  */
 function user_ajax_delete( $user_id = NULL){echo samson_ajax_handler( 'mdl_user_delete', $user_id, 'mdl_user_table' );}
-?>

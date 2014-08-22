@@ -1,5 +1,5 @@
 <?php
-namespace samson\cms\field;
+namespace samson\cms\web\field;
 
 use samson\cms\input\Field;
 use samson\activerecord\dbQuery;

@@ -1,8 +1,9 @@
 <?php
-namespace samson\cms\user;
+namespace samson\cms\web\user;
+
 use samson\pager\Pager;
 
-class Table extends \samson\cms\Table\Table
+class Table extends \samson\cms\table\Table
 {
 	public function row( & $db_row, Pager & $pager = null )
 	{

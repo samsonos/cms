@@ -3,7 +3,7 @@
  * Created by Pavlo Onysko <onysko@samsonos.com>
  * on 28.07.14 at 18:39
  */
- namespace samson\cms\field;
+ namespace samson\cms\web\field;
 
 /**
  *
