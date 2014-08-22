@@ -2,18 +2,23 @@
 namespace samson\cms\web\material;
 
 use samson\activerecord\dbRelation;
-
 use samson\activerecord\dbConditionArgument;
-
 use samson\activerecord\dbConditionGroup;
-
 use samson\cms\cmsmaterial;
 use samson\cms\CMSNav;
 use samson\activerecord\dbQuery;
 use samson\pager\Pager;
 use samson\cms\CMSNavMaterial;
 
-class App extends \samson\cms\App
+/**
+ * SamsonCMS generic material application.
+ *
+ * This application covers all actions that can be done
+ * with materials and related entities in SamsonCMS.
+ *
+ * @package samson\cms\web\material
+ */
+class MaterialApplication extends \samson\cms\App
 {
 	/** Application name */
 	public $app_name = 'Материалы';
@@ -23,20 +28,21 @@ class App extends \samson\cms\App
 	
 	/** Table rows count */
 	protected $table_rows = 15;
-	
-	/** Dependencies */
-	protected $requirements = array('ActiveRecord');
 		
 	/** Controllers */
 	
 	/** Generic controller */
-	public function __handler( $cmsnav = null, $search = null, $page = null )
-	{		
+	public function __handler($cmsnav = null, $search = null, $page = null)
+	{
 		// Try to find cmsnav
-		if(isset($cmsnav)) $cmsnav = cmsnav( $cmsnav ,'id');		
+		if (isset($cmsnav)) {
+            $cmsnav = cmsnav( $cmsnav ,'id');
+        }
 		
 		// Old-fashioned direct form post
-		if( isset($_POST['search'])) $search = $_POST['search'];
+		if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+        }
 		
 		// Set view data
 		$this
@@ -47,9 +53,6 @@ class App extends \samson\cms\App
 			->search($search)
 			->set( $this->__async_table( $cmsnav, $search, $page  ) )
 		;
-		
-		// Render mainmenu submenu
-		//m('menu')->submenu( m()->all_materials( '1')->output('sub_menu') );		
 	}
 	
 	/** Generic material form controller */

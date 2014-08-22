@@ -9,15 +9,7 @@ use samson\core\File;
 // TODO: Придумать механизм стилей в CMS что бы cms понимали стили сайта
 // TODO: Перенести папку upload в корень сайта - тогда при сворачивании все картинки будут на месте
 
-function material__HANDLER($item = '')
-{
-	
-}
 
-function material__POST()
-{
-
-}
 /**
  * Контроллер для обновления модуля
  * @return Ambigous <string, NULL>

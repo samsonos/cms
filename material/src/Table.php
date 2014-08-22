@@ -34,16 +34,16 @@ class Table extends \samson\cms\table\Table
 	public $search_fields = array( 'Name', 'Url'  );	
 	
 	/** Default table template file */
-	public $table_tmpl = 'table/view/index';
+	public $table_tmpl = 'table/index';
 	
 	/** Default table row template */
-	public $row_tmpl = 'table/view/row/index';
+	public $row_tmpl = 'table/row/index';
 	
 	/** Default table notfound row template */
-	public $notfound_tmpl = 'table/view/row/notfound';
+	public $notfound_tmpl = 'table/row/notfound';
 
 	/** Default table empty row template */
-	public $empty_tmpl = 'table/view/row/empty';
+	public $empty_tmpl = 'table/row/empty';
 	
 	/**
 	 * Prepare DB query search condition by keywords
@@ -58,8 +58,7 @@ class Table extends \samson\cms\table\Table
 			$scg = new dbConditionGroup('or');				
 			
 			// Iterate base material and nav fields to generate search conditions
-			foreach ( $this->search_fields as $item )
-			{
+			foreach ( $this->search_fields as $item ) {
 				// If condition group is passed - add it to search condition				
 				if( is_a($item, ns_classname('Condition')) ) $scg->arguments[] = $item;
 				// Create condition argument
@@ -82,13 +81,17 @@ class Table extends \samson\cms\table\Table
 		
 		// Collect found materials ids
 		$ids = array();
-		foreach ( $db_materials as $db_material ) $ids[] = $db_material->id;
+		foreach ( $db_materials as $db_material ) {
+            $ids[] = $db_material->id;
+        }
 			
 		// Get drafts for found materials
-		if( cmsquery()->Draft($ids)->UserID( auth()->user->id )->exec($drafts) )
-		{
+        $drafts = array();
+		if (cmsquery()->Draft($ids)/*->UserID(auth()->user->id)*/->exec($drafts))	{
 			// Save drafts by their parent material
-			foreach ( $drafts as $draft ) $result[ $draft->Draft ] = $draft;
+			foreach ( $drafts as $draft ) {
+                $result[ $draft->Draft ] = $draft;
+            }
 		}		
 		
 		return $result;
@@ -117,10 +120,10 @@ class Table extends \samson\cms\table\Table
 		// Create DB query object
 		$this->query = dbQuery('samson\cms\cmsmaterial')
 			->Draft(0)
-			->cond( 'Active', 1 )			
-			->own_order_by('Modyfied','DESC')
-			->join( 'user')
-			->join( 'samson\cms\cmsnavmaterial')
+			->Active(1)
+			->own_order_by('Modyfied', 'DESC')
+			->join('user')
+			->join('samson\cms\cmsnavmaterial')
 			->join('samson\cms\cmsnav')
 		;				
 
@@ -133,7 +136,7 @@ class Table extends \samson\cms\table\Table
         }*/
 
 		// Perform query by cmsnavmaterial and get material ids
-		if( isset($nav) && dbQuery('samson\cms\cmsnavmaterial')->StructureID( $nav->id )->Active( 1 )->fields('MaterialID',$ids))	
+		if( isset($nav) && dbQuery('samson\cms\cmsnavmaterial')->StructureID( $nav->id )->Active( 1 )->fields('MaterialID', $ids))
 		{		
 			// Set corresponding material ids related to specified cmsnav
 			$this->query->id($ids);				
@@ -160,7 +163,7 @@ class Table extends \samson\cms\table\Table
 				$this->drafts = $this->_getDrafts( $db_materials );	
 
 				// Render drafts without original materials
-				if(cmsquery()
+				/*if(cmsquery()
 						->join('samson\cms\cmsnav')
 						->where(dbMySQLConnector::$prefix.'material.Draft = '.dbMySQLConnector::$prefix.'material.MaterialID')
 						->UserID( auth()->user->id )
@@ -169,7 +172,7 @@ class Table extends \samson\cms\table\Table
 				{
 					// Add single drafts to the begining of the table
 					$db_materials = array_merge( $this->single_drafts, $db_materials ); 
-				}
+				}*/
 				
 				// Generic rendering routine
 				return parent::render( $db_materials );

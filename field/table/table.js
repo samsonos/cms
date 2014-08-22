@@ -2,8 +2,6 @@
  * Created by Pavlo Onysko <onysko@samsonos.com> on 04.08.14.
  */
 
-
-
 /**
  * Инициализация JS для таблицы материалов
  */
