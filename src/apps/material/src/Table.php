@@ -123,8 +123,8 @@ class Table extends \samson\cms\table\Table
 			->Active(1)
 			->own_order_by('Modyfied', 'DESC')
 			->join('user')
-			->join('samson\cms\cmsnavmaterial')
-			->join('samson\cms\cmsnav')
+			->join('structurematerial')
+			->join('samson\cms\Navigation')
 		;				
 
         /*if (isset($search)) {

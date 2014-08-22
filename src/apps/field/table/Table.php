@@ -20,7 +20,7 @@ class Table extends \samson\cms\table\Table
         // Prepare db query
         $this->query = dbQuery('samson\cms\cmsfield')
             ->join('samson\cms\cmsnavfield')
-            ->join('samson\cms\cmsnav')
+            ->join('samson\cms\Navigation')
             ->order_by('FieldID', 'ASC');
 
         if (dbQuery('structure')->id($navID)->first($structure)) {
