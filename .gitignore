@@ -7,4 +7,5 @@ vendor/*
 cms/*
 out/*
 composer.lock
-
+api/*
+table/*
