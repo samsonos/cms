@@ -40,6 +40,9 @@
             "bash contrib/setup.sh"
         ]
     },
+    "autoload": {
+        "classmap": ["src/"]
+    },
 	"license":"Open Software License (OSL) v 3.0",
 	"homepage":"http://samsoncms.com/"
 }
