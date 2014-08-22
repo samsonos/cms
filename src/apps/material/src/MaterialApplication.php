@@ -147,10 +147,12 @@ class MaterialApplication extends \samson\cms\App
 	function __async_table($cmsnav = null, $search = null, $page = null)
 	{
 		// Try to find cmsnav
-		$cmsnav = cmsnav( $cmsnav, 'id');		
+        if (!isset($cmsnav) && dbQuery('\samson\cms\Navigation')->id($cmsnav)->first($cmsnav)) {
+            // Handle successfull found
+        }
 		
 		// Generate materials table		
-		$table = new Table( $cmsnav, $search, $page );
+		$table = new Table($cmsnav, $search, $page);
 
         // Add aditional material fields
         $ocg = new dbConditionGroup('OR');

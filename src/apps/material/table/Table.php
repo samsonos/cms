@@ -5,7 +5,7 @@ use samson\activerecord\Condition;
 use samson\activerecord\dbRelation;
 use samson\activerecord\dbConditionGroup;
 use samson\activerecord\dbConditionArgument;
-use samson\cms\CMSNav;
+use samson\cms\Navigation;
 use samson\pager\pager;
 use samson\activerecord\dbMySQLConnector;
 
@@ -103,7 +103,7 @@ class Table extends \samson\cms\table\Table
 	 * @param string $search	Keywords to search in materials
 	 * @param string $page		Current table page number
 	 */
-	public function __construct( CMSNav & $nav = null, $search = null, $page = null )
+	public function __construct( Navigation & $nav = null, $search = null, $page = null )
 	{			
 		// Save parent cmsnav
 		$this->nav = & $nav;
