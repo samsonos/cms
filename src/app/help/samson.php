@@ -1,5 +1,5 @@
 <?php
-namespace samson\cms\help;
+namespace samson\cms\web\help;
 
 class HelpApplication extends \samson\cms\App
 {
