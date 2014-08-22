@@ -4,6 +4,15 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
+/** If no vendor path is specified already */
+if (!defined('__SAMSON_VENDOR_PATH')) {
+    /** Set new project structure vendor path */
+    define('__SAMSON_VENDOR_PATH', '../vendor/');
+
+    /** Load SamsonPHP framework */
+    require(__SAMSON_VENDOR_PATH.'/samsonos/php_core/samson.php');
+}
+
 // Set supported locales
 setlocales('en', 'ru');
 
