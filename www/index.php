@@ -29,6 +29,7 @@ setlocales('en', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
+    ->e404('e404')
     ->load('../src/app')
     ->load('../src/ajaxloader')
     ->load('../src/fixedheader')

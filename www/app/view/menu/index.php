@@ -11,13 +11,13 @@
 		<?php v('items')?>		
 	</ul>
 	
-	<aside class="r_b">
+	<div class="r_b">
         <?php if(defined('__SAMSONCMS_LOGO')):?>
 		    <div class="logo"></div>
         <?php endif?>
         <?php m('i18n')->render('list')?>
 		<a href="<?php url_base('auth2','logout')?>" class="logout" title="<?php t('Выход')?>">.</a>
-	</aside>
+	</div>
 </nav>
 
 <div class="sub_menu_wrapper <?php isv('submenu','control')?>">

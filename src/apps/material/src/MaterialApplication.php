@@ -144,7 +144,7 @@ class MaterialApplication extends \samson\cms\App
 	 * @param string $page		Current table page	 
 	 * @return array Collection of rendered table and pager data
 	 */
-	function __async_table( $cmsnav = null, $search = null, $page = null  )
+	function __async_table($cmsnav = null, $search = null, $page = null)
 	{
 		// Try to find cmsnav
 		$cmsnav = cmsnav( $cmsnav, 'id');		
