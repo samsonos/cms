@@ -34,24 +34,29 @@ class MaterialApplication extends \samson\cms\App
 	/** Generic controller */
 	public function __handler($cmsnav = null, $search = null, $page = null)
 	{
+        // Generate localized title
+        $title = t($this->app_name, true);
+
+        // Set view scope
+        $this->view('index');
+
 		// Try to find cmsnav
-		if (isset($cmsnav)) {
-            $cmsnav = cmsnav( $cmsnav ,'id');
+		if (isset($cmsnav) && dbQuery('\samson\cms\Navigation')->id($cmsnav)->first($cmsnav)) {
+            // Add structure title
+            $title = t($cmsnav->Name, true).' - '.$title;
+
+            // Pass Navigation to view
+            $this->cmsnav($cmsnav);
         }
 		
-		// Old-fashioned direct form post
-		if (isset($_POST['search'])) {
-            $search = $_POST['search'];
-        }
+		// Old-fashioned direct search input form POST if not passed
+        $search = !isset($search) ? (isset($_POST['search']) ? $_POST['search'] : '') : $search;
 		
 		// Set view data
 		$this
-			->view('index')
-			->title( t($this->name, true))
-			->cmsnav( $cmsnav )
-			->cmsnav_id( isset($cmsnav) ? $cmsnav->id : '0' )
+            ->title($title)
 			->search($search)
-			->set( $this->__async_table( $cmsnav, $search, $page  ) )
+			->set($this->__async_table($cmsnav, $search, $page))
 		;
 	}
 	

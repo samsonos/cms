@@ -3,7 +3,7 @@
 <section class="top clearfix">
 
     <!-- Header block -->
-    <?php if(isv('cmsnav_Name')):?>
+    <?php if(isv('cmsnav')):?>
         <h1 class="icon2 icon_16x16 left icon-structure">
             <!--  <a href="<?php url_base('structure', 'cmsnav_id')?>" title="Перейти к редактированию ЭСС"></a>-->
             <?php v('cmsnav_Name'); ?>
