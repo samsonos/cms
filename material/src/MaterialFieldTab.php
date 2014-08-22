@@ -18,7 +18,7 @@ class MaterialFieldTab extends FormTab
 	public $index = 1;
 	
 	/** Tab content view path */
-	private $content_view = 'form/view/tab/content/materialfield';	
+	private $content_view = 'form/tab/content/materialfield';
 	
 	/**
 	 * CMS Field object

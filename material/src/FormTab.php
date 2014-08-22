@@ -39,19 +39,19 @@ class FormTab implements iModuleViewable
 	protected $control_html = '';
 
 	/** Header view path */
-	private $header_view = 'form/view/tab/header';
+	private $header_view = 'form/tab/header';
 	
 	/** Inner header HTML */
 	protected $header_html = '';
 	
 	/** Content view path */
-	private $content_view = 'form/view/tab/content';
+	private $content_view = 'form/tab/content';
 	
 	/** Inner content HTML */
 	protected $content_html = '';	
 	
 	/** Control view path */
-	private $control_view = 'form/view/tab/control';
+	private $control_view = 'form/tab/control';
 	
 	/**
 	 * Constructor	 

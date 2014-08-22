@@ -16,7 +16,7 @@ class MainTab extends FormTab
 	public $name = 'Основные';
 	
 	/** Content view path */
-	private $content_view = 'form/view/tab/content/main';	
+	private $content_view = 'form/tab/content/main';
 	
 	/** @see \samson\cms\web\material\FormTab::content() */
 	public function content()
@@ -33,7 +33,7 @@ class MainTab extends FormTab
 			$parent_select .= '<option '.$selected.' value="'.$db_structure->id.'">'.$db_structure->Name.'</option>';
 		}	
 		
-		// Get user obeject
+		// Get user object
 		$user = isset($this->form->material->onetoone['_user']) ? $this->form->material->onetoone['_user']  : auth()->user;
 		
 		// Render content into inner content html 

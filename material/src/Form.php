@@ -166,7 +166,7 @@ class Form
 		// Render view 
 		return m()			
 			->title('Форма')
-			->view('form/view/index')			
+			->view('form/index')
 			->cmsmaterial( $this->material )
 			->tabs($tabs_html)
 			->tabs_control($tabs_control)

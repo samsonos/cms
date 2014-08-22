@@ -19,10 +19,10 @@ use samson\activerecord\dbMySQLConnector;
 class FormFieldTable extends \samson\cms\table\Table
 {
 	/** Change table template */
-	public $table_tmpl = 'form/view/fieldtable/tmpl';
+	public $table_tmpl = 'form/fieldtable/tmpl';
 
 	/** Default table row template */
-	public $row_tmpl = 'form/view/fieldtable/row/index';
+	public $row_tmpl = 'form/fieldtable/row/index';
 		
 	/** Existing CMSMaterial field records */
 	private $materialfields = array();

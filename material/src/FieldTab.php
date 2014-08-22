@@ -13,7 +13,7 @@ class FieldTab extends FormTab
 	public static $AUTO_RENDER = false;	
 
 	/** Tab content view path */
-	private $content_view = 'form/view/tab/content/fields';
+	private $content_view = 'form/tab/content/fields';
 		
 	/**
 	 * CMSMaterial fields table
