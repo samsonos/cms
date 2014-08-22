@@ -125,23 +125,24 @@ class Form
                     }
                 }
             }
-		}	
+		}
 		
 		// Iterate declared classes to find other FormTab children to load to form
-		foreach ( get_declared_classes() as $class )
-		{
+		foreach (get_declared_classes() as $class) {
 			// If class if samson\cms\web\material\FormTab child
-			if( is_subclass_of( $class , ns_classname('FormTab', 'samson\cms\web\material' )))
-			{				
+			if (is_subclass_of($class , ns_classname('FormTab', 'samson\cms\web\material'))){
 				// Tab supports automatic rendering flag
 				eval( '$ar = '.$class.'::$AUTO_RENDER;' ); // PHP 5.2 support
-				if( $ar === true )
-				{						
+				if ($ar === true) {
 					// Create and add FormTab instance to form tabs collection
 					$this->tabs[] = new $class( $this );
 				}
 			}
 		}
+
+        // Create and add FormTab instance to form tabs collection
+        $this->tabs[] = new \samson\cms\web\material\MainTab($this);
+        $this->tabs[] = new \samson\cms\web\material\FieldLocalizedTab($this);
 		
 		// Sort tabs by their index
 		usort( $this->tabs, array( $this, 'tabs_sorter'));
