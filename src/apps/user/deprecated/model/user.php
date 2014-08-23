@@ -18,37 +18,6 @@ function mdl_user_table()
 }
 
 /**
- * Обработчик сохранения данных пользователя системы
- * 
- * @param array $_data 	Коллекция данных о пользователе
- * @param array $status Статус выполнения сохранения польтзователя
- * @return boolean Результат выполнения метода
- */
-function mdl_user_save( array $_data, & $status = NULL ) 
-{	
-
-	//if ( ! mdl_permission('User_Save') ) return FALSE;
-	// Проверим входніе данные
-	if( !is_array( $_data ) || !sizeof($_data) ) return FALSE; 
-	
-	// Установим "особые" поля
-	$_data['Created'] 		= ( $_data['Created'] == 0 ) ? date('Y-m-d H:i:s') : $_data['Created'];
-	$_data['md5_password'] 	= md5($_data['Password']);
-	$_data['md5_email'] 	= md5($_data['Email']);
-	$_data['Active']		= 1;
-	
-	if (!dbQuery('user')->UserID($_data['UserID'])->Active(1)->first($db_user)) $db_user = new \samson\activerecord\user(false);
-	
-	foreach ($_data as $item=>$value)if(isset($db_user->$item)) $db_user->$item = $value;
-
-	$db_user->save();
-	
-	auth()->update( $db_user );
-	
-	return true;	
-}
-
-/**
  * Обработчик даления данных пользователя системы
  * 
  * @param mixed $db_user Указатель на пользователя

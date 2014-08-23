@@ -4,7 +4,7 @@ if( isset( $db_user) ) $db_user = & $db_user;
 if( isset( $db_group) ) $db_group = & $db_group;
 ?>
 <!-- НАЧАЛО шаблона формы пользователя сайта -->
-<form method="post" class="form2" action="user/ajax_save/<?php v('user_id'); ?>" >
+<form method="post" class="form2" action="user/save/<?php v('user_id'); ?>" >
 	<div class="close-button" title="Закрыть форму"><input type="button" value="Х" class=""></div>	
 	<?php echo auth()->create_token( 'user_form' ); ?>
 	<input type="hidden" name="UserID" id="UserID" value="<?php v('user_id') ?>">

@@ -5,8 +5,10 @@ use samson\pager\Pager;
 
 class Table extends \samson\cms\table\Table
 {
-	public function row( & $db_row, Pager & $pager = null )
+    public $table_tmpl = 'table/index';
+
+	public function row(& $db_row, Pager & $pager = null )
 	{
-		return m()->user( $db_row )->set( $pager )->output( $this->row_tmpl );
+		return m()->view($this->row_tmpl)->user($db_row)->set($pager)->output();
 	}
 } 

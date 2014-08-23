@@ -57,16 +57,6 @@ function user_ajax_form( $user_id = 0, $group_id = NULL )
 }
 
 /**
- * Ассинхронный контроллер для сохранения данных пользователя
- */
-function user_ajax_save()
-{
-	s()->async(TRUE);
-	mdl_user_save($_POST);
-	echo json_encode(array( 'data'=> mdl_user_table() ));
-}
-
-/**
  * Ассинхронный обработчик удаления пользователя
  * 
  * @param $user_id Идентификатор пользователя
