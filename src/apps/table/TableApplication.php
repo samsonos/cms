@@ -4,13 +4,15 @@
  * on 23.08.14 at 10:56
  */
  namespace samson\cms\web\table;
+ use samson\cms\App;
+ use samson\cms\table\Table;
 
-/**
+ /**
  * Generic table application for SamsonCMS
  * @author Vitaly Egorov <egorov@samsonos.com>
  * @copyright 2014 SamsonOS
  */
-class TableApplication extends \samson\cms\App
+class TableApplication extends App
 {
     /** @var string Database entity name */
     public $entity;
@@ -34,12 +36,12 @@ class TableApplication extends \samson\cms\App
     public function init(array $params = array())
     {
         // If no query is passed use generic query
-        $this->drawQuery = isset($this->drawQuery) ? $this->drawQuery : dbQuery($this->entity)->Active(1);
-        $this->deleteQuery = isset($this->deleteQuery) ? $this->deleteQuery : dbQuery($this->entity)->Active(1);
-        $this->saveQuery = isset($this->saveQuery) ? $this->saveQuery : dbQuery($this->entity)->Active(1);
+        $this->drawQuery = isset($this->drawQuery) ? $this->drawQuery : dbQuery($this->entity)->cond('Active', 1);
+        $this->deleteQuery = isset($this->deleteQuery) ? $this->deleteQuery : dbQuery($this->entity)->cond('Active', 1);
+        $this->saveQuery = isset($this->saveQuery) ? $this->saveQuery : dbQuery($this->entity)->cond('Active', 1);
 
         // If no external render object is passed - use generic table render
-        $this->entityRenderer = isset($this->entityRenderer) ? new $this->entityRenderer($this->drawQuery) : new \samson\cms\table\Table($this->drawQuery);
+        $this->entityRenderer = isset($this->entityRenderer) ? new $this->entityRenderer($this->drawQuery) : new Table($this->drawQuery);
     }
 
     /** Generic universal controller for rendering main application page */
@@ -83,7 +85,7 @@ class TableApplication extends \samson\cms\App
         // Find entity
         if ($this->deleteQuery->id($entityID)->first($dbObject)) {
             // Set special field to 0
-            $dbObject->Active = 0;
+            $dbObject['Active'] = 0;
             $dbObject->save();
 
             $result['status'] = 1;
@@ -112,7 +114,7 @@ class TableApplication extends \samson\cms\App
             /** @var \samson\activerecord\user $dbObject */
             $dbObject = null;
             if (!isset($entityID) || !$this->saveQuery->id($entityID)->first($dbObject)) {
-                $dbObject = new \samson\activerecord\user(false);
+                $dbObject = new $this->entity(false);
             }
 
             // Iterate all submitted fields
