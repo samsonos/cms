@@ -11,6 +11,8 @@ if (!defined('__PATH')) {
 
 /** Check if core is already loaded */
 if (!function_exists('s')) {
+    /** Set new project structure vendor path */
+    define('__SAMSON_VENDOR_PATH', __PATH.'vendor/');
 
     /** Set SamsonCMS text environment */
     define('__SAMSONCMS_TESTMODE', true);
