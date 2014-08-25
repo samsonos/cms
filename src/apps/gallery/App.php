@@ -91,21 +91,24 @@ class App extends \samson\cms\App
 		$result = array( 'status' => false );
 		
 		// Uploading file to server
-		if( $upload->upload( $fpath, $uname, $fname ) )
-		{
+		if ($upload->upload($fpath, $uname, $fname)) {
+            /** @var \samson\activerecord\material $material */
+            $material = null;
 			// Check if participant has not uploaded remix yet
-			if( dbQuery('material')->MaterialID($material_id)->Active(1)->first($db_material))
-			{							
+			if (dbQuery('material')->MaterialID($material_id)->Active(1)->first($material)) {
 				// Create empty db record
 				$photo = new \samson\activerecord\gallery(false);
 				$photo->Name = $uname;
-				$photo->Src = url()->base().$fpath;
-				$photo->Path = $fname;
-				$photo->MaterialID = $db_material->id;
+				$photo->Src = $fname;
+				$photo->Path = dirname(url()->base().$fpath);
+				$photo->MaterialID = $material->id;
+                $photo->Active = 1;
 				$photo->save();				
 				
-				// Create thumnails
-				if(class_exists('\samson\scale\Scale', false)) m('scale')->resize($fpath, $fname);
+				// Call scaler if it is loaded
+				if(class_exists('\samson\scale\Scale', false)) {
+                    m('scale')->resize($fpath, $fname);
+                }
 
 				$result['status'] = true;			
 			}
