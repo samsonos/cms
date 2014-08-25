@@ -99,8 +99,8 @@ class App extends \samson\cms\App
 				// Create empty db record
 				$photo = new \samson\activerecord\gallery(false);
 				$photo->Name = $uname;
-				$photo->Src = $fname;
-				$photo->Path = dirname(url()->base().$fpath);
+				$photo->Src = url()->base().$fpath;
+				$photo->Path = dirname(url()->base().$fpath).'/';
 				$photo->MaterialID = $material->id;
                 $photo->Active = 1;
 				$photo->save();				
@@ -128,7 +128,8 @@ class App extends \samson\cms\App
 		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('PhotoID')->exec( $images ))foreach ( $images as $image )
 		{
             // Get old-way image path, remove full path to check file
-            if (str_replace(__SAMSON_BASE__, '', $image->Src)) {
+            $src = str_replace(__SAMSON_BASE__, '', $image->Src);
+            if (file_exists($src)) {
                 $path = $image->Src;
             } else { // Use new CORRECT way
                 $path = $image->Path.$image->Src;

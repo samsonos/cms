@@ -4,10 +4,13 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
-/** If no vendor path is specified already */
-if (!defined('__SAMSON_VENDOR_PATH')) {
-    /** Set new project structure vendor path */
-    define('__SAMSON_VENDOR_PATH', '../vendor/');
+/** Build absolute path to SamsonCMS root folder */
+if (!defined('__PATH')) {
+    define('__PATH', __DIR__.'/../');
+}
+
+/** Check if core is already loaded */
+if (!function_exists('s')) {
 
     /** Set SamsonCMS text environment */
     define('__SAMSONCMS_TESTMODE', true);
@@ -16,7 +19,7 @@ if (!defined('__SAMSON_VENDOR_PATH')) {
     require(__SAMSON_VENDOR_PATH.'/samsonos/php_core/samson.php');
 
     /** Load generic ActiveRecord config to start application in test mode */
-    require('../src/ActiveRecordConfig.php');
+    require(__PATH.'src/ActiveRecordConfig.php');
 }
 
 /** Collection of WRONG module namespaces resolving */
@@ -30,24 +33,24 @@ setlocales('en', 'ru');
 // Start SamsonPHP application
 s()->composer()
     ->e404('e404')
-    ->load('../src/app')
-    ->load('../src/ajaxloader')
-    ->load('../src/fixedheader')
-    ->load('../src/formcontainer')
-    ->load('../src/tabs')
-    ->load('../src/treeview')
-    ->load('../src/gallery')
-    ->load('../src/translit')
-    ->load('../src/input')
-    ->load('../src/field/date')
-    ->load('../src/field/select')
-    ->load('../src/field/uploadfile')
-    ->load('../src/field/uploadimg')
-    ->load('../src/field/wysiwyg')
-    ->load('../src/apps/material')
-    ->load('../src/apps/navigation')
-    ->load('../src/apps/field')
-    ->load('../src/apps/gallery')
-    ->load('../src/apps/user')
-    ->load('../src/apps/help')
+    ->load(__PATH.'src/app')
+    ->load(__PATH.'src/ajaxloader')
+    ->load(__PATH.'src/fixedheader')
+    ->load(__PATH.'src/formcontainer')
+    ->load(__PATH.'src/tabs')
+    ->load(__PATH.'src/treeview')
+    ->load(__PATH.'src/gallery')
+    ->load(__PATH.'src/translit')
+    ->load(__PATH.'src/input')
+    ->load(__PATH.'src/field/date')
+    ->load(__PATH.'src/field/select')
+    ->load(__PATH.'src/field/uploadfile')
+    ->load(__PATH.'src/field/uploadimg')
+    ->load(__PATH.'src/field/wysiwyg')
+    ->load(__PATH.'src/apps/material')
+    ->load(__PATH.'src/apps/navigation')
+    ->load(__PATH.'src/apps/field')
+    ->load(__PATH.'src/apps/gallery')
+    ->load(__PATH.'src/apps/user')
+    ->load(__PATH.'src/apps/help')
     ->start('main');
