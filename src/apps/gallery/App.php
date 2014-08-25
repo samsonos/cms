@@ -49,7 +49,7 @@ class App extends \samson\cms\App
 				if( file_exists( $db_image->Path )) unlink( $upload_dir.$db_image->Path );	
 	
 				// Delete thumnails
-				if(class_exists('\samson\upload\Scale')) foreach (m('scale')->thumnails_sizes as $folder=>$params)
+				if(class_exists('\samson\scale\Scale', false)) foreach (m('scale')->thumnails_sizes as $folder=>$params)
 				{
 					$folder_path = $upload_dir.$folder;
 					if( file_exists( $folder_path.'/'.$db_image->Path )) unlink( $folder_path.'/'.$db_image->Path );
@@ -105,7 +105,7 @@ class App extends \samson\cms\App
 				$photo->save();				
 				
 				// Create thumnails
-				if(class_exists('\samson\upload\Scale')) m('scale')->resize($fpath, $fname);
+				if(class_exists('\samson\scale\Scale', false)) m('scale')->resize($fpath, $fname);
 
 				$result['status'] = true;			
 			}

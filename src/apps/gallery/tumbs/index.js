@@ -6,7 +6,7 @@ var SJSGallery = function( container )
 	
 	// Safely save container object
 	o.container = s(container);
-	
+
 	// Create loader object
 	o.loader = new Loader( o.container.parent() );	
 	

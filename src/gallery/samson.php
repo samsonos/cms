@@ -11,6 +11,5 @@ namespace samson\js\gallery;
  */
 class JSGallery extends \samson\core\CompressableExternalModule
 {		
-	/** Module dependencies */
-	protected $requirements = array('SamsonJS');
+	public $id = 'samson_js_gallery';
 }
