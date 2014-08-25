@@ -1,1 +1,0 @@
-<select name="Field_<?php v('field_id')?>"> <?php v('select')?></select>

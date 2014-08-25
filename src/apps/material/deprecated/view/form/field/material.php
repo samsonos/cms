@@ -1,1 +1,0 @@
-<div class="input-text"><input name="ParentID" id="parent-id" value="<?php v('cmsmaterialfield_Value')?>"><input id="std_material" value="<?php cmsmat($cmsmaterialfield_Value, 'id')->Name();?>"></div>

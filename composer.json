@@ -25,7 +25,6 @@
         "samsonos/php_deploy":"*",
         "samsonos/php_scale":"*",
         "samsonos/php_email":"*",
-        "samsonos/php_parse":"*",
         "samsonos/php_auth":"*",
         "samsonos/php_upload":"*",
         "samsonos/cms_api":"*",
