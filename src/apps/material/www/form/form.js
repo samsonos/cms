@@ -45,7 +45,7 @@ var saveMain = function( redirect )
 	form.ajaxForm(function(response)
 	{	
 		// Redirect
-		if( redirect == true ) window.location.href = '../../';
+		if( redirect == true ) window.location.href = 'material';
 		// Rerender form
 		else
 		{			
