@@ -86,10 +86,10 @@ class Field extends \samson\core\CompressableExternalModule implements \samson\c
 		
 		// If object is passed
 		if( !is_object( $obj ) ) e('Cannot create ## object instance - no object is passed', E_SAMSON_CORE_ERROR, __CLASS__ );
-		
+
 		// Generate correct namespace for class
-		$classname = uni_classname(ns_classname( strtolower($classname), __NAMESPACE__ ));		
-		
+		$classname = \samson\core\AutoLoader::oldClassName(__NAMESPACE__.'\\'.$classname );
+
 		// Try to get field module instance from core
 		if( null !== ($f = & m( $classname )) )
 		{	
