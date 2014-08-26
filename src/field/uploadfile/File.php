@@ -49,10 +49,12 @@ class File extends Field
 	
 	/** @see \samson\core\iModuleViewable::toView() */
 	public function toView( $prefix = NULL, array $restricted = array() )
-	{	
+	{
+        $controller = \samson\core\AutoLoader::oldClassName(get_class($this));
+
 		// Generate controller links
-		$this->set('upload_controller', $this->id.'/upload?f='.$this->param.'&e='.$this->entity.'&i='.$this->obj->id )
-		->set('delete_controller', $this->id.'/delete?f='.$this->param.'&e='.$this->entity.'&i='.$this->obj->id );		
+		$this->set('upload_controller', $controller.'/upload?f='.$this->param.'&e='.$this->entity.'&i='.$this->obj->id )
+		->set('delete_controller', $controller.'/delete?f='.$this->param.'&e='.$this->entity.'&i='.$this->obj->id );
 		
 		//$this->set('empty_text', 'Выберите текст');
 		// Call parent rendering routine
