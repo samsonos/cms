@@ -135,7 +135,7 @@ class StructureApplication extends \samson\cms\App
      */
     public function __async_save($navID = 0)
     {
-        /** @var \samson\cms\web\CMSNav $data */
+        /** @var \samson\cms\web\navigation\CMSNav $data */
         $data = null;
 
         if (dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($navID)->first($data)) {

@@ -39,11 +39,11 @@ class FieldApplication extends \samson\cms\App
         /** @var array $return Ajax response array */
         $return = array('status' => 0);
 
-        /** @var \samson\cms\web\CMSNav $cmsNav */
+        /** @var \samson\cms\web\navigation\CMSNav $cmsNav */
         $cmsNav = null;
 
         // If exists current structure
-        if (dbQuery('\samson\cms\web\CMSNav')->id($structure_id)->first($cmsNav)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->id($structure_id)->first($cmsNav)) {
 
             // Create view of list
             $html = m()->view('form/field_list')->structure($cmsNav)->items($cmsNav->getFieldList())->output();
@@ -114,7 +114,7 @@ class FieldApplication extends \samson\cms\App
     public function __async_save($structure_id, $field_id = null)
     {
         // If not exists current field
-        if (!dbQuery('\samson\cms\field\CMSField')->id($field_id)->first($field)) {
+        if (!dbQuery('\samson\cms\web\field\CMSField')->id($field_id)->first($field)) {
             // Create new field
             $field = new CMSField(false);
         }
@@ -153,8 +153,8 @@ class FieldApplication extends \samson\cms\App
      */
     public function __async_renderfields($structure_id)
     {
-        /** @var \samson\cms\web\CMSNav $cmsNav */
-        $cmsNav = dbQuery('\samson\cms\web\CMSNav')->id($structure_id)->first();
+        /** @var \samson\cms\web\navigation\CMSNav $cmsNav */
+        $cmsNav = dbQuery('\samson\cms\web\navigation\CMSNav')->id($structure_id)->first();
 
         // Return Ajax response
         return array('status' => 1, 'fields' => $cmsNav->getFieldList());

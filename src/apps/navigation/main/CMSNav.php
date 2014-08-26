@@ -59,7 +59,7 @@ class CMSNav extends \samson\cms\CMSNav
     public function getFieldList()
     {
         // Get additional fields of current structure
-        $fields = dbQuery('\samson\cms\field\CMSField')
+        $fields = dbQuery('\samson\cms\web\field\CMSField')
             ->join('\samson\cms\CMSNavField')
             ->cond('StructureID', $this->id)
             ->exec();

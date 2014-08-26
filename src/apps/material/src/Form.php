@@ -116,9 +116,9 @@ class Form
 			$this->material->Active = 1;
 			$this->material->save();
             if (isset($parentStructure)) {
-                /** @var \samson\cms\web\CMSNav $str */
+                /** @var \samson\cms\web\navigation\CMSNav $str */
                 $str = null;
-                if (dbQuery('\samson\cms\web\CMSNav')->id($parentStructure)->first($str)) {
+                if (dbQuery('\samson\cms\web\navigation\CMSNav')->id($parentStructure)->first($str)) {
                     while (isset($str)) {
                         $this->navs[$str->id] = $str;
                         $str = $str->parent();

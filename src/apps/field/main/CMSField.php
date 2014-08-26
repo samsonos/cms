@@ -76,10 +76,10 @@ class CMSField extends \samson\cms\CMSField
         }
 
         $this->save();
-        /** @var \samson\cms\web\CMSNav $cmsnav */
+        /** @var \samson\cms\web\navigation\CMSNav $cmsnav */
 
         // If isset current structure
-        if (dbQuery('\samson\cms\web\CMSNav')->id($structureID)->first($cmsnav)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->id($structureID)->first($cmsnav)) {
 
             // If structure has not relation with current field
             if (!dbQuery('structurefield')->StructureID($cmsnav->id)->FieldID($this->id)->first()) {
