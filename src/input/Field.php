@@ -193,7 +193,7 @@ class Field extends \samson\core\CompressableExternalModule implements \samson\c
 		foreach ( get_object_vars($this) as $k => $v ) $result[ $inner_prefix.$k ] = $v;			
 		
 		// Generate field action controller
-		$result[ $inner_prefix.'action' ] = url_build( $this->id, $this->action );//'samson_cms_input_field'	
+		$result[ $inner_prefix.'action' ] = url_build( \samson\core\AutoLoader::oldClassName(get_class($this)), $this->action );//'samson_cms_input_field'
 		
 		// Generate unique textarea id
 		$result[ $inner_prefix.'textarea_id' ] = 'field_'.$this->obj->id;
