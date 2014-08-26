@@ -126,6 +126,10 @@ class Form
                 }
             }
 		}
+
+        // Autoload base tab classes
+        class_exists('samson\cms\web\material\MainTab');
+        class_exists('samson\cms\web\material\FieldLocalizedTab');
 		
 		// Iterate declared classes to find other FormTab children to load to form
 		foreach (get_declared_classes() as $class) {
@@ -139,10 +143,6 @@ class Form
 				}
 			}
 		}
-
-        // Create and add FormTab instance to form tabs collection
-        $this->tabs[] = new \samson\cms\web\material\MainTab($this);
-        $this->tabs[] = new \samson\cms\web\material\FieldLocalizedTab($this);
 		
 		// Sort tabs by their index
 		usort( $this->tabs, array( $this, 'tabs_sorter'));
