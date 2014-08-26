@@ -158,7 +158,6 @@ class StructureApplication extends \samson\cms\App
      *
      * @return array
      */
-
     public function __async_delete($navID = 0)
     {
         $data = null;
