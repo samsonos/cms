@@ -38,13 +38,13 @@ class CMSNav extends \samson\cms\CMSNav
 
         $data = null;
 
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($parentID)->first($data)) {
+        if (dbQuery(__CLASS__)->StructureID($parentID)->first($data)) {
             $select .= '<option title="'.$data->Name.'" selected value="'.$data->id.'">'.$data->Name.'</option>';
         } else {
             $select .= '<option title="Не выбрано" value="Не выбрано">Не выбрано</option>';
         }
 
-        if (dbQuery('\samson\cms\web\CMSNav')->exec($allNavs)) {
+        if (dbQuery(__CLASS__)->exec($allNavs)) {
             foreach ($allNavs as $nav) {
                 $select .= '<option title="'.$nav->Name.'" value="'.$nav->id.'">'.$nav->Name.'</option>';
             }

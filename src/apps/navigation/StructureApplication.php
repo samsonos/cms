@@ -88,7 +88,7 @@ class StructureApplication extends \samson\cms\App
         /** @var CMSNav $data */
         $data = null;
 
-        if (!dbQuery('\samson\cms\web\CMSNav')->StructureID($navID)->first($data)) {
+        if (!dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($navID)->first($data)) {
         }
 
         // Render form
@@ -114,7 +114,7 @@ class StructureApplication extends \samson\cms\App
     {
         /** @var CMSNav $currentMainNav */
         $currentMainNav = null;
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($currentMainNavID)->first($currentMainNav)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($currentMainNavID)->first($currentMainNav)) {
             $currentMainNav->currentNavID = $currentMainNavID;
         }
 
@@ -138,12 +138,12 @@ class StructureApplication extends \samson\cms\App
         /** @var \samson\cms\web\CMSNav $data */
         $data = null;
 
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($navID)->first($data)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($navID)->first($data)) {
             // Update structure data
             $data->update();
         } else {
             // Create new structure
-            $nav = new \samson\cms\web\CMSNav(false);
+            $nav = new \samson\cms\web\navigation\CMSNav(false);
             $nav->fillFields();
         }
 
@@ -164,7 +164,7 @@ class StructureApplication extends \samson\cms\App
         $data = null;
         $response = array ('status'=>0);
 
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($navID)->first($data)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($navID)->first($data)) {
             $data->delete(); //удаляем структуру
             $response['status'] = 1;
         }
@@ -203,7 +203,7 @@ class StructureApplication extends \samson\cms\App
     {
         $db_structure = null;
         // Проверим есть ли элемент структуры с таким ИД
-        if (dbQuery('\samson\cms\web\CMSNav')->StructureID($structure_id)->first($db_structure)) {
+        if (dbQuery('\samson\cms\web\navigation\CMSNav')->StructureID($structure_id)->first($db_structure)) {
             $db_structure->currentNavID = $structure_id;
         }
         $html = m()->view('index')
