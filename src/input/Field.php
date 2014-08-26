@@ -122,6 +122,7 @@ class Field extends \samson\core\CompressableExternalModule implements \samson\c
 	 */
 	public function __save()
 	{
+        elapsed('sdfsd');
 		// Does it nessessar?
 		s()->async(true);	
 

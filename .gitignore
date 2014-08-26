@@ -3,9 +3,8 @@
 .settings*
 .idea
 .idea/*
-cache/*
+*/cache/*
 vendor/*
 cms/*
 out/*
 composer.lock
-

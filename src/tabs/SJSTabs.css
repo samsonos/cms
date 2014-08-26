@@ -1,0 +1,43 @@
+/**
+ * Файл стилей для SamsonJS plugin Tabs
+ */
+
+/* Контейнер закладок формы */
+.samsonjstabs {  }
+
+/* Заголовки закладок */
+.samsonjstabs .tabs-list { z-index:10; position:relative; }
+.samsonjstabs .tabs-list li { 
+	display: inline-block;
+	vertical-align: top;
+	cursor:pointer;
+}
+.samsonjstabs .tabs-list li { padding: 12px 10px 12px 10px; border-radius: 5px 5px 0px 0px; }
+.samsonjstabs .tabs-list li { background-color: #EEE ; border: 1px solid #CCC; border-left:0; }
+.samsonjstabs .tabs-list li a { text-decoration: none; }
+
+/* Первая закладка */
+.samsonjstabs .tabs-list li:first-child { border: 1px solid #CCC;  }
+
+/* Наведение на закладку */
+.samsonjstabs .tabs-list li:hover { background-color: #fbfbfb; }
+
+/* Нажатии на закладку */
+.samsonjstabs .tabs-list li:active { box-shadow: 0px 0px 5px #CCC; } 
+
+/* "Активная" закладка */
+.samsonjstabs .tabs-list li.active { background-color: #F6F6F6;  border-bottom:1px solid #F6F6F6; cursor:default; }
+.samsonjstabs .tabs-list li.active a { text-decoration: underline; cursor:default; }
+
+/* Закладки 2-го уровня */
+.samsonjstabs .tabs-list .sub-tabs-list:hover,
+.samsonjstabs .tabs-list .sub-tabs-list { background-color: #EEE ; padding: 0px 10px 0px; border-bottom:1px solid #CCC; z-index:11; text-align: center; }
+.samsonjstabs .tabs-list .sub-tabs-list li { margin-top: 3px; padding:2px 10px 2px; margin-bottom: -1px;  }
+.samsonjstabs .tabs-list .sub-tabs-list span { font-size: 11px; }
+
+/* Стиль основной части закладки */
+.samsonjstabs .tab-content { width:100%; position:relative; z-index:1; display:none;}
+
+/* Внутренний контейнер содержания закладки */
+.samsonjstabs .tab-inner { padding:10px; background-color: #F6F6F6;  border: 1px solid #CCC; }
+
