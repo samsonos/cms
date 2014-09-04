@@ -121,10 +121,13 @@ class StructureApplication extends \samson\cms\App
         // Build tree
         $tree = CMSNav::fullTree($currentMainNav);
 
+        $sub_menu = m()->view('main/sub_menu')->parentnav_id($currentMainNavID)->nav_id($currentMainNavID)->output();
+
         // return Ajax response
         return array(
             'status' => 1,
-            'tree' => $tree
+            'tree' => $tree,
+            'sub_menu' => $sub_menu
         );
     }
 

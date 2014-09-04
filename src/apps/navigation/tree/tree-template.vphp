@@ -20,7 +20,7 @@ if( isset( $db_structure) ) $db_structure = & $db_structure;
         </a>
 
         <!-- EDIT LINK !-->
-        <a class="control edit icon2 icon_16x16 icon-edit"
+        <a class="control editstr icon2 icon_16x16 icon-edit"
            href="<?php url_base('structure/form/', 'parentid', $db_structure->id, 'nav_id') ?>"
            title="Редактировать данный ЭСС">
         </a>

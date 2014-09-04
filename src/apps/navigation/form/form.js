@@ -28,6 +28,7 @@ function CMSNavigationFormInit() {
             });
             s(".form2").ajaxSubmit(function(response) {
                 s(".tree-container").html(response.tree).treeview();
+                s('.sub_menu').html(response.sub_menu);
                 tb.close();
                 s( '.structure-element' )
                     .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
@@ -51,7 +52,7 @@ function CMSNavigationFormInit() {
     /**
      * обработчик редактирование новой записи
      */
-    s(".control.edit").tinyboxAjax({
+    s(".control.editstr").tinyboxAjax({
         html:'html',
         renderedHandler: function(response, tb) {
             s("#generateUrl").click(function(obj) {
@@ -62,6 +63,7 @@ function CMSNavigationFormInit() {
             });
             s(".form2").ajaxSubmit(function(response) {
                 s(".tree-container").html(response.tree).treeview();
+                s('.sub_menu').html(response.sub_menu);
                 tb.close();
                 s( '.structure-element' )
                     .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
@@ -86,6 +88,7 @@ function CMSNavigationFormInit() {
      */
     s(".control.delete").ajaxClick(function(response) {
         s(".tree-container").html(response.tree).treeview();
+        s('.sub_menu').html(response.sub_menu);
         s( '.structure-element' )
             .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
             .mouseout( 	function(el){ if(!ControlFormOpened) s( '.control-buttons', el ).hide(); });
@@ -120,6 +123,7 @@ function CMSNavigationFormInit() {
      */
     s(".control.move-up").ajaxClick(function(response) {
         s(".tree-container").html(response.tree).treeview();
+        s('.sub_menu').html(response.sub_menu);
         s( '.structure-element' )
             .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
             .mouseout( 	function(el){ if(!ControlFormOpened) s( '.control-buttons', el ).hide(); });
@@ -131,6 +135,7 @@ function CMSNavigationFormInit() {
     });
     s(".control.move-down").ajaxClick(function(response) {
         s(".tree-container").html(response.tree).treeview();
+        s('.sub_menu').html(response.sub_menu);
         s( '.structure-element' )
             .mouseover( function(el){ if(!ControlFormOpened) { s( '.control-buttons', el ).show(); ControlElement = el; } })
             .mouseout( 	function(el){ if(!ControlFormOpened) s( '.control-buttons', el ).hide(); });
