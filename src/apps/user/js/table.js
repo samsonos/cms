@@ -1,77 +1,55 @@
-/**
- * Функция-объект для обработки всех действий модуля пользователей
- *  
- * @param table Указатель на таблицу пользователей
- */
-function userTable( tableSelector )
-{
-	// Указатель на таблицу пользователей
-	var table;	
-	
-	/**
-	 * Обработчик ответа от сервера
-	 * 
-	 * @param serverResponce Ответ полученный от сервера
-	 */
-	var responceHandler = function( serverResponce, successHandler )
-	{
-		// Преобразуем ответ от сервера в объект
-		try{ serverResponce = JSON.parse( serverResponce );	} catch(e){};
+var loader = new Loader(s('body'));
 
-		// Если ответ от сервера разпознан 
-		if( serverResponce && ! serverResponce.error )
-		{	
-			// Если были ошибки - выведем её
-			if( serverResponce.error ) alert( serverResponce.error );
-			// Иначе обновим таблицу полученными данными 
-			else if( serverResponce.data && serverResponce.data.length ) init( serverResponce.data );
-		}
-	};	
-	
-	/**
-	 * Обработчик удаления пользователя 
-	 */
-	var deleteHandler = function( link )
-	{		
-		// Выполним ассинхронный запрос на удаление пользователя 
-		if( confirm('Удалить пользователя ' + s('td.fio a', link.parent().parent()).text() + '?') )		
-			s.ajax( link.a('href'), responceHandler );
-	};	
-	
-	/**
-	 * Инициализировать таблицу пользователей
-	 */
-	var init = function( htmlData )
-	{
-		// Если переданы данные таблицы то обновим её содержимое
-		if( htmlData ) s( tableSelector ).html( htmlData );
-		
-		// Получим таблицу пользователей
-		table = s( tableSelector );
-		
-		// Обработчик удаления пользователя
-		s('a.btnDeleteUser', table ).click(	deleteHandler, true, true );			
-		
-		// Обработчик открытия формы редактирования пользователя
-		s('td.fio a, .btnEditUser', table ).FormContainer({			
-			placeMode : 'creatorOver',
-			submitHandler : responceHandler
-		});			
-		
-		// Повесим обработчик создания пользователя на кнопку из меню
-		s('#btnCreateUser').FormContainer({			
-			placeMode : 'creatorOver',
-			submitHandler : responceHandler
-		});	
-	};	
-	
-	// Инициализируем таблицу
-	init();	
-};
-
-// Инициализация модуля JS пользователей 
-s('#user').pageInit(function(userPage)
-{	
-	// Выполним обработчик действий модуля
-	userTable( 'table' );		
+s(document).pageInit(function() {
+    initUserTable();
+    s('#createNewUser').tinyboxAjax({
+        html:'html',
+        renderedHandler: function(response, tb) {
+            s(".form2").ajaxSubmit(function(response) {
+                tb._close();
+                s('#content').html(response.table);
+                initUserTable();
+            });
+        },
+        beforeHandler: function() {
+            loader.show('Загрузка формы', true);
+            return true;
+        },
+        responseHandler: function() {
+            loader.hide();
+            return true;
+        }
+    });
 });
+
+function initUserTable() {
+    s('.btnEditUser').tinyboxAjax({
+        html:'html',
+        renderedHandler: function(response, tb) {
+            s(".form2").ajaxSubmit(function(response) {
+                loader.hide();
+                tb._close();
+                s('#content').html(response.table);
+                initUserTable();
+            }, function() {
+                loader.show(true);
+                return true;
+            });
+        },
+        beforeHandler: function() {
+            loader.show('Загрузка формы', true);
+            return true;
+        },
+        responseHandler: function() {
+            loader.hide();
+            return true;
+        }
+    });
+
+    s('.btnDeleteUser').ajaxClick(function(response) {
+        s('#content').html(response.table);
+        initUserTable();
+    }, function() {
+        return confirm('Delete?');
+    });
+}

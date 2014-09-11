@@ -1,7 +1,7 @@
 <tr>
 	<td class="control">
-		<a href="user/ajax_form/<?php v('user_id'); ?>" class="btnEditUser icon2 left icon_16x16 icon-edit" title="<?php t('Редактировать выбранного пользователя')?>"></a>
-		<a href="user/ajax_delete/<?php v('user_id'); ?>" class="btnDeleteUser icon2 left icon_16x16 icon-delete" title="<?php t('Удалить выбранного пользователя')?>"></a>
+		<a href="user/form/<?php v('user_id'); ?>" class="btnEditUser icon2 left icon_16x16 icon-edit" title="<?php t('Редактировать выбранного пользователя')?>"></a>
+		<a href="<?php module_url('delete', 'user_id', 'table') ?>" class="btnDeleteUser icon2 left icon_16x16 icon-delete" title="<?php t('Удалить выбранного пользователя')?>"></a>
 	</td>
 	<td class="id"><?php v('user_id');?></td>
 	<td class="fio"><a href="user/ajax_form/<?php v('user_id'); ?>"><?php v('user_FName');?> <?php v('user_SName');?> <?php v('user_TName');?></a></td>					
