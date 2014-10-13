@@ -10,27 +10,34 @@ if (!defined('__PATH')) {
 }
 
 /** Check if core is already loaded */
-if (!function_exists('s')) {
+if (!defined('__SAMSON_VENDOR_PATH')) {
     /** Set new project structure vendor path */
     define('__SAMSON_VENDOR_PATH', __PATH.'vendor/');
 
     /** Set SamsonCMS text environment */
     define('__SAMSONCMS_TESTMODE', true);
 
+    /** Set default locale to - Russian */
+    define('DEFAULT_LOCALE', 'ru');
+
     /** Load SamsonPHP framework */
-    require(__SAMSON_VENDOR_PATH.'/samsonos/php_core/samson.php');
+    require(__SAMSON_VENDOR_PATH.'/autoload.php');
 
     /** Load generic ActiveRecord config to start application in test mode */
     require(__PATH.'src/ActiveRecordConfig.php');
+
+} else { // CMS is ran from other web-application
+    /** Load SamsonPHP framework */
+    require(__SAMSON_VENDOR_PATH.'/autoload.php');
 }
 
 /** Collection of WRONG module namespaces resolving */
-samson\core\AutoLoader::$moduleMap = array(
+/*samson\core\AutoLoader::$moduleMap = array(
     'samson\cms\table' => __SAMSON_VENDOR_PATH.'samsonos/cms_table/'
-);
+);*/
 
 // Set supported locales
-setlocales('en', 'ru');
+setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
@@ -55,4 +62,6 @@ s()->composer()
     ->load(__PATH.'src/apps/gallery')
     ->load(__PATH.'src/apps/user')
     ->load(__PATH.'src/apps/help')
+    ->subscribe('core.e404','e404')
+    ->subscribe('core.routing', array(url(),'router'))
     ->start('main');
