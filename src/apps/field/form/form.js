@@ -49,9 +49,9 @@ function fieldButtonsInit() {
 s(document).pageInit(function() {
     initFieldIcons();
     fieldForm();
-    s('.sub_menu_a').ajaxClick(function(response) {
+    /*s('.sub_menu_a').ajaxClick(function(response) {
 
-    });
+    });*/
 });
 
 function initFieldIcons() {
