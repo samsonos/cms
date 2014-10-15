@@ -18,7 +18,7 @@ if (!function_exists('s')) {
     define('__SAMSONCMS_TESTMODE', true);
 
     /** Load SamsonPHP framework */
-    require(__SAMSON_VENDOR_PATH.'/samsonos/php_core/samson.php');
+    require(__SAMSON_VENDOR_PATH.'autoload.php');
 
     /** Load generic ActiveRecord config to start application in test mode */
     require(__PATH.'src/ActiveRecordConfig.php');
@@ -34,7 +34,6 @@ setlocales('en', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->e404('e404')
     ->load(__PATH.'src/app')
     ->load(__PATH.'src/ajaxloader')
     ->load(__PATH.'src/fixedheader')
@@ -55,4 +54,6 @@ s()->composer()
     ->load(__PATH.'src/apps/gallery')
     ->load(__PATH.'src/apps/user')
     ->load(__PATH.'src/apps/help')
+    ->subscribe('core.e404', 'e404')
+    ->subscribe('core.routing', array(url(),'router'))
     ->start('main');
