@@ -10,6 +10,9 @@
     "minimum-stability":"dev",
 	"require":
     {
+
+    },
+    "require-dev": {
         "samsonos/php_core":"*",
         "samsonos/php_activerecord":"*",
         "samsonos/php_resourcer":"*",
@@ -28,9 +31,7 @@
         "samsonos/php_auth":"*",
         "samsonos/php_upload":"*",
         "samsonos/cms_api":"*",
-        "samsonos/cms_table":"*"
-    },
-    "require-dev": {
+        "samsonos/cms_table":"*",
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "2.0.*@dev"
     },
