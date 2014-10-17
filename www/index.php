@@ -63,5 +63,12 @@ s()->composer()
     ->load(__PATH.'src/apps/user')
     ->load(__PATH.'src/apps/help')
     ->subscribe('core.e404','e404')
-    ->subscribe('core.routing', array(url(),'router'))
-    ->start('main');
+    ->subscribe('core.routing', array(url(),'router'));
+
+// Iterate all external applications if present
+if(isset($applications)) {
+    foreach($applications as $application) {
+        s()->load($application);
+    }
+}
+s()->start('main');
