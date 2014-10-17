@@ -156,8 +156,7 @@ class MaterialApplication extends \samson\cms\App
 
         // Add aditional material fields
         $ocg = new dbConditionGroup('OR');
-        foreach ( cms()->material_fields as $f)
-        {
+        foreach ( cms()->material_fields as $f) {
             // Create special condition for additional fields
             $cg = new dbConditionGroup('AND');
             $cg->arguments[] = new dbConditionArgument('_mf.FieldID', $f->FieldID);
@@ -171,7 +170,6 @@ class MaterialApplication extends \samson\cms\App
 
         // Add condition group
         $table->search_fields[] = $ocg;
-
 
         $table_html = $table->render();
 
