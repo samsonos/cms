@@ -41,7 +41,6 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->e404('e404')
     ->load(__PATH.'src/app')
     ->load(__PATH.'src/ajaxloader')
     ->load(__PATH.'src/fixedheader')
@@ -71,4 +70,5 @@ if(isset($applications)) {
         s()->load($application);
     }
 }
+
 s()->start('main');
