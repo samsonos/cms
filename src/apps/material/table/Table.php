@@ -1,6 +1,7 @@
 <?php
 namespace samson\cms\web\material;
 
+use samson\activerecord\Argument;
 use samson\activerecord\Condition;
 use samson\activerecord\dbRelation;
 use samson\activerecord\dbConditionGroup;
@@ -55,14 +56,14 @@ class Table extends \samson\cms\table\Table
 		if ( isset( $keywords{0} ) )
 		{			
 			// Create condition group
-			$scg = new dbConditionGroup('or');				
-			
+			$scg = new Condition('or');
+
 			// Iterate base material and nav fields to generate search conditions
 			foreach ( $this->search_fields as $item ) {
 				// If condition group is passed - add it to search condition				
-				if( is_a($item, ns_classname('Condition')) ) $scg->arguments[] = $item;
+				if( is_a($item, \samson\core\Autoloader::className('Condition', 'samson\activerecord')) ) $scg->arguments[] = $item;
 				// Create condition argument
-				else $scg->arguments[] = new dbConditionArgument( $item, '%'.$keywords.'%', dbRelation::LIKE );
+				else $scg->arguments[] = new Argument( $item, '%'.$keywords.'%', dbRelation::LIKE );
 			}
 		
 			// Add query condition
