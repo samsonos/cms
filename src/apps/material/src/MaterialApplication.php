@@ -147,7 +147,7 @@ class MaterialApplication extends \samson\cms\App
 	function __async_table($cmsnav = null, $search = null, $page = null)
 	{
 		// Try to find cmsnav
-        if (isset($cmsnav) && dbQuery('\samson\cms\Navigation')->id($cmsnav)->first($cmsnav)) {
+        if (isset($cmsnav) && (is_object($cmsnav) || dbQuery('\samson\cms\Navigation')->id($cmsnav)->first($cmsnav))) {
             // Handle successfull found
         }
 		
