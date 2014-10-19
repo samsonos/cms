@@ -15,11 +15,11 @@ and all of its dependencies.
 * Give ability to easily update all modules via composer and use all of its features.
 * Give ability to easily change theme and design in SamsonCMS and its modules.
 * Create generic SamsonCMS modules:
-    * With build in paging
-    * With build in searching
-    * With build in theme changing
-    * With build in CRUD actions
-    * With generic views such as table and metro-style list
+    * With build in paging;
+    * With build in searching;
+    * With build in theme changing;
+    * With build in CRUD actions;
+    * With generic views such as table and metro-style list;
     
 
 
