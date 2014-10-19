@@ -10,6 +10,7 @@ and all of its dependencies.
 
 ##Roadmap
 * Make this project almost empty by creating all independent SamsonCMS modules.
+* Give ability to easily install SamsonCMS in your project in any possible location.
 * Give ability to create and connect custom SamsonCMS modules very easy.
 * Give ability to easily update all modules via composer and use all of its features.
 * Give ability to easily change theme and design in SamsonCMS and its modules.
