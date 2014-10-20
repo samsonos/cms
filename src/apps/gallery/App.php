@@ -97,14 +97,15 @@ class App extends \samson\cms\App
 			// Check if participant has not uploaded remix yet
 			if (dbQuery('material')->MaterialID($material_id)->Active(1)->first($material)) {
 				// Create empty db record
-				$photo = new \samson\activerecord\gallery(false);
+                $photo = new \samson\activerecord\gallery(false);
 				$photo->Name = $uname;
-				$photo->Src = url()->base().$fpath;
+				$photo->Src = $fname;
 				$photo->Path = dirname(url()->base().$fpath).'/';
 				$photo->MaterialID = $material->id;
                 $photo->Active = 1;
-				$photo->save();				
-				
+				$photo->save();
+                $photo->Priority = $photo->PhotoID;
+                $photo->save();
 				// Call scaler if it is loaded
 				if(class_exists('\samson\scale\Scale', false)) {
                     m('scale')->resize($fpath, $fname);
@@ -125,7 +126,7 @@ class App extends \samson\cms\App
 	{
 		// Get all material images
 		$items_html = '';
-		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('PhotoID')->exec( $images ))foreach ( $images as $image )
+		if( dbQuery('gallery')->MaterialID( $material_id )->order_by('Priority', 'ASC')->exec( $images ))foreach ( $images as $image )
 		{
             // Get old-way image path, remove full path to check file
             $src = str_replace(__SAMSON_BASE__, '', $image->Src);
@@ -134,9 +135,11 @@ class App extends \samson\cms\App
             } else { // Use new CORRECT way
                 $path = $image->Path.$image->Src;
             }
+            $priority = $image->Priority;
 
             // Render gallery image tumb
 			$items_html .= $this->view( 'tumbs/item')
+                ->priority($priority)
 			    ->image($image)
                 ->imgpath($path)
 			    ->material_id($material_id)
@@ -149,4 +152,20 @@ class App extends \samson\cms\App
 		    ->material_id($material_id)
 		->output();
 	}
+
+    public function __async_sort()
+    {
+
+        $material_id = $_POST['id'];
+        $materials = dbQuery('gallery')->MaterialID($material_id)->order_by('Priority', 'ASC')->exec();
+        $i = 0;
+        parse_str($_POST['data'], $array);
+        foreach ($materials as $material) {
+            $material->Priority = $array['ID'][$i++];
+            $material->save();
+        }
+        $result['status'] = 1;
+        $result['array'] = $array['ID'];
+        return $result;
+    }
 }

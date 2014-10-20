@@ -4,7 +4,8 @@
 		<title><?php v('title'); ?> - SamsonCMS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="content-language" content="ru" />	
-		<link rel="icon" type="image/png" href="favicon.png" >		
+		<link rel="icon" type="image/png" href="favicon.png" >
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 	<body id="<?php v('id'); ?>">		
 		<header><?php m('menu')->render(''); ?></header>
