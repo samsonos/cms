@@ -51,7 +51,10 @@ class MaterialApplication extends \samson\cms\App
 		
 		// Old-fashioned direct search input form POST if not passed
         $search = !isset($search) ? (isset($_POST['search']) ? $_POST['search'] : '') : $search;
-		
+
+        if (!isset($cmsnav)) {
+            m()->all_materials(true);
+        }
 		// Set view data
 		$this
             ->title($title)
@@ -65,7 +68,10 @@ class MaterialApplication extends \samson\cms\App
 	{
 		// Create form object
 		$form = new \samson\cms\web\material\Form( $material_id, $cmsnav );
-	
+
+        if ($material_id == 0) {
+            m()->new_material(true);
+        }
 		// Render form
 		m()->html( $form->render() );
 	}

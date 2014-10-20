@@ -26,6 +26,7 @@ class UserApplication extends \samson\cms\App
 
         // Установим представление
         m()->view('main/index')->title(t('Пользователи системы', true))
+            ->all_materials(true)
             // Установим шаблон таблицы пользователей
             ->user_table($table->render());
     }

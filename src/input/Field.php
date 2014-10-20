@@ -81,7 +81,7 @@ class Field extends \samson\core\CompressableExternalModule implements \samson\c
 	 * @return \samson\cms\input\InputField Class instance
 	 */
 	public static function & fromObject( & $obj, $param, $classname = __CLASS__ )
-	{			
+	{
 		$o = null;
 		
 		// If object is passed
@@ -92,7 +92,7 @@ class Field extends \samson\core\CompressableExternalModule implements \samson\c
 
 		// Try to get field module instance from core
 		if( null !== ($f = & m( $classname )) )
-		{	
+		{
 			// Create input field instance		
 			$o = & $f->copy();
 			$o->view_path = $f->view_path;

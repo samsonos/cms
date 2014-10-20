@@ -14,7 +14,7 @@
 	.__file_name { float:left; font-size: 12px !important; text-decoration:underline; }
 	
 	/* Delete button */
-	.__delete { float:left; margin-right:5px;}
+	.__delete, .__deletefield { float:left; margin-right:5px;}
 	
 	/* Progressbar */
 	.__progress_bar
@@ -33,7 +33,7 @@
 	&.empty 
 	{ 
 		/* Hide file value */
-		.__file_name, .__delete { display:none; }	
+		.__file_name, .__delete, .__deletefield { display:none; }
 		
 		/* Show input file upload */
 		.__input { display:block; }	
@@ -42,7 +42,7 @@
 	&.loading 
 	{
 		/* Hide file value */
-		.__file_name, .__delete { display:none; }	
+		.__file_name, .__delete, .__deletefield { display:none; }
 		
 		/* Show input file upload */
 		.__input { display:none; }
