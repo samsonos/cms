@@ -10,6 +10,7 @@
             &rArr;
         </h1>
     <?php endif?>
+    <input id="cmsnav_id" type="hidden" value="<?php iv('cmsnav_id'); ?>">
     <h1 class="icon2 icon_16x16 left icon-material" title="<?php t('Таблица материалов')?>"><?php t('Материалы')?>:</h1>
     <!-- End of Header block -->
 
