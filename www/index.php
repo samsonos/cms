@@ -4,44 +4,38 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
-/** Build absolute path to SamsonCMS root folder */
+//[PHPCOMPRESSOR(remove,start)]
+/** If we run cms as independent web-application */
 if (!defined('__PATH')) {
+    /** Build absolute path to SamsonCMS root folder */
     define('__PATH', __DIR__.'/../');
-}
 
-/** Check if core is already loaded */
-if (!defined('__SAMSON_VENDOR_PATH')) {
     /** Set new project structure vendor path */
     define('__SAMSON_VENDOR_PATH', __PATH.'vendor/');
 
     /** Set SamsonCMS text environment */
-    define('__SAMSONCMS_TESTMODE', true);
+    define('__SAMSONCMS_INDEPENDENT', true);
 
     /** Set default locale to - Russian */
     define('DEFAULT_LOCALE', 'ru');
+}
+//[PHPCOMPRESSOR(remove,end)]
 
-    /** Load SamsonPHP framework */
-    require(__SAMSON_VENDOR_PATH.'/autoload.php');
+/** Require composer autoloader */
+require(__SAMSON_VENDOR_PATH.'/autoload.php');
 
+
+/** Check if this is independent mode */
+if (defined('__SAMSONCMS_INDEPENDENT')) {
     /** Load generic ActiveRecord config to start application in test mode */
     require(__PATH.'src/ActiveRecordConfig.php');
-
-} else { // CMS is ran from other web-application
-    /** Load SamsonPHP framework */
-    require(__SAMSON_VENDOR_PATH.'/autoload.php');
 }
-
-/** Collection of WRONG module namespaces resolving */
-/*samson\core\AutoLoader::$moduleMap = array(
-    'samson\cms\table' => __SAMSON_VENDOR_PATH.'samsonos/cms_table/'
-);*/
 
 // Set supported locales
 setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->e404('e404')
     ->load(__PATH.'src/app')
     ->load(__PATH.'src/ajaxloader')
     ->load(__PATH.'src/fixedheader')
@@ -63,5 +57,13 @@ s()->composer()
     ->load(__PATH.'src/apps/user')
     ->load(__PATH.'src/apps/help')
     ->subscribe('core.e404','e404')
-    ->subscribe('core.routing', array(url(),'router'))
-    ->start('main');
+    ->subscribe('core.routing', array(url(),'router'));
+
+// Iterate all external applications if present
+if(isset($applications)) {
+    foreach($applications as $application) {
+        s()->load($application);
+    }
+}
+
+s()->start('main');

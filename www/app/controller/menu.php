@@ -13,7 +13,7 @@ function menu__HANDLER()
 			$result .= m()
 				->active( url()->module == $app->id() ? 'active' : '' )
 				->app( $app )
-                ->name( isset($app->name{0})?$app->name:$app->app_name)
+                ->name( isset($app->name{0})?$app->name:isset($app->app_name{0})?$app->app_name:'')
 			->output('menu/item');
 		}
 	}
