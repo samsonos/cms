@@ -22,7 +22,7 @@
 		<!-- Controls -->
 		<div class="btn-panel">			
 			<input class="btn float-right last-right" type="submit" id="btnSave" value="<?php t('Сохранить')?>" title="<?php t('Сохранить материал в базе данных и закрыть форму')?>">
-			<input class="btn float-right" type="button" id="btnApply" value="<?php t('Применить')?>" title="<?php t('Сохранить материал в базе данных')?>">
+			<input style="display: none;" class="btn float-right" type="button" id="btnApply" value="<?php t('Применить')?>" title="<?php t('Сохранить материал в базе данных')?>">
 			<a class="btn float-right first-left" id="btnExit" href="<?php module_url()?>" title="<?php t('Закрыть форму не сохраняя материал и вернуться к списку материалов')?>">
                 <?php t('Закрыть')?>
             </a>

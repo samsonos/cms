@@ -1,5 +1,5 @@
 /** JS SamsonCMS Select field interaction */
-s('.__inputfield.__file_upload').pageInit( function( fields )
+s('.__fieldUpload').pageInit( function( fields )
 {
 	/** Delete file handler */
 	s('.__deletefield', fields ).click( function( btn )
@@ -37,10 +37,25 @@ s('.__inputfield.__file_upload').pageInit( function( fields )
 				s('.__input', parent).show();
 				s('.__delete', parent).hide();
 			});
+
+            btn.hide();
 		}
 
 	},true, true );
 
     // File selected event
-    uploadFileHandler( s('input[type="file"]', fields ) );
+    uploadFileHandler(s('input[type="file"]', fields ), {
+        start : function(file) {
+            fields.parent().css('padding', '0');
+            s('.__progress_bar p',fields).css('width', "0%");
+            s('.__input', fields).css('display', 'none');
+            s('.__progress_text', fields).css('display', 'block');
+            s('.__file_name', fields).html(file.name);
+        },
+        response : function() {
+            s('.__progress_text', fields).css('display', 'none');
+            fields.parent().css('padding', '5px 10px');
+            s('.__deletefield', fields).show();
+        }
+    });
 });
