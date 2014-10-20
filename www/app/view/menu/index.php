@@ -16,7 +16,7 @@
 		    <div class="logo"></div>
         <?php endif?>
         <?php m('i18n')->render('list')?>
-		<a href="<?php url_base('auth2','logout')?>" class="logout" title="<?php t('Выход')?>">.</a>
+		<a href="<?php url_base('signin','logout')?>" class="logout" title="<?php t('Выход')?>">.</a>
 	</div>
 </nav>
 
