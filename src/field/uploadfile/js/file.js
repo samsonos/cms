@@ -36,9 +36,8 @@ s('.__fieldUpload').pageInit( function( fields )
 				s('.__input', parent).val('');
 				s('.__input', parent).show();
 				s('.__delete', parent).hide();
+                btn.hide();
 			});
-
-            btn.hide();
 		}
 
 	},true, true );
