@@ -26,21 +26,18 @@ function signin_login(){
                 url()->redirect('');
             } else {
                 s()->template('app/view/signin/signin_template.php');
-                $error .= m()->view('signin/login_error')->output();
-                m()->html($error)->title('Ошибка');
-                //url()->redirect('signin/error');
+                $error .= m()->view('signin/signin_form.php')->errorClass('errorAuth')->output();
+                m()->html($error)->title('Авторизация');
             }
         } else {
             s()->template('app/view/signin/signin_template.php');
-            $error .= m()->view('signin/login_error')->output();
-            m()->html($error)->title('Ошибка');
-            //url()->redirect('signin/error');
+            $error .= m()->view('signin/signin_form.php')->errorClass('errorAuth')->userEmail("{$_POST['email']}")->output();
+            m()->html($error)->title('Авторизация');
         }
     } else {
         s()->template('app/view/signin/signin_template.php');
-        $error .= m()->view('signin/login_error')->output();
-        m()->html($error)->title('Ошибка');
-        //url()->redirect('signin/error');
+        $error .= m()->view('signin/signin_form.php')->errorClass('errorAuth')->output();
+        m()->html($error)->title('Авторизация');
     }
 }
 
