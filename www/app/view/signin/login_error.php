@@ -6,10 +6,9 @@
  * Time: 13:11
  */
 ?>
-
 <div class="container">
-    <div class="notification">
-        <div class="notification__title"><?php t('Ошибка') ?></div>
-<div class="notification__content error"><?php t('Вы ввели неверный логин или пароль, попробуйте еще раз.') ?></div>
-</div>
+    <div class="error-container">
+        <h2><?php t('Ошибка') ?></h2>
+        <?php t('Ошибка авторизации, проверьте введённые данные') ?>
+    </div>
 </div>

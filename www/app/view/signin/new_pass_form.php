@@ -7,27 +7,12 @@
  */
 ?>
 <div class="container">
-    <div class="notification">
-        <div class="notification__title"><?php t('Использовать новый пароль') ?></div>
-        <div class="recovery">
-            <form method="post" action="<?php url_base('passrecovery', 'recovery', 'code') ?>">
-                <div class="pass_recovery_form">
-                    <div class="box">
-                        <div class="pass_recovery_box" style="margin-left: 50px">
-                            <?php t('Новый пароль') ?>
-                            <input type="password" class="pass_recovery_input" name="password">
-                            <br>
-                            <?php t('Подтвердить пароль') ?>
-                            <input type="password" class="pass_recovery_input" name="confirm_password">
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" class="btn-upload" style="width: 110px" value="ГОТОВО">
-                <div class="recovery__hint">
-                    <?php t('Придумайте пароль, который не забудете.') ?>
-                </div>
-            </form>
-        </div>
-    </div>
+
+    <form method="post" action="<?php url_base('passrecovery', 'recovery', 'code') ?>" class="form-signin recovery" role="form">
+        <h3 class="form-signin-heading"><?php t('Восстановление пароля') ?></h3>
+        <input type="password" name="password" class="form-control" placeholder=<?php t('Новый пароль') ?>" required="" autofocus="">
+        <input type="password" name="confirm_password" class="form-control" placeholder=<?php t('Еще раз новый пароль') ?>" required="">
+        <button class="btn btn-lg btn-signin btn-block" type="submit"><?php t('Сохранить') ?></button>
+    </form>
+
 </div>

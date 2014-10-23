@@ -8,31 +8,51 @@
 use samson\social\email\EmailStatus;
 
 function signin(){
-    s()->template('app/view/signin/signin.php');
-    m()->title('Авторизация');
+//    s()->template('app/view/signin/signin_template.php');
+//    m()->title('Авторизация');
+
+    s()->template('app/view/signin/signin_template.php');
+    $result = '';
+    $result .= m()->view('signin/signin_form.php')->output();
+    m()->html($result)->title('Авторизация');
 }
 
 function signin_login(){
     $user = null;
+    $error = '';
     if (isset($_POST['email']) && ($_POST['email'] != '') && isset($_POST['password']) && ($_POST['password'] != '')) {
         if (m('socialemail')->authorizeWithEmail(md5($_POST['email']), md5($_POST['password']), $user)->code == EmailStatus::SUCCESS_EMAIL_AUTHORIZE) {
             if (dbQuery('user')->cond('UserID', $user->id)->first()) {
-                url()->redirect('main');
+                url()->redirect('');
             } else {
-                url()->redirect();
+                s()->template('app/view/signin/signin_template.php');
+                $error .= m()->view('signin/login_error')->output();
+                m()->html($error)->title('Ошибка');
+                //url()->redirect('signin/error');
             }
         } else {
-            url()->redirect('signin/error');
+            s()->template('app/view/signin/signin_template.php');
+            $error .= m()->view('signin/login_error')->output();
+            m()->html($error)->title('Ошибка');
+            //url()->redirect('signin/error');
         }
     } else {
-        url()->redirect('signin/error');
+        s()->template('app/view/signin/signin_template.php');
+        $error .= m()->view('signin/login_error')->output();
+        m()->html($error)->title('Ошибка');
+        //url()->redirect('signin/error');
     }
 }
 
 function signin_error()
 {
-    s()->template('app/view/signin/login_error.php');
-    m()->title('Ошибка');
+//    s()->template('app/view/signin/login_error.php');
+//    m()->title('Ошибка');
+
+    s()->template('app/view/signin/signin_template.php');
+    $result = '';
+    $result .= m()->view('signin/login_error')->output();
+    m()->html($result)->title('Ошибка');
 }
 
 function signin_logout()
