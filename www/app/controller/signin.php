@@ -36,21 +36,21 @@ function signin_login(){
         }
     } else {
         s()->template('app/view/signin/signin_template.php');
-        $error .= m()->view('signin/signin_form.php')->errorClass('errorAuth')->output();
+        $error .= m()->view('signin/signin_form')->errorClass('errorAuth')->output();
         m()->html($error)->title('Авторизация');
     }
 }
 
-function signin_error()
-{
-//    s()->template('app/view/signin/login_error.php');
-//    m()->title('Ошибка');
-
-    s()->template('app/view/signin/signin_template.php');
-    $result = '';
-    $result .= m()->view('signin/login_error')->output();
-    m()->html($result)->title('Ошибка');
-}
+//function signin_error()
+//{
+////    s()->template('app/view/signin/login_error.php');
+////    m()->title('Ошибка');
+//
+//    s()->template('app/view/signin/signin_template.php');
+//    $result = '';
+//    $result .= m()->view('signin/login_error')->output();
+//    m()->html($result)->title('Ошибка');
+//}
 
 function signin_logout()
 {

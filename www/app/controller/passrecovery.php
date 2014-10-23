@@ -32,17 +32,19 @@ function passrecovery_mail()
             $user->save();
             $message = m()->view('signin/email/pass_recovery')->code($user->confirmed)->output();
             mail_send($user->Email, $user->Email, $message, t('Восстановление пароля!', true), 'SamsonCMS');
-            //m()->view('signin/pass_recovery_mailsend')->title(t('Восстановление пароля', true));
 
             $result .= m()->view('signin/pass_recovery_mailsend')->output();
             s()->template('app/view/signin/signin_template.php');
             m()->html($result)->title('Восстановление пароля');
         } else {
-            //m()->view('signin/pass_error')->message(t('Пользователя с таким email адресом не существует. Проверьте Ваши данные или зарегистрируйтесь', true))->title(t('Ошибка восстановление пароля', true));
 
-            $result .= m()->view('signin/pass_error')->message(t('Пользователя с таким email адресом не существует. Проверьте Ваши данные или зарегистрируйтесь.', true))->output();
+            $result .= m()->view('signin/pass_recovery_form')->errorClass('errorAuth')->output();
             s()->template('app/view/signin/signin_template.php');
-            m()->html($result)->title('Ошибка восстановление пароля');
+            m()->html($result)->title('Авторизация');
+
+//            $result .= m()->view('signin/pass_error')->message(t('Пользователя с таким email адресом не существует. Проверьте Ваши данные или зарегистрируйтесь.', true))->output();
+//            s()->template('app/view/signin/signin_template.php');
+//            m()->html($result)->title('Ошибка восстановление пароля');
         }
     } else {
         e404();

@@ -20,6 +20,12 @@
 <body id="<?php v('id'); ?>" class="signin">
 
 <?php m('i18n')->render('list')?>
+
+<!--<div>1</div>-->
+<!--<ul>-->
+<!--    <li><a style="color: #fff">a</a></li>-->
+<!--</ul>-->
+
 <?php m()->render() ?>
 
 </body>
