@@ -7,12 +7,10 @@
  */
 ?>
 
-<div class="container">
-    <div class="error-container">
-        <h2><?php t('Ошибка') ?></h2>
-        <?php iv('message') ?> <br>
-        <?php if(url()->module == 'main') :?>
-            <a href="<?php url_base('main','changepass') ?>"><?php t('Попробовать снова') ?></a>
-        <?php endif ?>
-    </div>
+<div class="error-container">
+    <h2><?php t('Ошибка') ?></h2>
+    <?php iv('message') ?> <br>
+    <?php if(url()->module == 'main') :?>
+        <a href="<?php url_base('main','changepass') ?>"><?php t('Попробовать снова') ?></a>
+    <?php endif ?>
 </div>

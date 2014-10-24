@@ -6,9 +6,8 @@
  * Time: 13:11
  */
 ?>
-<div class="container">
-    <div class="error-container">
-        <h2><?php t('Ошибка') ?></h2>
-        <?php t('Ошибка авторизации, проверьте введённые данные') ?>
-    </div>
+
+<div class="error-container">
+    <h2><?php t('Ошибка') ?></h2>
+    <?php t('Ошибка авторизации, проверьте введённые данные') ?>
 </div>

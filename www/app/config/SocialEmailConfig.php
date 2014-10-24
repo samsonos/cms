@@ -20,4 +20,6 @@ class SocialEmailConfig extends \samson\core\Config
     public $dbHashPasswordField = 'md5_password';
 
     public $dbConfirmField = 'confirmed';
+
+    public $initHandler = 'signin__HANDLER';
 }

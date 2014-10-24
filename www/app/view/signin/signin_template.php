@@ -21,7 +21,9 @@
 
 <?php m('i18n')->render('list')?>
 
-<?php m()->render() ?>
+<div class="container">
+    <?php m()->render() ?>
+</div>
 
 </body>
 </html>

@@ -5,15 +5,13 @@
  * Date: 20.10.2014
  * Time: 13:51
  */
+use samson\social\email\EmailStatus;
 
 function passrecovery()
 {
     if (m('social')->authorized()) {
         e404();
     } else {
-//        s()->template('app/view/signin/pass_recovery_form.php');
-//        m()->title(t('Восстановление пароля', true));
-
         $result = '';
         $result .= m()->view('signin/pass_recovery_form')->output();
         s()->template('app/view/signin/signin_template.php');
@@ -31,30 +29,23 @@ function passrecovery_mail()
             $user->confirmed = md5(generate_password(20).time());
             $user->save();
             $message = m()->view('signin/email/pass_recovery')->code($user->confirmed)->output();
-            mail_send($user->Email, $user->Email, $message, t('Восстановление пароля!', true), 'SamsonCMS');
+
+            mail_send($user->Email, 'info@samsonos.com', $message, t('Восстановление пароля!', true), 'SamsonCMS');
 
             $result .= m()->view('signin/pass_recovery_mailsend')->output();
             s()->template('app/view/signin/signin_template.php');
             m()->html($result)->title('Восстановление пароля');
         } else {
-
-            $result .= m()->view('signin/pass_recovery_form')->errorClass('errorAuth')->output();
-            s()->template('app/view/signin/signin_template.php');
-            m()->html($result)->title('Авторизация');
-
-//            $result .= m()->view('signin/pass_error')->message(t('Пользователя с таким email адресом не существует. Проверьте Ваши данные или зарегистрируйтесь.', true))->output();
-//            s()->template('app/view/signin/signin_template.php');
-//            m()->html($result)->title('Ошибка восстановление пароля');
+            url()->redirect();
         }
     } else {
-        e404();
+        url()->redirect();
     }
 }
 
 function passrecovery_confirm($code)
 {
     if (dbQuery('user')->confirmed($code)->first()) {
-        //m()->view('signin/new_pass_form')->code($code)->title(t('Восстановление пароля', true));
         $result = '';
         $result .= m()->view('signin/new_pass_form')->code($code)->output();
         s()->template('app/view/signin/signin_template.php');
@@ -74,10 +65,11 @@ function passrecovery_recovery($code)
             $user->md5_password = md5($_POST['password']);
             $user->Password = $_POST['password'];
             $user->save();
-            url()->redirect();
+            if (m('socialemail')->authorizeWithEmail($user->md5_email, $user->md5_password, $user)->code == EmailStatus::SUCCESS_EMAIL_AUTHORIZE) {
+                url()->redirect();
+            }
         }
     } else {
-        //m()->view('registration/pass_error')->message(t('Вы вввели некорректный пароль либо пароли не совпадают', true))->title(t('Ошибка восстановления пароля', true));
         $result = '';
         $result .= m()->view('signin/pass_error')->message(t('Вы ввели некорректный пароль либо пароли не совпадают', true))->output();
         s()->template('app/view/signin/signin_template.php');
