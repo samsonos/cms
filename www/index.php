@@ -42,7 +42,6 @@ s()->composer()
     ->load(__PATH.'src/field/uploadfile')
     ->load(__PATH.'src/field/uploadimg')
     ->load(__PATH.'src/field/wysiwyg')
-    ->load(__PATH.'src/apps/gallery')
     ->subscribe('core.e404','e404')
     ->subscribe('core.routing', array(url(),'router'));
 

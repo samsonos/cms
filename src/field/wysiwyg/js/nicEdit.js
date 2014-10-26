@@ -1297,8 +1297,9 @@ var nicImageOptions = {
 
 var nicImageButton = nicEditorButton.extend({	
 	init:function()
-	{			
-		// Обработчик загрузки картинки/файла в материал
+	{
+        // TODO: Add support to upload images into wysiwyg
+		/*// Обработчик загрузки картинки/файла в материал
 		s( this.button ).FormContainer({
 			filler : 'material/ajax_upload_form',
 			placeMode : 'creatorOver',
@@ -1323,7 +1324,7 @@ var nicImageButton = nicEditorButton.extend({
 					cEditorArea.append( recievedResource );
 				}				
 			}
-		});	
+		});	*/
 	},
 	
 	addPane : function() {		
