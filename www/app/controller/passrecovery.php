@@ -7,6 +7,7 @@
  */
 use samson\social\email\EmailStatus;
 
+/** Main password recovery template */
 function passrecovery()
 {
     if (m('social')->authorized()) {
@@ -19,6 +20,7 @@ function passrecovery()
     }
 }
 
+/** Sending email with the correct address */
 function passrecovery_mail()
 {
     if (isset($_POST['email'])) {
@@ -43,6 +45,10 @@ function passrecovery_mail()
     }
 }
 
+/**
+ * New password form
+ * @param string $code       Code password recovery
+ */
 function passrecovery_confirm($code)
 {
     if (dbQuery('user')->confirmed($code)->first()) {
@@ -55,6 +61,10 @@ function passrecovery_confirm($code)
     }
 }
 
+/**
+ * Setting new password and sign in
+ * @param string $code       Code password recovery
+ */
 function passrecovery_recovery($code)
 {
     if (isset($_POST['password']) && isset($_POST['confirm_password']) && $_POST['password'] == $_POST['confirm_password']) {

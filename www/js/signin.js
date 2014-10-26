@@ -1,5 +1,5 @@
 /**
- * Created by nazarenko on 23.10.2014.
+ * Created by Olexandr Nazarenko on 23.10.2014.
  */
 
 s('.main-form').pageInit(function(form){
@@ -15,7 +15,9 @@ s('.main-form').pageInit(function(form){
     });
 });
 
-// Функция присваивания форме ajax отправки данных
+/**
+ * Assignment Ajax event
+ */
 function formSubm(){
     var form = s('.main-form');
     form.ajaxSubmit(function(response){
@@ -30,7 +32,9 @@ function formSubm(){
     });
 }
 
-// Функция анимация формы при неверной авторизации
+/**
+ * Form animation with invalid authorization
+ */
 function formShake(){
     var container = s('.form-container');
     container.css('left', '20px');
