@@ -24,6 +24,7 @@
         "samsonos/js_tinybox":"*",
         "samsonos/js_select":"*",
         "samsonos/js_treeview":"*",
+        "samsonos/js_fixedheader":"*",
         "samsonos/js_tabs":"*",
         "samsonos/js_translit":"*",
         "samsonos/php_compressor":"*",

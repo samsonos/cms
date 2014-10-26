@@ -36,7 +36,6 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->load(__PATH.'src/ajaxloader')
     ->load(__PATH.'src/formcontainer')
     ->load(__PATH.'src/gallery')
     ->load(__PATH.'src/input')
