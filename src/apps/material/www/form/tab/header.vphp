@@ -1,8 +1,0 @@
-<li class="<?php iv('class')?>">
-	<div class="#<?php v('tab_id') ?>"><?php t($tab_name)?></div>
-	<?php iv('tab_header_html')?>
-		
-	<?php if(isv('sub_headers')):?>
-		<ul><?php iv('sub_headers')?></ul>
-	<?php endif?>	
-</li>

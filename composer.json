@@ -32,6 +32,8 @@
         "samsonos/php_upload":"*",
         "samsonos/cms_api":"*",
         "samsonos/cms_table":"*",
+        "samsonos/cms_app":"*",
+        "samsonos/cms_app_material":"*",
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "2.0.*@dev"
     },

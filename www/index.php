@@ -36,7 +36,6 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->load(__PATH.'src/app')
     ->load(__PATH.'src/ajaxloader')
     ->load(__PATH.'src/fixedheader')
     ->load(__PATH.'src/formcontainer')
@@ -50,7 +49,6 @@ s()->composer()
     ->load(__PATH.'src/field/uploadfile')
     ->load(__PATH.'src/field/uploadimg')
     ->load(__PATH.'src/field/wysiwyg')
-    ->load(__PATH.'src/apps/material')
     ->load(__PATH.'src/apps/navigation')
     ->load(__PATH.'src/apps/field')
     ->load(__PATH.'src/apps/gallery')
