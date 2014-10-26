@@ -40,6 +40,7 @@
         "samsonos/cms_app_material":"*",
         "samsonos/cms_app_navigation":"*",
         "samsonos/cms_app_field":"*",
+        "samsonos/cms_app_user":"*",
         "samsonos/cms_app_help":"*",
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "2.0.*@dev"
