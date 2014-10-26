@@ -23,6 +23,9 @@
         "samsonos/js_lightbox":"*",
         "samsonos/js_tinybox":"*",
         "samsonos/js_select":"*",
+        "samsonos/js_treeview":"*",
+        "samsonos/js_tabs":"*",
+        "samsonos/js_translit":"*",
         "samsonos/php_compressor":"*",
         "samsonos/php_pager":"*",
         "samsonos/php_deploy":"*",
@@ -34,6 +37,7 @@
         "samsonos/cms_table":"*",
         "samsonos/cms_app":"*",
         "samsonos/cms_app_material":"*",
+        "samsonos/cms_app_navigation":"*",
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "2.0.*@dev"
     },
