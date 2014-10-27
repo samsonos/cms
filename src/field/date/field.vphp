@@ -1,2 +1,0 @@
-<input type="date" class="__hidden" style="display:none" value="<?php iv('field_value')?>">
-<input type="date" class="__input" id="<?php iv('field_textarea_id')?>" style="display:none" value="<?php iv('field_value')?>">

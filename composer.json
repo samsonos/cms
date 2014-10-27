@@ -38,6 +38,7 @@
         "samsonos/cms_table":"*",
         "samsonos/cms_app":"*",
         "samsonos/cms_input":"*",
+        "samsonos/cms_input_date":"*",
         "samsonos/cms_app_material":"*",
         "samsonos/cms_app_navigation":"*",
         "samsonos/cms_app_field":"*",
