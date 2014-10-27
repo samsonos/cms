@@ -36,7 +36,6 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->load(__PATH.'src/input')
     ->load(__PATH.'src/field/date')
     ->load(__PATH.'src/field/select')
     ->load(__PATH.'src/field/uploadfile')
