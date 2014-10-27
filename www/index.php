@@ -36,7 +36,6 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->load(__PATH.'src/field/uploadimg')
     ->load(__PATH.'src/field/wysiwyg')
     ->subscribe('core.e404','e404')
     ->subscribe('core.routing', array(url(),'router'));
