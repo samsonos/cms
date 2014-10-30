@@ -24,7 +24,6 @@ if (!defined('__PATH')) {
 /** Require composer autoloader */
 require(__SAMSON_VENDOR_PATH.'/autoload.php');
 
-
 /** Check if this is independent mode */
 if (defined('__SAMSONCMS_INDEPENDENT')) {
     /** Load generic ActiveRecord config to start application in test mode */
