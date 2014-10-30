@@ -9,7 +9,7 @@ class ActiveRecordConfig extends \samson\core\Config
 {
     public $__module = 'activerecord';
 
-    public $name 	= 'samsonos.com';
-    public $login 	= 'samsonos';
-    public $pwd 	= 'AzUzrcVe4LJJre9f';
+    public $name 	= 'purpurina';
+    public $login 	= 'nazarenko';
+    public $pwd 	= 'AN12345!';
 }
