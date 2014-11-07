@@ -1,7 +1,5 @@
-# -FrontPage-
 AddDefaultCharset utf-8
 
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
+RewriteRule ^(.*)$ www/$1 [L]
 
