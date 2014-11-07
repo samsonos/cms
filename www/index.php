@@ -4,19 +4,15 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
-//[PHPCOMPRESSOR(remove,start)]
-/** If we run cms as independent web-application */
-if (!defined('VENDOR_PATH')) {
-    // Define path to vendor folder
-    define('VENDOR_PATH', '../vendor/');
-
-    /** Set default locale to - Russian */
+/** Set default locale to - Russian */
+if (!defined('DEFAULT_LOCALE')) {
     define('DEFAULT_LOCALE', 'ru');
 }
-//[PHPCOMPRESSOR(remove,end)]
 
 /** Require composer autoloader */
-require_once(VENDOR_PATH.'autoload.php');
+if (!defined('VENDOR_PATH')) {
+    require_once('../vendor/autoload.php');
+}
 
 // Set supported locales
 setlocales('en', 'ua', 'ru');

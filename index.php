@@ -1,7 +1,4 @@
 <?php
-/** Define path SamsonCMS project */
-define('__PATH', '');
-
 /** Set new project structure vendor path */
 define('VENDOR_PATH', __PATH.'vendor/');
 
