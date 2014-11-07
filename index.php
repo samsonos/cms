@@ -5,8 +5,16 @@ define('__SAMSON_BASE__', '/'.basename(__DIR__).'/');
 /** Load composer autoloader */
 require('vendor/autoload.php');
 
-/** Configuration section */
-// require('../app/config/YourConfigurationConfig.php');
+/** Automatic parent web-application configuration read */
+if (file_exists('app/config')) {
+    // Read all configuration files
+    foreach(\samson\core\File::dir('app/config') as $file) {
+        // If this is supported module configuration
+        if (stripos('Compressor, Deploy, ActiveRecord', basename($file)) !== false) {
+            require($file);
+        }
+    }
+}
 
 /** Load SamsonCMS **/
 require('www/index.php');
