@@ -9,11 +9,6 @@ if (!defined('__SAMSON_CWD__')) {
     define('__SAMSON_CWD__', dirname(__DIR__) . '/');
 }
 
-/** Set correct relative base path */
-if (!defined('__SAMSON_BASE__')) {
-    define('__SAMSON_BASE__', '/'.basename(__SAMSON_CWD__).'/');
-}
-
 /** Set default locale to - Russian */
 if (!defined('DEFAULT_LOCALE')) {
     define('DEFAULT_LOCALE', 'ru');

@@ -12,7 +12,7 @@ function signin__HANDLER()
 {
     if (!m('social')->authorized()) {
         if (!url()->is('signin') && !url()->is('passrecovery')) {
-            url()->redirect('signin');
+            //url()->redirect('signin');
         }
     }
 }
