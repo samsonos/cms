@@ -12,7 +12,7 @@ function main()
     if (!m('social')->authorized()) {
         url()->redirect('signin');
     }
-	
+
 	// Render application main page block
 	foreach (App::loaded() as $app) {
         // Show only visible apps
