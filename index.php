@@ -6,6 +6,7 @@ define('__SAMSON_BASE__', '/'.basename(__DIR__).'/');
 require('vendor/autoload.php');
 
 /** Configuration section */
+// require('../app/config/YourConfigurationConfig.php');
 
 /** Load SamsonCMS **/
 require('www/index.php');
