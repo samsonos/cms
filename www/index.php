@@ -4,6 +4,11 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
+/** Set correct relative base path */
+if (defined('__SAMSON_BASE__')) {
+    define('__SAMSON_BASE__', '/'.basename(dirname(__DIR__)).'/');
+}
+
 /** Set default locale to - Russian */
 if (!defined('DEFAULT_LOCALE')) {
     define('DEFAULT_LOCALE', 'ru');
