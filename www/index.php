@@ -10,7 +10,7 @@ if (!defined('DEFAULT_LOCALE')) {
 }
 
 /** Require composer autoloader */
-if (!defined('VENDOR_PATH')) {
+if (!class_exists('samson\core\Core')) {
     require_once('../vendor/autoload.php');
 }
 
