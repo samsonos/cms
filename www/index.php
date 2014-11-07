@@ -21,11 +21,15 @@ if (!class_exists('samson\core\Core')) {
 
 /** Automatic parent web-application configuration read */
 if (file_exists('../../../app/config')) {
+    /** Special constant to disable local ActiveRecord configuration */
+    define('EXTERNAL_CONFIG', true);
     // Read all configuration files
-    foreach(\samson\core\File::dir('app/config') as $file) {
-        // If this is supported module configuration
-        if (stripos('Compressor, Deploy, ActiveRecord', basename($file)) !== false) {
-            require($file);
+    foreach(\samson\core\File::dir('../../../app/config') as $file) {
+        foreach(array('Compressor', 'Deploy', 'ActiveRecord') as $module) {
+            // If this is supported module configuration
+            if (stripos(basename($file, '.php'), $module) !== false) {
+                require($file);
+            }
         }
     }
 }
