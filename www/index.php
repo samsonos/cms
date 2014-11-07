@@ -5,12 +5,12 @@
  */
 
 /** Set current directory as project root */
-if (defined('__SAMSON_CWD__')) {
+if (!defined('__SAMSON_CWD__')) {
     define('__SAMSON_CWD__', dirname(__DIR__) . '/');
 }
 
 /** Set correct relative base path */
-if (defined('__SAMSON_BASE__')) {
+if (!defined('__SAMSON_BASE__')) {
     define('__SAMSON_BASE__', '/'.basename(__SAMSON_CWD__).'/');
 }
 
