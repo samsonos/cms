@@ -6,12 +6,9 @@
 
 //[PHPCOMPRESSOR(remove,start)]
 /** If we run cms as independent web-application */
-if (!defined('__PATH')) {
-    /** Build absolute path to SamsonCMS root folder */
-    define('__PATH', __DIR__.'/../');
-
-    /** Set SamsonCMS text environment */
-    define('__SAMSONCMS_INDEPENDENT', true);
+if (!defined('VENDOR_PATH')) {
+    // Define path to vendor folder
+    define('VENDOR_PATH', '../vendor/');
 
     /** Set default locale to - Russian */
     define('DEFAULT_LOCALE', 'ru');
@@ -19,7 +16,7 @@ if (!defined('__PATH')) {
 //[PHPCOMPRESSOR(remove,end)]
 
 /** Require composer autoloader */
-require('../vendor/autoload.php');
+require_once(VENDOR_PATH.'autoload.php');
 
 // Set supported locales
 setlocales('en', 'ua', 'ru');
