@@ -10,9 +10,6 @@ if (!defined('__PATH')) {
     /** Build absolute path to SamsonCMS root folder */
     define('__PATH', __DIR__.'/../');
 
-    /** Set new project structure vendor path */
-    define('__SAMSON_VENDOR_PATH', __PATH.'vendor/');
-
     /** Set SamsonCMS text environment */
     define('__SAMSONCMS_INDEPENDENT', true);
 
@@ -22,13 +19,7 @@ if (!defined('__PATH')) {
 //[PHPCOMPRESSOR(remove,end)]
 
 /** Require composer autoloader */
-require(__SAMSON_VENDOR_PATH.'/autoload.php');
-
-/** Check if this is independent mode */
-if (defined('__SAMSONCMS_INDEPENDENT')) {
-    /** Load generic ActiveRecord config to start application in test mode */
-    require(__PATH.'src/ActiveRecordConfig.php');
-}
+require('../vendor/autoload.php');
 
 // Set supported locales
 setlocales('en', 'ua', 'ru');
