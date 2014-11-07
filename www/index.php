@@ -4,9 +4,14 @@
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 
+/** Set current directory as project root */
+if (defined('__SAMSON_CWD__')) {
+    define('__SAMSON_CWD__', dirname(__DIR__) . '/');
+}
+
 /** Set correct relative base path */
 if (defined('__SAMSON_BASE__')) {
-    define('__SAMSON_BASE__', '/'.basename(dirname(__DIR__)).'/');
+    define('__SAMSON_BASE__', '/'.basename(__SAMSON_CWD__).'/');
 }
 
 /** Set default locale to - Russian */
@@ -17,6 +22,17 @@ if (!defined('DEFAULT_LOCALE')) {
 /** Require composer autoloader */
 if (!class_exists('samson\core\Core')) {
     require_once('../vendor/autoload.php');
+}
+
+/** Automatic parent web-application configuration read */
+if (file_exists('../../../app/config')) {
+    // Read all configuration files
+    foreach(\samson\core\File::dir('app/config') as $file) {
+        // If this is supported module configuration
+        if (stripos('Compressor, Deploy, ActiveRecord', basename($file)) !== false) {
+            require($file);
+        }
+    }
 }
 
 // Set supported locales
