@@ -2,6 +2,9 @@
 /** Set correct relative base path */
 define('__SAMSON_BASE__', '/'.basename(__DIR__).'/');
 
+/** Set current directory as project root */
+define('__SAMSON_CWD__', __DIR__.'/');
+
 /** Load composer autoloader */
 require('vendor/autoload.php');
 
