@@ -10,7 +10,7 @@ if (!defined('__SAMSON_CWD__')) {
 }
 
 /** Set current directory url base */
-if (!defined('__SAMSON_BASE__')) {
+if (!defined('__SAMSON_BASE__') && strlen(__DIR__) > strlen($_SERVER['DOCUMENT_ROOT'])) {
     define('__SAMSON_BASE__', '/'.basename(__SAMSON_CWD__) . '/');
 }
 
