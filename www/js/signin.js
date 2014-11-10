@@ -18,7 +18,7 @@ s('.main-form').pageInit(function(form){
         } else {
             preloader.hide();
             button.show();
-            document.location.href = "/";
+            document.location.href = "../";
         }
     });
 });
@@ -28,14 +28,22 @@ s('.main-form').pageInit(function(form){
  */
 function formSubm(){
     var form = s('.main-form');
+    var preloader = s('.preloader_container');
+    var button = s('button.btn-signin');
     form.ajaxSubmit(function(response){
+        preloader.show();
+        button.hide();
         if(response.status == '0'){
             s('div.container','body#signin').html();
             s('div.container','body#signin').html(response['html']);
             formSubm();
             formShake();
+            preloader.hide();
+            button.show();
         } else {
-            document.location.href = "/";
+            preloader.hide();
+            button.show();
+            document.location.href = "../";
         }
     });
 }
