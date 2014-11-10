@@ -24,7 +24,7 @@ function default__HANDLER()
 /** E404 controller action */
 function default_e404()
 {
-    m()->view('e404')->nomenu(true)->title(t('Страница не найдена', true));
+    m()->view('e404')->title(t('Страница не найдена', true));
 }
 
 /* Menu controller action */
@@ -48,7 +48,6 @@ function default_menu()
 
     // Find current SamsonCMS application
     if (App::find(url()->module, $app/*@var $app App*/)) {
-
         // Render main-menu application sub-menu
         $subMenu = $app->submenu();
 
