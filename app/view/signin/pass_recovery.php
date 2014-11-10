@@ -10,7 +10,7 @@
 <div class="notification">
     <div class="notification__title">Восстановление пароля</div>
     <div class="recovery">
-        <form method="post" action="<?php url_base('passrecovery', 'mail') ?>">
+        <form method="post" action="<?php url_base('signin', 'mail') ?>">
             <input type="email" class="input-form" placeholder="E-mail" name="email" required>
             <p>Убедитесь в правильности написания еmail</p>
             <input type="submit" class="btn" value="Восстановить пароль">
