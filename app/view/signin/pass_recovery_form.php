@@ -8,7 +8,7 @@
 ?>
 
 <div class="form-container">
-    <form class="signin-pages <?php iv('errorClass') ?>" method="post" action="<?php url_base('passrecovery', 'mail') ?>">
+    <form class="signin-pages <?php iv('errorClass') ?>" method="post" action="<?php url_base('signin', 'mail') ?>">
         <fieldset>
             <h2><?php t('Восстановление пароля') ?></h2>
             <input type="email" class="input-medium form-control" placeholder="E-mail" name="email" required>

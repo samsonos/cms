@@ -6,4 +6,4 @@
  * Time: 13:56
  */
 ?>
-Чтобы восстановить пароль, перейдите по <a href="<?php url_base('passrecovery/confirm','code')?>">ссылке</a>.
+Чтобы восстановить пароль, перейдите по <a href="<?php url_base('signin/confirm','code')?>">ссылке</a>.

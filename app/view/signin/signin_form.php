@@ -17,6 +17,6 @@
         </label>
         <div class="preloader_container"><div class="preloader"></div></div>
         <button class="btn btn-lg btn-signin btn-block" type="submit"><?php t('Войти') ?></button>
-        <a href="<?php url_base('passrecovery') ?>"><?php t('Восстановление пароля') ?></a>
+        <a href="<?php url_base('signin', 'passrecovery') ?>"><?php t('Восстановление пароля') ?></a>
     </form>
 </div>
