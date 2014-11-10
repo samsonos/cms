@@ -45,6 +45,7 @@
         "samsonos/cms_input_wysiwyg":"*",
         "samsonos/cms_app_material":"*",
         "samsonos/cms_app_navigation":"*",
+        "samsonos/cms_app_signin":"*",
         "samsonos/cms_app_field":"*",
         "samsonos/cms_app_user":"*",
         "samsonos/cms_app_gallery":"*",

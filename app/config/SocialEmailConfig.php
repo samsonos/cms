@@ -21,5 +21,5 @@ class SocialEmailConfig extends \samson\core\Config
 
     public $dbConfirmField = 'confirmed';
 
-    public $initHandler = 'signin__HANDLER';
+    public $initHandler = array('samson\cms\signin\SignIn', 'authorize');
 }
