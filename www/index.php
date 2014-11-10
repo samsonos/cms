@@ -44,7 +44,7 @@ setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
 s()->composer()
-    ->subscribe('core.e404','e404')
+    ->subscribe('core.e404','default_e404')
     ->subscribe('core.routing', array(url(),'router'));
 
 // Iterate all external applications if present
@@ -54,4 +54,4 @@ if(isset($applications)) {
     }
 }
 
-s()->start('main');
+s()->start('default');
