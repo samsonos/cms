@@ -3,13 +3,21 @@
  */
 
 s('.main-form').pageInit(function(form){
+    var preloader = s('.preloader_container');
+    var button = s('button.btn-signin');
     form.ajaxSubmit(function(response){
+        preloader.show();
+        button.hide();
         if(response.status == '0'){
             s('div.container','body#signin').html();
             s('div.container','body#signin').html(response['html']);
             formSubm();
             formShake();
+            preloader.hide();
+            button.show();
         } else {
+            preloader.hide();
+            button.show();
             document.location.href = "/";
         }
     });
