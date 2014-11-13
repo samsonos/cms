@@ -9,7 +9,7 @@ if (!defined('EXTERNAL_CONFIG')) {
     {
         public $__module = 'activerecord';
 
-        public $name = 'purpurina';
+        public $name = 'landscape-test';
         public $login = 'nazarenko';
         public $pwd = 'AN12345!';
     }
