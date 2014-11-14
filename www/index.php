@@ -47,10 +47,15 @@ s()->composer()
     ->subscribe('core.e404','default_e404')
     ->subscribe('core.routing', array(url(),'router'));
 
-// Iterate all external applications if present
-if(isset($applications)) {
-    foreach($applications as $application) {
-        s()->load($application);
+/** Automatic external SamsonCMS Application searching  */
+if (file_exists('../../../src/')) {
+    // Get reource map to find all modules in src folder
+    foreach(\samson\core\ResourceMap::get('../../../src/')->modules as $module) {
+        // We are only interested in SamsonCMS application ancestors
+        if (strpos($module[2], 'samson\cms\App') !== false) {
+            // Load
+            s()->load(dirname($module[1]));
+        }
     }
 }
 
