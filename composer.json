@@ -10,7 +10,7 @@
     "minimum-stability":"dev",
 	"require":
     {
-        "aws/aws-sdk-php": "2.*"
+
     },
     "require-dev": {
         "samsonos/php_core":"*",
@@ -46,6 +46,8 @@
         "samsonos/cms_app_material":"*",
         "samsonos/cms_app_navigation":"*",
         "samsonos/cms_app_signin":"*",
+        "samsonos/cms_app_export":"*",
+        "samsonos/cms_app_cleaner":"*",
         "samsonos/cms_app_field":"*",
         "samsonos/cms_app_user":"*",
         "samsonos/cms_app_gallery":"*",
