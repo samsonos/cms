@@ -10,7 +10,7 @@
     "minimum-stability":"dev",
 	"require":
     {
-
+        "aws/aws-sdk-php": "2.*"
     },
     "require-dev": {
         "samsonos/php_core":"*",
