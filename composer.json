@@ -53,8 +53,7 @@
         "samsonos/cms_app_gallery":"*",
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_help":"*",
-        "phpunit/phpunit": "4.0.*",
-        "squizlabs/php_codesniffer": "2.0.*@dev"
+        "phpunit/phpunit": "4.0.*"
     },
     "autoload": {
         "classmap": ["src/"]
