@@ -53,6 +53,10 @@ if (file_exists('../../../src/')) {
     foreach(\samson\core\ResourceMap::get('../../../src/')->modules as $module) {
         // We are only interested in SamsonCMS application ancestors
         if (strpos($module[2], 'samson\cms\App') !== false) {
+            // Remove possible '/src/' path from module path
+            if (($pos = strripos($module[1], '/src/')) !== false) {
+                $module[1] = substr($module[1], 0, $pos);
+            }
             // Load
             s()->load(dirname($module[1]));
         }
