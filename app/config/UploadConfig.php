@@ -10,5 +10,5 @@ class UploadConfig extends \samson\core\Config
 {
     public $__module = 'samsonupload';
 
-    public $adapterType = 'local';
+    public $handler = array('\samson\cms\web\upload\UploadHandler', 'createPath');
 }
