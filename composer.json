@@ -54,13 +54,7 @@
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_product":"*",
         "samsonos/cms_app_help":"*",
-        "phpunit/phpunit": "4.0.*",
-        "squizlabs/php_codesniffer": "2.0.*@dev"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "bash contrib/setup.sh"
-        ]
+        "phpunit/phpunit": "4.0.*"
     },
     "autoload": {
         "classmap": ["src/"]
