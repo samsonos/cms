@@ -10,15 +10,5 @@ class UploadConfig extends \samson\core\Config
 {
     public $__module = 'samsonupload';
 
-    public $adapterType = 'amazon';
-
-    public $accessKey = 'AKIAJRG2YUZ7KGMLDXRQ';
-
-    public $secretKey = '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';
-
-    public $bucket = 'landscapestatic';
-
-    public $awsUrl = 'http://static.landscape.ua';
-
-    public $handler = array('\samson\cms\web\upload\UploadHandler', 'createPath');
+    public $adapterType = 'local';
 }

@@ -9,8 +9,12 @@ if (!defined('EXTERNAL_CONFIG')) {
     {
         public $__module = 'activerecord';
 
-        public $name = 'landscape-test';
+        public $name = 'purpurina';
         public $login = 'nazarenko';
         public $pwd = 'AN12345!';
+
+        public $relations = array(
+            array('material', 'material', 'company_id', 0, 'MaterialID', 'productcompany')
+        );
     }
 }
