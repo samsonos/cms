@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="favicon.png" >
 </head>
 <body id="<?php v('id'); ?>">
-<header><?php m('menu')->render(''); ?></header>
+<header><?php m('default')->render('menu')?></header>
 <section id="data">
     <?php m()->render() ?>
 </section>

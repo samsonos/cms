@@ -3,8 +3,8 @@
 		<li class="icons">
 			<a class="to_main<?php if(isv('active')) echo ' active'?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
 		</li><li class="icons">
-			<a class="to_site" href="<?php url_base('control/site');?>" title="<?php t('Открыть сайт')?>">.</a>
-		</li><li class="icons">
+			<a class="to_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
+		</li><li class="icons" style="display: none">
 			<a class="edit_site" href="<?php url_base('control/editor')?>" title="<?php t('Редактировать сайт')?>">.</a>
 		</li>
 		
