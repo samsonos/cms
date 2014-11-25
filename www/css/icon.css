@@ -1,62 +1,68 @@
-/* Общие стили для иконок приложения */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 
-/* Иконка */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ */
 .icon2 { display: block; background-repeat: no-repeat; background-position: 50% 50%; cursor:pointer; }
 
-/* Иконка слева */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 .icon2.left { background-position: 0% 50%; }
 
-/* Класс наследник для кнопок размером 16х16 */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 16пїЅ16 */
 .icon2.icon_16x16 	{ min-width:18px; min-height:18px; line-height:18px; }
-/* Класс наследник для кнопок размером 16х16 */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 16пїЅ16 */
 .icon2.icon_20x2 	{ min-width:20px; min-height:20px;  line-height:20px; }
-/* Класс наследник для кнопок размером 16х16 c иконкой над надписью посередине */
+/* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 16пїЅ16 c пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .icon2.icon_vertical_16x16 { background-position: 50% 0%;  }
 
 
-/* Иконка домик */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 .icon-home2 { background-image: url(../img/home.png); }
 .icon-live.hover,
 .icon-home2:hover { background-image: url(../img/home_active.png); }
 .icon-home2.active,
 .icon-live:active{ background-image: url(../img/home_active.png); }
 
-/* Иконка домик */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 .icon-edit2 { background-image: url(../img/edit2.png); }
 .icon-edit2.hover,
 .icon-edit2:hover { background-image: url(../img/edit2_hover.png); }
 .icon-edit2.active,
 .icon-edit2:active{ background-image: url(../img/edit2_hover.png); }
 
-/* Иконка "выход" */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ" */
 .icon-logout2 { background-image: url(../img/logout.png);  }
 .icon-live.hover,
 .icon-logout2:hover { background-image: url(../img/logout_active.png);  }
 
-/* Иконка "Планетка" */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" */
 .icon-live { background-image: url(../img/live.png); }
 .icon-live.hover,
 .icon-live:hover { background-image: url(../img/live_active.png); }
 .icon-live.active,
 .icon-live:active { background-image: url(../img/live_active.png); }
 
-/* Иконка "Красный Крестик в кружочке" */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" */
 .icon-delete { background-image: url('../img/delete.png'); }
 .icon-delete.hover,
 .icon-delete:hover { background-image: url('../img/delete_hover.png'); }
 .icon-delete.active,
 .icon-delete:active { background-image: url('../img/delete_active.png'); }
 
-/* Иконка "Карандашик" */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" */
 .icon-edit { background-image: url('../img/edit.png'); }
 .icon-edit.hover,
 .icon-edit:hover { background-image: url('../img/edit_hover.png'); }
 .icon-edit.active,
 .icon-edit:active { background-image: url('../img/edit_active.png'); }
 
-/* Иконка "Права" */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ" */
 .icon-right { background-image: url('../img/right.png'); }
 .icon-right.hover,
 .icon-right:hover { background-image: url('../img/right_hover.png'); }
 .icon-right.active,
 .icon-right:active { background-image: url('../img/right_active.png'); }
+
+/* For image editor */
+.icon-zoom-in { background: url("../img/zoom_in_icon.png"); }
+.icon-zoom-out { background: url("../img/zoom_out_icon.png"); }
+.icon-rotate-left { background: url("../img/rotate_left_icon.png"); }
+.icon-rotate-right { background: url("../img/rotate_right_icon.png"); }
