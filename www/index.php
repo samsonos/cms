@@ -58,7 +58,7 @@ if (file_exists('../../../src/')) {
                 $module[1] = substr($module[1], 0, $pos);
             }
             // Load
-            s()->load(dirname($module[1]));
+            s()->load($module[1]);
         }
     }
 }
