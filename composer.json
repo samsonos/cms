@@ -26,8 +26,6 @@
         "samsonos/js_fixedheader":"*",
         "samsonos/js_tabs":"*",
         "samsonos/js_translit":"*",
-        "samsonos/php_fs":"1.*",
-        "samsonos/php_fs_local":"1.*",
         "samsonos/php_compressor":"*",
         "samsonos/php_pager":"*",
         "samsonos/php_parse":"*",
