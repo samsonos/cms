@@ -13,7 +13,7 @@
         "aws/aws-sdk-php": "2.*"
     },
     "require-dev": {
-        "samsonos/php_core":"*",
+        "samsonos/php_core":"1.*",
         "samsonos/php_activerecord":"*",
         "samsonos/php_resourcer":"*",
         "samsonos/php_less":"*",
@@ -53,14 +53,7 @@
         "samsonos/cms_app_user":"*",
         "samsonos/cms_app_gallery":"*",
         "samsonos/cms_app_relatedmaterial":"*",
-        "samsonos/cms_app_help":"*",
-        "phpunit/phpunit": "4.0.*",
-        "squizlabs/php_codesniffer": "2.0.*@dev"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "bash contrib/setup.sh"
-        ]
+        "samsonos/cms_app_help":"*"
     },
     "autoload": {
         "classmap": ["src/"]
