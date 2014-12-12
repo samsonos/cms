@@ -35,6 +35,7 @@
         "samsonos/php_upload":"*",
         "samsonos/social_core":"*",
         "samsonos/social_email":"*",
+        "samsonos/cms_ui":"*",
         "samsonos/cms_api":"*",
         "samsonos/cms_table":"*",
         "samsonos/cms_app":"*",
@@ -51,8 +52,7 @@
         "samsonos/cms_app_gallery":"*",
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_help":"*",
-        "phpunit/phpunit": "4.0.*",
-        "squizlabs/php_codesniffer": "2.0.*@dev"
+        "phpunit/phpunit": "4.*"
     },
     "scripts": {
         "post-install-cmd": [
