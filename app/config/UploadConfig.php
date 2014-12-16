@@ -24,7 +24,6 @@ class UploadConfig extends Config
      */
     public static function createPath()
     {
-        trace('Upload!');
         return 'upload';
     }
 }
