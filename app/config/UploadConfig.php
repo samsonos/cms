@@ -6,9 +6,22 @@
  * Time: 16:15
  */
 
+/** Upload module configuration */
 class UploadConfig extends \samson\core\Config
 {
+    /** @var string Configured module iidentifier */
     public $__module = 'samsonupload';
 
-    public $handler = array('\samson\cms\web\upload\UploadHandler', 'createPath');
+    /** @var callback Path builder */
+    public $handler = array(__CLASS__, 'createPath');
+
+    /**
+     * Generic upload path builder
+     * @param string $materialID Uploaded material identifier
+     * @return string Upload path
+     */
+    public static function createPath($materialID)
+    {
+        return 'upload';
+    }
 }
