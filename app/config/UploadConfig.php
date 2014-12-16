@@ -13,7 +13,7 @@ class UploadConfig extends \samson\core\Config
     public $__module = 'samsonupload';
 
     /** @var callback Path builder */
-    public $handler = array(__CLASS__, 'createPath');
+    public $uploadDirHandler = array(__CLASS__, 'createPath');
 
     /**
      * Generic upload path builder
