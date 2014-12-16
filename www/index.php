@@ -30,7 +30,7 @@ if (file_exists('../../../app/config')) {
     define('EXTERNAL_CONFIG', true);
     // Read all configuration files
     foreach(\samson\core\File::dir('../../../app/config') as $file) {
-        foreach(array('Compressor', 'Deploy', 'ActiveRecord') as $module) {
+        foreach(array('FileService', 'Scale', 'Upload', 'Compressor', 'Deploy', 'ActiveRecord') as $module) {
             // If this is supported module configuration
             if (stripos(basename($file, '.php'), $module) !== false) {
                 require($file);
