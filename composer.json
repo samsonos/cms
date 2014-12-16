@@ -53,6 +53,7 @@
         "samsonos/cms_app_user":"*",
         "samsonos/cms_app_gallery":"*",
         "samsonos/cms_app_relatedmaterial":"*",
+        "samsonos/cms_app_materialtable":"*",
         "samsonos/cms_app_help":"*"
     },
     "autoload": {
