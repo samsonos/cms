@@ -5,23 +5,26 @@
  * Date: 17.11.2014
  * Time: 16:15
  */
+namespace samsonos\cms;
+
+use samson\core\Config;
 
 /** Upload module configuration */
-class UploadConfig extends \samson\core\Config
+class UploadConfig extends Config
 {
-    /** @var string Configured module iidentifier */
+    /** @var string Configured module identifier */
     public $__module = 'samsonupload';
 
     /** @var callback Path builder */
-    public $uploadDirHandler = array(__CLASS__, 'createPath');
+    public $uploadDirHandler = array('samsonos\cms\UploadConfig', 'createPath');
 
     /**
      * Generic upload path builder
-     * @param string $materialID Uploaded material identifier
      * @return string Upload path
      */
-    public static function createPath($materialID)
+    public static function createPath()
     {
+        trace('Upload!');
         return 'upload';
     }
 }
