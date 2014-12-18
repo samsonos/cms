@@ -14,7 +14,10 @@ function default__HANDLER()
             $result .= $app->main();
         }
     }
-		
+	
+	// Set home icon active	
+	m()->mainPageActive('active');
+	
 	// Установим представление
 	m()	->view('main')
 		->title(t('Главная', true))

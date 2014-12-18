@@ -1,7 +1,7 @@
 <nav>
 	<ul class="main_menu">
 		<li class="icons">
-			<a class="to_main<?php if(isv('active')) echo ' active'?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
+			<a class="to_main <?php iv('mainPageActive') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
 		</li><li class="icons">
 			<a class="to_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
 		</li><li class="icons" style="display: none">
