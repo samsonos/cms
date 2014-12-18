@@ -24,16 +24,23 @@ header {
                   height:inherit;
                   color:rgba(0,0,0,0);
 
-                  &.to_main {background:url('../img/header_home.png') no-repeat center;}
-                  &.to_main:hover {background:url('../img/header_home_hover.png') no-repeat center;}
+                  &.to_main {
+                    background:url('../img/header_home.png') no-repeat center;
+                    &:hover {
+                      background:url('../img/header_home_hover.png') no-repeat center;
+                    }
+                    &.active {
+                      background:url('../img/header_home_hover.png') no-repeat center;
+                      background-color:#F1F1F1;
+                      box-shadow:1px -1px 2px rgba(0,0,0,0.2), -1px -1px 2px rgba(0,0,0,0.2);
+                      border-radius:3px 3px 0 0;
+                    }
+                  }
+
                   &.to_site {background:url('../img/header_site.png') no-repeat center;}
                   &.to_site:hover {background:url('../img/header_site_hover.png') no-repeat center;}
                   &.edit_site {background:url('../img/header_edit.png') no-repeat center;}
                   &.edit_site:hover {background:url('../img/header_edit_hover.png') no-repeat center;}
-
-                  &.active {
-                      background:url('../img/header_home_hover.png') no-repeat center;
-                  }
               }
           }
 
