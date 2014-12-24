@@ -40,10 +40,11 @@ function default_menu()
         if ($app->hide == false) {
             // Render application menu item
             $result .= m()
+                ->view('menu/item')
                 ->active( url()->module == $app->id() ? 'active' : '' )
                 ->app( $app )
                 ->name( isset($app->name{0}) ? $app->name : (isset($app->app_name{0})?$app->app_name:''))
-                ->output('menu/item');
+                ->output();
         }
     }
 
@@ -56,7 +57,7 @@ function default_menu()
 
         // If module has sub_menu view - render it
         if ($app->findView('sub_menu')) {
-            $subMenu .= $app->output('sub_menu');
+            $subMenu .= $app->view('sub_menu')->output();
         }
     }
 
