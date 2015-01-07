@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h1><a href="http://samsoncms.com">SamsonCMS</a></h1>
+<blockquote>
+<p>Modular content management system based on <a href="http://samsonphp.com">SamsonPHP</a> framework.</p>
+</blockquote>
+<h2>Installation</h2>
+<p>First of all you must get working <a href="http://getcomposer.org">Composer</a>.</p>
+<p>Use <code>php composer.phar create-project --prefer-dist -s dev samsonos/cms [your_path]</code> for automatic installation of SamsonCMS
+and all of its dependencies.</p>
+<h2>Roadmap</h2>
+<ul>
+<li>Make this project almost empty by creating all independent SamsonCMS modules.</li>
+<li>Give ability to easily install SamsonCMS in your project in any possible location.</li>
+<li>Give ability to create and connect custom SamsonCMS modules very easily.</li>
+<li>Give ability to easily update all modules via composer and use all of its features.</li>
+<li>Give ability to easily change theme and design in SamsonCMS and its modules.</li>
+<li>Database, compressor and deploy configuration must be automatically load from parent project, all other
+module configuration can be custom.</li>
+<li>Create generic SamsonCMS modules:
+<ul>
+<li>With build in paging;</li>
+<li>With build in searching;</li>
+<li>With build in theme changing;</li>
+<li>With build in CRUD actions;</li>
+<li>With generic views such as table and metro-style list;</li>
+</ul></li>
+</ul>
+<p>Developed by <a href="http://samsonos.com/">SamsonOS</a></p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

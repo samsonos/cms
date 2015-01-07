@@ -1,9 +1,0 @@
-/* Main part of content block, limited in height */
-.main {
-	overflow:auto;
-	position:relative;
-	top:0px; 
-	left:0px; 
-	right:0px; 
-	bottom:0px; 	
-}

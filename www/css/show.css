@@ -1,6 +1,0 @@
-#show #content  { position:static; width: 100%; }
-
-/* Стиль для выделения выводимого элемента материала в режиме редактирования */
-.__cms__material__ { display:block; border:1px dashed black;  }
-/* Ссылка для перехода к редактированию материала */
-.__cms__material__ .__cms__link__ { margin-top: -17px; z-index: 10; display:block; width:16px; height:16px; background:url(../img/structure_edit.png);}
