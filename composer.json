@@ -13,7 +13,7 @@
         "aws/aws-sdk-php": "2.*"
     },
     "require-dev": {
-        "samsonos/php_core":"1.*",
+        "samsonos/php_core":"*",
         "samsonos/php_activerecord":"*",
         "samsonos/php_resourcer":"*",
         "samsonos/php_less":"*",

@@ -1,11 +1,13 @@
 <?php
+namespace cms;
+
 /**
  * Created by Vitaly Iegorov <egorov@samsonos.com>
  * on 19.08.14 at 16:05
  */
 if (!defined('EXTERNAL_CONFIG')) {
     /** Test ActiveRecord configuration for development */
-    class ActiveRecordTestConfig extends \samson\core\Config
+    class ActiveRecordConfig extends \samson\core\Config
     {
         public $__module = 'activerecord';
 

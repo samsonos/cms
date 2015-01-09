@@ -28,22 +28,16 @@ if (!class_exists('samson\core\Core')) {
 if (file_exists('../../../app/config')) {
     /** Special constant to disable local ActiveRecord configuration */
     define('EXTERNAL_CONFIG', true);
-    // Read all configuration files
-    foreach(\samson\core\File::dir('../../../app/config') as $file) {
-        foreach(array('FileService', 'Scale', 'Upload', 'Compressor', 'Deploy', 'ActiveRecord') as $module) {
-            // If this is supported module configuration
-            if (stripos(basename($file, '.php'), $module) !== false) {
-                require($file);
-            }
-        }
-    }
+    // Import parent web-application entity configuration files
+    \samsonos\config\Manager::import('../../../app/config');
 }
 
 // Set supported locales
 setlocales('en', 'ua', 'ru');
 
 // Start SamsonPHP application
-s()->composer()
+s()
+    ->composer()
     ->subscribe('core.e404','default_e404')
     ->subscribe('core.routing', array(url(),'router'));
 
