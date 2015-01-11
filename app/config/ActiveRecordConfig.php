@@ -9,8 +9,6 @@ if (!defined('EXTERNAL_CONFIG')) {
     /** Test ActiveRecord configuration for development */
     class ActiveRecordConfig extends \samson\core\Config
     {
-        public $__module = 'activerecord';
-
         public $name = 'purpurina';
         public $login = 'nazarenko';
         public $pwd = 'AN12345!';
