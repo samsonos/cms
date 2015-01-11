@@ -28,8 +28,8 @@ if (!class_exists('samson\core\Core')) {
 if (file_exists('../../../app/config')) {
     /** Special constant to disable local ActiveRecord configuration */
     define('EXTERNAL_CONFIG', true);
-    // Import parent web-application entity configuration files
-    \samsonos\config\Manager::import('../../../app/config');
+    // Signal core configure event
+    \samson\core\Event::signal('core.configure', array('../../../'.__SAMSON_CONFIG_PATH, __SAMSON_PUBLIC_PATH.__SAMSON_BASE__));
 }
 
 // Set supported locales
