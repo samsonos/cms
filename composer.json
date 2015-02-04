@@ -53,7 +53,7 @@
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_materialtable":"*",
         "samsonos/cms_app_help":"*",
-        "samsonphp/compressor":"*",
+        "samsonos/php_compressor":"*",
         "samsonphp/deploy":"*"
     },
     "autoload": {
