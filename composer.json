@@ -26,7 +26,6 @@
         "samsonos/js_fixedheader":"*",
         "samsonos/js_tabs":"*",
         "samsonos/js_translit":"*",
-        "samsonos/php_compressor":"*",
         "samsonos/php_pager":"*",
         "samsonos/php_parse":"*",
         "samsonos/php_scale":"*",
@@ -54,6 +53,7 @@
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_materialtable":"*",
         "samsonos/cms_app_help":"*",
+        "samsonphp/compressor":"*",
         "samsonphp/deploy":"*"
     },
     "autoload": {
