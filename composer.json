@@ -29,7 +29,6 @@
         "samsonos/php_compressor":"*",
         "samsonos/php_pager":"*",
         "samsonos/php_parse":"*",
-        "samsonos/php_deploy":"*",
         "samsonos/php_scale":"*",
         "samsonos/php_email":"*",
         "samsonos/php_upload":"*",
@@ -54,7 +53,8 @@
         "samsonos/cms_app_gallery":"*",
         "samsonos/cms_app_relatedmaterial":"*",
         "samsonos/cms_app_materialtable":"*",
-        "samsonos/cms_app_help":"*"
+        "samsonos/cms_app_help":"*",
+        "samsonphp/deploy":"*"
     },
     "autoload": {
         "classmap": ["src/"]
