@@ -30,7 +30,7 @@
         "samsonos/php_parse":"*",
         "samsonos/php_scale":"*",
         "samsonos/php_email":"*",
-        "samsonos/php_upload":"*",
+        "samsonphp/upload":"*",
         "samsonos/php_treeview":"*",
         "samsonos/social_core":"*",
         "samsonos/social_email":"*",
