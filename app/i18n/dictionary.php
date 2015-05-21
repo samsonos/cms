@@ -146,7 +146,7 @@ function dictionary()
             "Дополнительные поля"	=>	"Additional",
             "Галлерея"	=>	"Gallery",
             "Запомнить меня" =>	"Remember me",
-            "Восстановление пароля"  => "Recovery password",
+            "Восстановление пароля"  => "Password recovery",
             "Отправить" => "Send",
             "Ошибка" => "Error",
             "Попробовать снова" => "Try again",
