@@ -149,6 +149,8 @@ function dictionary()
             "Восстановление пароля"  => "Recovery password",
             "Отправить" => "Send",
             "Ошибка" => "Error",
+            "Вернуться" => "Back",
+            "Введите Ваш Email" => "Enter your email",
             "Попробовать снова" => "Try again",
             "Пользователя с таким email адресом не существует. Проверьте Ваши данные или зарегистрируйтесь." => "Users with the email address does not exist. Check your data or register.",
             "Вам выслана ссылка на восстановление пароля" => "You will receive a link to the password recovery",
